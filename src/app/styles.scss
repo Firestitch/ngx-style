@@ -1,0 +1,81 @@
+
+@mixin form-field-multiline-subscript {
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-underline {
+        position: initial;
+        display: block;
+        margin-top: -1px;
+    }
+
+    .mat-form-field-subscript-wrapper,
+    .mat-form-field-ripple {
+        position: initial;
+        display: table;
+
+        mat-hint {
+          margin-bottom: 1em;
+        }
+    }
+    .mat-form-field-subscript-wrapper {
+        min-height: calc(1em + 1px);
+    }
+  }
+}
+
+//Helpers
+
+.full-width {
+  width: 100% !important;
+}
+
+
+// Typography
+.small,
+small {
+  color: #6f6f6f;
+  font-size: 13px;
+}
+
+.error {
+  color: #B3190F;
+}
+
+// Material Form Field
+.form-field-multiline-subscript {
+  @include form-field-multiline-subscript;
+}
+
+.form-field-padless {
+
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-subscript-wrapper {
+      position: absolute !important;
+    }
+  }
+
+  .mat-form-field-underline {
+    bottom: 0;
+  }
+}
+
+.form-field-padless-bottom {
+  .mat-form-field-underline {
+    bottom: 0;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-subscript-wrapper {
+      position: absolute !important;
+    }
+  }
+}

@@ -1,11 +1,11 @@
 {
-  "name": "@firestitch/package",
-  "title": "package.json -> Rename Title to Component Title",
-  "description": "@firestitch/package",
-  "version": "7.0.0",
+  "name": "@firestitch/style",
+  "title": "Style",
+  "description": "@firestitch/style",
+  "version": "8.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Firestitch/ngx-package"
+    "url": "https://github.com/Firestitch/ngx-style"
   },
   "author": {
     "name": "Firestitch",
@@ -63,6 +63,5 @@
   },
   "engines": {
     "node": ">=6.0.0"
-  },
-  "peerDependencies": {}
+  }
 }

@@ -6,17 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
-import { FsComponentModule } from '@firestitch/package';
-import { FsLabelModule } from '@firestitch/label';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppMaterialModule } from './material.module';
 import {
-  KitchenSinkComponent,
-  ExamplesComponent
+  TypographyComponent,
+  ExamplesComponent,
+  FormFieldComponent,
+  HelpersComponent
 } from './components';
 import { AppComponent } from './app.component';
-import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
 
 const routes: Routes = [
   { path: '', component: ExamplesComponent },
@@ -26,24 +25,20 @@ const routes: Routes = [
   bootstrap: [ AppComponent ],
   imports: [
     BrowserModule,
-    FsComponentModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsLabelModule,
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     RouterModule.forRoot(routes),
   ],
-  entryComponents: [
-    KitchenSinkConfigureComponent
-  ],
   declarations: [
     AppComponent,
     ExamplesComponent,
-    KitchenSinkComponent,
-    KitchenSinkConfigureComponent
+    TypographyComponent,
+    FormFieldComponent,
+    HelpersComponent
   ],
 })
 export class PlaygroundModule {
