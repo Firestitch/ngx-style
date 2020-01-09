@@ -79,3 +79,15 @@ small {
     }
   }
 }
+
+.form-field-grow {
+
+  .mat-form-field-infix {
+    width: fit-content;
+
+    .mat-select-value {
+      max-width: 100%;
+      width: auto;
+    }
+  }
+}
