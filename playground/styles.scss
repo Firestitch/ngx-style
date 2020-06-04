@@ -1,10 +1,9 @@
-@import '../tools/assets/playground.scss';
-@import '~@firestitch/message/styles';
+@import "../tools/assets/playground.scss";
+@import "~@firestitch/message/styles";
 @import "~@firestitch/drawer/styles";
-@import '../src/app/styles.scss';
+@import "../src/app/styles.scss";
 
 @include fs-drawer($mat-blue);
-
 
 // .mat-form-field {
 //   @include form-field-multiline-subscript;

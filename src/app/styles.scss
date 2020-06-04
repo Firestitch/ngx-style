@@ -1,25 +1,35 @@
+$heading-color: null !default;
+$subheading-color: null !default;
+
+@if $heading-color == null {
+  $heading-color: #383838;
+}
+
+@if $subheading-color == null {
+  $subheading-color: #676767;
+}
 
 @mixin form-field-multiline-subscript {
   .mat-form-field-wrapper {
     padding-bottom: 0;
 
     .mat-form-field-underline {
-        position: initial;
-        display: block;
-        margin-top: -1px;
+      position: initial;
+      display: block;
+      margin-top: -1px;
     }
 
     .mat-form-field-subscript-wrapper,
     .mat-form-field-ripple {
-        position: initial;
-        display: table;
+      position: initial;
+      display: table;
 
-        mat-hint {
-          margin-bottom: 1em;
-        }
+      mat-hint {
+        margin-bottom: 1em;
+      }
     }
     .mat-form-field-subscript-wrapper {
-        min-height: calc(1em + 1px);
+      min-height: calc(1em + 1px);
     }
   }
 }
@@ -36,7 +46,6 @@
   }
 }
 
-
 // Typography
 .small,
 small {
@@ -45,7 +54,7 @@ small {
 }
 
 .error {
-  color: #B3190F;
+  color: #b3190f;
 }
 
 // Material Form Field
@@ -54,7 +63,6 @@ small {
 }
 
 .form-field-padless {
-
   .mat-form-field-infix {
     border-top: 0;
   }
@@ -87,7 +95,6 @@ small {
 }
 
 .form-field-grow {
-
   .mat-form-field-infix {
     width: fit-content;
 
@@ -95,5 +102,86 @@ small {
       max-width: 100%;
       width: auto;
     }
+  }
+}
+
+// Headings
+
+h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: $heading-color;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+h2 {
+  font-style: normal;
+  font-size: 18px;
+  color: $heading-color;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: normal;
+}
+
+h3 {
+  font-style: normal;
+  font-size: 16px;
+  color: $heading-color;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: normal;
+}
+
+h1 + .subheading,
+.subheading-1 {
+  font-size: 15px;
+}
+
+.subheading-2,
+h2 + .subheading {
+  font-size: 13px;
+}
+
+.subheading-3,
+h3 + .subheading {
+  font-size: 13px;
+}
+
+.subheading-1,
+.subheading-2,
+.subheading-3,
+h1 + .subheading,
+h2 + .subheading,
+h3 + .subheading {
+  font-style: normal;
+  font-weight: normal;
+  color: $subheading-color;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 5px 0;
+
+  &:not(.subheading-1):not(.subheading-2):not(.subheading-3) {
+    margin-top: -5px;
+  }
+
+  .material-icons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+}
+
+.h1-container,
+.h2-container {
+  // Sometimes mat-card or mat-card-content margin-top: 0; overwrite this margin. Using important to prevent conflicts
+  margin-top: -20px !important;
+
+  // h2-heading will take care of the top 20px for h2 at the top of pages
+  .fs-list-container.has-heading {
+    margin-top: 20px;
   }
 }
