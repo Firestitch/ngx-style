@@ -80,6 +80,12 @@ small {
   }
 }
 
+.form-field-padless-top {
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+}
+
 .form-field-padless-bottom {
   .mat-form-field-underline {
     bottom: 0;
