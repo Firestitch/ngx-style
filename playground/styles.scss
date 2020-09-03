@@ -4,7 +4,4 @@
 @import "../src/app/styles.scss";
 
 @include fs-drawer($mat-blue);
-
-// .mat-form-field {
-//   @include form-field-multiline-subscript;
-// }
+@include fs-style($mat-blue);

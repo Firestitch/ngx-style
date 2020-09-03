@@ -116,6 +116,17 @@ large {
   }
 }
 
+
+.form-field-lineless:not(.mat-focused) {
+  .mat-form-field-underline {
+    background-color: transparent;
+  }
+
+  input {
+    text-overflow: ellipsis;
+  }
+}
+
 // Headings
 
 h1 {
@@ -194,5 +205,51 @@ h3 + .subheading {
   // h2-heading will take care of the top 20px for h2 at the top of pages
   .fs-list-container.has-heading {
     margin-top: 20px;
+  }
+}
+
+
+.overflow-shadow {
+  position: relative;
+  z-index: 1;
+  transform: perspective(1px);
+  background: #FFF no-repeat;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(213, 213, 213, 0) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.1068802521) 0%, rgba(213, 213, 213, 0) 100%);
+  background-position: 0 0, 0 100%;
+  background-size: 100% 5px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: relative;
+    z-index: -1;
+    display: block;
+    height: 10px;
+    background: linear-gradient(to bottom, #FFF, #FFF 30%, rgba(255, 255, 255, 0));
+  }
+
+  &:after {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(70%, #FFF), to(#FFF));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF 70%, #FFF);
+  }
+
+  .overflow-shadow-content {
+    margin-top: -10px;
+  }
+}
+
+
+
+@mixin fs-style($theme) {
+  $primary: mat-palette($theme);
+  $primary-color: mat-color($primary);
+  $primary-color-semi-transparent: rgba($primary-color,.3);
+
+  .form-field-lineless:not(.mat-focused) {
+    &:hover {
+      .mat-form-field-underline {
+        border-top: 1px dashed $primary-color-semi-transparent;
+      }
+    }
   }
 }
