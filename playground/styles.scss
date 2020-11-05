@@ -3,5 +3,5 @@
 @import "~@firestitch/drawer/styles";
 @import "../src/app/styles.scss";
 
-@include fs-drawer($mat-blue);
-@include fs-style($mat-blue);
+@include fs-drawer($primary-palette);
+@include fs-style($primary-palette);

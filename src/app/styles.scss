@@ -242,15 +242,25 @@ h3 + .subheading {
 
 
 @mixin fs-style($theme) {
-  $primary: mat-palette($theme);
-  $primary-color: mat-color($primary);
-  $primary-color-semi-transparent: rgba($primary-color,.3);
+  $palette: mat-palette($theme);
 
   .form-field-lineless:not(.mat-focused) {
     &:hover {
       .mat-form-field-underline {
-        border-top: 1px dashed $primary-color-semi-transparent;
+        border-top: 1px dashed fs-style-color-rgb($palette, .3);
       }
     }
   }
+}
+
+@function fs-style-color-rgb($palette, $opacity: null) {
+
+  $color: map-get($palette, primary-rgb);
+
+  @if $color == null {
+   $color: mat-color($palette, default);
+   @return rgba($color, if($opacity == null, 1, $opacity));
+  }
+
+  @return rgba($color, if($opacity == null, 1, $opacity));
 }
