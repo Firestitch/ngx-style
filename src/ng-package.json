@@ -3,5 +3,9 @@
   "dest": "../package",
   "lib": {
     "entryFile": "public_api.ts"
-  }
+  },
+  "assets": [
+    "./styles.scss",
+    "./styles/**/*.scss"
+  ]
 }

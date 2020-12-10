@@ -5,7 +5,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 })
 export class FsStyleModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FsStyleModule> {
     return {
       ngModule: FsStyleModule
     };
