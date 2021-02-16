@@ -212,7 +212,7 @@ h3 + .subheading {
 .overflow-shadow {
   position: relative;
   z-index: 1;
-  transform: perspective(1px);
+  //transform: perspective(1px);
   background: #FFF no-repeat;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(213, 213, 213, 0) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.1068802521) 0%, rgba(213, 213, 213, 0) 100%);
   background-position: 0 0, 0 100%;
