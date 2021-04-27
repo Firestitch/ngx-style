@@ -1,0 +1,31 @@
+@mixin overflow() {
+  .overflow-shadow {
+    position: relative;
+    z-index: 1;
+    //transform: perspective(1px);
+    background: #FFF no-repeat;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(213, 213, 213, 0) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.1068802521) 0%, rgba(213, 213, 213, 0) 100%);
+    background-position: 0 0, 0 100%;
+    background-size: 100% 5px;
+
+    &:before,
+    &:after {
+      content: "";
+      position: relative;
+      z-index: -1;
+      display: block;
+      height: 10px;
+      background: linear-gradient(to bottom, #FFF, #FFF 30%, rgba(255, 255, 255, 0));
+    }
+
+    &:before {
+      margin-bottom: -10px;
+    }
+
+    &:after {
+      background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(70%, #FFF), to(#FFF));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF 70%, #FFF);
+
+    }
+  }
+};

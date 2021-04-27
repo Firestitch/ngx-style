@@ -1,0 +1,16 @@
+@use '../variables';
+
+@mixin typography() {
+  .small, small {
+    color: variables.$small-color;
+    font-size: 85%;
+  }
+
+  .large {
+    font-size: 115%;
+  }
+
+  .error {
+    color: variables.$error-color;
+  }
+}

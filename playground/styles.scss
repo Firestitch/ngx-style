@@ -1,7 +1,8 @@
-@import "../tools/assets/playground.scss";
-@import "~@firestitch/message/styles";
-@import "~@firestitch/drawer/styles";
-@import "../src/styles.scss";
+@use '../src/styles' as fs-style;
 
-@include fs-drawer($primary-palette);
-@include fs-style($primary-palette);
+@use "../tools/assets/playground.scss";
+@use "~@firestitch/message/styles";
+@use "~@firestitch/drawer/styles" as fs-drawer;
+
+@include fs-style.core();
+@include fs-drawer.fs-drawer(playground.$primary-palette);

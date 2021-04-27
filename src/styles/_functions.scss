@@ -1,0 +1,14 @@
+@use '~@angular/material/theming' as mat-theming;
+@use 'sass:map';
+
+@function color-rgb($palette, $opacity: null) {
+
+  $color: map-get($palette, primary-rgb);
+
+  @if $color == null {
+    $color: mat-theming.mat-color($palette, default);
+    @return rgba($color, if($opacity == null, 1, $opacity));
+  }
+
+  @return rgba($color, if($opacity == null, 1, $opacity));
+}

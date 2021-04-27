@@ -1,0 +1,14 @@
+@use 'headings';
+@use 'helpers';
+@use 'overflow';
+@use 'typography';
+
+@use 'form-field';
+
+@mixin core() {
+  @include headings.headings();
+  @include form-field.form-field();
+  @include helpers.helpers();
+  @include overflow.overflow();
+  @include typography.typography();
+}
