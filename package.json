@@ -2,7 +2,7 @@
   "name": "@firestitch/style",
   "title": "Style",
   "description": "@firestitch/style",
-  "version": "8.1.2",
+  "version": "8.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-style"
@@ -44,8 +44,8 @@
     "@compodoc/compodoc": "^1.1.10",
     "@firestitch/drawer": "^9.2.4",
     "@firestitch/example": "^9.1.0",
-    "@firestitch/label": "^8.2.8",
     "@firestitch/iframe": "^8.0.0",
+    "@firestitch/label": "^8.2.8",
     "@firestitch/menu": "^9.1.4",
     "@firestitch/message": "^8.1.0",
     "codelyzer": "^5.1.2",
