@@ -1,7 +1,7 @@
 @use '~@angular/material/theming' as mat-theming;
 
 $subheading-color: #676767 !default;
-$palette: mat-theming.mat-palette(mat-theming.$mat-blue);
+$palette: mat-theming.mat-palette(mat-theming.$mat-blue) !default;
 
 // Headings
 $heading-color: #383838 !default;
