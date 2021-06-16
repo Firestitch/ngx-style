@@ -1,6 +1,6 @@
 @mixin form-field-multiline-subscript {
   .mat-form-field-wrapper {
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
 
     .mat-form-field-underline {
       position: initial;
@@ -13,8 +13,9 @@
       position: initial;
       display: table;
 
-      mat-hint {
+      mat-hint:not(:empty) {
         margin-bottom: 1em;
+        display: block;
       }
     }
     .mat-form-field-subscript-wrapper {
