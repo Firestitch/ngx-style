@@ -1,6 +1,19 @@
 @use '~@angular/material/theming' as mat-theming;
 
-$subheading-color: #676767 !default;
+$color-danger: #FF3548 !default;
+$color-warn: #FFBB34 !default;
+$color-success: #00C753 !default;
+$color-info: #33B5E7 !default;
+
+$color-dark-danger: #CC0001 !default;
+$color-dark-warn: #FF8800 !default;
+$color-dark-success: #007E34 !default;
+$color-dark-info: #0099CB !default;
+
+$color-light: #676767 !default;
+$color-dark: #343A40 !default;
+
+$subheading-color: $color-light;
 $palette: mat-theming.mat-palette(mat-theming.$mat-blue) !default;
 
 // Headings
@@ -18,11 +31,11 @@ $h3-font-size: 16px !default;
 $h3-margin-top: 20px !default;
 $h3-margin-bottom: 10px !default;
 
-// Typography
-$error-color: #b3190f !default;
-$small-color: #6f6f6f !default;
+$error-color: $color-dark-danger;
+$small-color: $color-light;
 
 $break-xsmall: 599px !default;
 $break-small: 1023px !default;
 $break-medium: 1439px !default;
 $break-large: 1919px !default;
+
