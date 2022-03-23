@@ -13,7 +13,8 @@
       position: initial;
       display: table;
 
-      mat-hint:not(:empty) {
+      mat-hint:not(:empty),
+      .fs-form-error {
         margin-bottom: 1em;
         display: block;
       }
