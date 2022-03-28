@@ -1,4 +1,4 @@
-@use '~@angular/material/theming' as mat-theming;
+@use '~@angular/material' as mat;
 
 $color-danger: #FF3548 !default;
 $color-warn: #FFBB34 !default;
@@ -14,7 +14,7 @@ $color-light: #676767 !default;
 $color-dark: #343A40 !default;
 
 $subheading-color: $color-light;
-$palette: mat-theming.mat-palette(mat-theming.$mat-blue) !default;
+$palette: mat.define-palette(mat.$blue-palette) !default;
 
 // Headings
 $heading-color: #383838 !default;
