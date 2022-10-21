@@ -1,8 +1,45 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
+  <h3>100% Full width Form Field </h3>
+
   <mat-form-field class="full-width">
     <input matInput placeholder="100% Full Width">
   </mat-form-field>
+
+  <h3>Multi Column Form Field</h3>
+
+  <div class="fs-row form-field">
+    <mat-form-field>
+      <input matInput placeholder="Multi column Form Field">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Multi column Form Field">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Multi column Form Field">
+    </mat-form-field>
+  </div>
+
+  <h3>Multi Column Blocks</h3>
+
+  <div class="fs-row">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      100$
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      100%
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column3</fs-label>
+      None
+    </fs-label-field>
+  </div>
 
   <div>
     <fs-label>Overflow Shadow</fs-label>

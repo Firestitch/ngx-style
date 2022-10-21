@@ -1,3 +1,5 @@
+@use '../variables';
+
 @mixin helpers() {
   .full-width {
     width: 100% !important;
@@ -5,6 +7,37 @@
     &.mat-form-field {
       .mat-form-field-infix {
         width: auto;
+      }
+    }
+  }
+
+  .fs-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 40px;
+
+    &:not(.form-field) {
+      flex-wrap: wrap;
+    }
+
+    &.form-field {
+      column-gap: 10px;
+
+      .mat-form-field-infix {
+        width: auto;
+      }
+
+      >* {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: variables.$break-xsmall) {
+    .fs-row {
+      &.form-field {
+        flex-direction: column;
       }
     }
   }
