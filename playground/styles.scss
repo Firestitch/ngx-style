@@ -1,6 +1,6 @@
 @use '../src/styles' as fs-style;
 
-@use "../tools/assets/playground.scss";
+@use "~@firestitch/component-tools/assets/playground.scss";
 @use "~@firestitch/message/styles";
 @use "~@firestitch/drawer/styles" as fs-drawer;
 
