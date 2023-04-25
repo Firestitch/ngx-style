@@ -11,19 +11,24 @@
     }
   }
 
-  .fs-row {
+  .fs-row,
+  .fs-row-form-field {
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 40px;
-
-    &:not(.form-field) {
+    
+    &:not(.form-field):not(.fs-row-form-field) {
       flex-wrap: wrap;
     }
 
-    &.form-field {
+    &.form-field,
+    &.fs-row-form-field {
       column-gap: 10px;
+    }
 
+    &.fs-row-form-field,
+    &.form-field {
       .mat-form-field-infix {
         width: auto;
       }
@@ -35,10 +40,9 @@
   }
 
   @media (max-width: variables.$break-xsmall) {
-    .fs-row {
-      &.form-field {
-        flex-direction: column;
-      }
+    .fs-row.form-field,
+    .fs-row-form-field {
+      flex-direction: column;
     }
   }
 }
