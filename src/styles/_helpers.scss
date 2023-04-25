@@ -17,6 +17,14 @@
     flex-direction: row;
     align-items: center;
     column-gap: 40px;
+
+    &.fs-row-gap-small {
+      column-gap: 10px;
+    }
+
+    &.fs-row-gap-tiny {
+      column-gap: 5px;
+    }
     
     &:not(.form-field):not(.fs-row-form-field) {
       flex-wrap: wrap;
