@@ -26,6 +26,8 @@
 
       .mat-form-field-subscript-wrapper {
         position: absolute !important;
+        top: unset;
+        margin-top: 0;
       }
     }
 
