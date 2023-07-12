@@ -28,6 +28,15 @@
     font-weight: normal;
   }
 
+  h1, h2, h3 {
+    .subheading {
+      font-size: 75%;
+      font-weight: normal;
+      color: #565656;
+      line-height: normal;
+    }
+  }
+
   h1 + .subheading,
   .subheading-1 {
     font-size: 85%;
