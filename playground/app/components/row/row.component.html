@@ -1,0 +1,100 @@
+
+  <h3 class="fs-row fs-row-gap-small">
+    Multi Column Blocks (Gap and Alignment)
+    
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Gap</mat-label>
+      <mat-select
+          [(ngModel)]="gap"
+          name="gap">
+        <mat-option [value]="'small'">Small</mat-option>
+        <mat-option [value]="'tiny'">Tiny</mat-option>
+        <mat-option [value]="'large'">Large</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Alignment</mat-label>
+      <mat-select
+          [(ngModel)]="align"
+          name="align">
+        <mat-option [value]="'start'">Start</mat-option>
+        <mat-option [value]="'center'">Center</mat-option>
+        <mat-option [value]="'end'">End</mat-option>
+        <mat-option [value]="'baseline'">Baseline</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </h3>
+
+  <div class="fs-row" [class]="'fs-row-gap-' + gap + ' fs-row-align-' + align">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      100$
+      <div class="small">Text text text</div>
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      100%
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column3</fs-label>
+      None
+    </fs-label-field>
+  </div>
+
+  
+  <h3>Multi Column Blocks (Wrap)</h3>
+
+  <div class="fs-row fs-row-gap-large fs-row-wrap">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      1
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      2
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column3</fs-label>
+      3
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column4</fs-label>
+      4
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column5</fs-label>
+      5
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column6</fs-label>
+      6
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column7</fs-label>
+      7
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column8</fs-label>
+      8
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column9</fs-label>
+      9
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column10</fs-label>
+      10
+    </fs-label-field>
+  </div>

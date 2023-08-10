@@ -36,6 +36,10 @@
     &.fs-row-align-end {
       align-items: flex-end;
     }
+
+    &.fs-row-align-baseline {
+      align-items: baseline;
+    }
     
     &.fs-row-wrap {
       flex-wrap: wrap;
