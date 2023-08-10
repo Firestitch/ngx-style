@@ -28,6 +28,14 @@
     &.fs-row-gap-tiny {
       column-gap: 5px;
     }
+
+    &.fs-row-align-start {
+      align-items: flex-start;
+    }
+
+    &.fs-row-align-end {
+      align-items: flex-end;
+    }
     
     &.fs-row-wrap {
       flex-wrap: wrap;
