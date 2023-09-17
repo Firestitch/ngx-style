@@ -16,45 +16,60 @@
     @include form-field-multiline-subscript;
   }
 
-  .form-field-padless {
-    .mat-form-field-infix {
-      border-top: 0;
-    }
+  .mat-form-field {
+    &.mat-form-field-appearance-legacy {
+      &.form-field-padless-top, &.form-field-padless {
+        .mat-form-field-infix {
+          border-top: 0;
+        }
+      }
 
-    .mat-form-field-wrapper {
-      padding-bottom: 0;
+      &.form-field-padless-bottom, &.form-field-padless {
+        .mat-form-field-underline {
+          bottom: 0;
+        }
 
-      .mat-form-field-subscript-wrapper {
-        position: absolute !important;
-        top: unset;
-        margin-top: 0;
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
+
+          .mat-form-field-subscript-wrapper {
+            position: absolute !important;
+            top: unset;
+            margin-top: 0;
+          }
+        }
       }
     }
 
-    .mat-form-field-underline {
-      bottom: 0;
-    }
-  }
+    &.mat-form-field-appearance-standard {
+      &.form-field-padless-top, &.form-field-padless {
+        .mat-form-field-flex {
+          padding-top: 0;
+        }
 
-  .form-field-padless-top {
-    .mat-form-field-infix {
-      border-top: 0;
-    }
-  }
+        .mat-form-field-infix {
+          border-top: 0;
+        }
+      }
 
-  .form-field-padless-bottom {
-    .mat-form-field-underline {
-      bottom: 0;
-    }
+      &.form-field-padless-bottom, &.form-field-padless {
+        .mat-form-field-underline {
+          bottom: 0;
+        }
 
-    .mat-form-field-wrapper {
-      padding-bottom: 0;
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
 
-      .mat-form-field-subscript-wrapper {
-        position: absolute !important;
+          .mat-form-field-subscript-wrapper {
+            position: absolute !important;
+            top: unset;
+            margin-top: 0;
+          }
+        }
       }
     }
   }
+
 
   .form-field-grow {
     .mat-form-field-infix {
@@ -66,7 +81,6 @@
       }
     }
   }
-
 
   .form-field-lineless:not(.mat-focused) {
     .mat-form-field-underline {

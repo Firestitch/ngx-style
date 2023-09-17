@@ -1,50 +1,70 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
+  <h2>Standard</h2>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'standard' }"></ng-container>
+
+  <h2>Legacy</h2>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'legacy' }"></ng-container>
+</div>
+
+
+<ng-template let-appearance="appearance" #fields>
   <div class="outline">
-    <mat-form-field>
-      <input matInput placeholder="Standard Form Field">
+    <mat-form-field 
+        [appearance]="appearance">
+      <mat-label>Default Form Field</mat-label>
+      <input matInput>
     </mat-form-field>
   </div>
 
   <div class="outline">
     <mat-form-field
-      class="form-field-padless"
-      floatLabel="never">
-      <input matInput placeholder="Padless Form Field">
+        class="form-field-padless"
+        [floatLabel]="'never'"
+        [appearance]="appearance">
+      <input 
+        matInput
+        [placeholder]="'Padless Form Field'">
     </mat-form-field>
   </div>
 
   <div class="outline">
     <mat-form-field
-      class="form-field-padless-top"
-      floatLabel="never">
-      <input matInput placeholder="Padless Top Form Field">
+        class="form-field-padless-top"
+        [floatLabel]="'never'"
+        [appearance]="appearance">
+      <input 
+        matInput 
+        [placeholder]="'Padless Top Form Field'">
     </mat-form-field>
   </div>
 
 
   <div class="outline">
     <mat-form-field
-      class="form-field-padless-bottom">
-      <input matInput placeholder="Padless Bottom Form Field">
+        class="form-field-padless-bottom"        
+        [appearance]="appearance">
+      <mat-label>Padless Bottom Form Field</mat-label>
+      <input matInput>
     </mat-form-field>
   </div>
 
   <div class="outline">
     <mat-form-field
-      class="form-field-multiline-subscript">
-      <input matInput placeholder="Multi-line Subscript Form Field">
+        class="form-field-multiline-subscript"
+        [appearance]="appearance">
+      <mat-label>Multi-line Subscript Form Field</mat-label>
+      <input matInput>
       <mat-hint>Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.</mat-hint>
     </mat-form-field>
   </div>
 
-
   <div class="lineless">
     <mat-form-field
-      class="form-field-lineless">
-      <input matInput placeholder="Lineless Form Field">
+        class="form-field-lineless"
+        [appearance]="appearance">
+      <mat-label>Lineless Form Field</mat-label>
+      <input matInput>
     </mat-form-field>
   </div>
-
-</div>
-
+</ng-template>
