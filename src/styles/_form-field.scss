@@ -41,7 +41,8 @@
       }
     }
 
-    &.mat-form-field-appearance-standard {
+    &.mat-form-field-appearance-standard,
+    &.mat-form-field-appearance-outline {
       &.form-field-padless-top, &.form-field-padless {
         .mat-form-field-flex {
           padding-top: 0;
@@ -49,6 +50,10 @@
 
         .mat-form-field-infix {
           border-top: 0;
+        }
+
+        .mat-form-field-outline {
+          top: 0;
         }
       }
 

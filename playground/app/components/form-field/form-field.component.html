@@ -1,15 +1,18 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
   <h2>Standard</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'standard' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'standard', class: 'outline' }"></ng-container>
+  
+  <h2>Outline</h2>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'outline', class: '' }"></ng-container>
 
   <h2>Legacy</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'legacy' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'legacy', class: 'outline' }"></ng-container>
 </div>
 
 
-<ng-template let-appearance="appearance" #fields>
-  <div class="outline">
+<ng-template let-appearance="appearance" let-class="class" #fields>
+  <div [class]="class">
     <mat-form-field 
         [appearance]="appearance">
       <mat-label>Default Form Field</mat-label>
@@ -17,7 +20,7 @@
     </mat-form-field>
   </div>
 
-  <div class="outline">
+  <div [class]="class">
     <mat-form-field
         class="form-field-padless"
         [floatLabel]="'never'"
@@ -28,7 +31,7 @@
     </mat-form-field>
   </div>
 
-  <div class="outline">
+  <div [class]="class">
     <mat-form-field
         class="form-field-padless-top"
         [floatLabel]="'never'"
@@ -40,7 +43,7 @@
   </div>
 
 
-  <div class="outline">
+  <div [class]="class">
     <mat-form-field
         class="form-field-padless-bottom"        
         [appearance]="appearance">
@@ -49,7 +52,7 @@
     </mat-form-field>
   </div>
 
-  <div class="outline">
+  <div [class]="class">
     <mat-form-field
         class="form-field-multiline-subscript"
         [appearance]="appearance">
