@@ -69,3 +69,10 @@
     }
   }
 }
+
+.fs-delimit {
+  > *:not(:last-child):after {
+    padding-right: 4px;
+    content: ',\00a0';
+  }
+}
