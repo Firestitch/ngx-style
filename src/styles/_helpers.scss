@@ -64,10 +64,10 @@
         width: 100%;
       }
     }
+  }
 
-    .fs-column {
-      flex-direction: column;
-    }
+  .fs-column {
+    flex-direction: column;
   }
 
   @media (max-width: variables.$break-xsmall) {
