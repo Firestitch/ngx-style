@@ -1,5 +1,5 @@
 
-  <h3 class="fs-row fs-row-gap-small">
+  <h3 class="fs-row.gap-large">
     Row (Gap and Alignment)
     
     <mat-form-field class="form-field-padless-bottom">
@@ -26,7 +26,7 @@
     </mat-form-field>
   </h3>
 
-  <div class="fs-row" [class]="'fs-row-gap-' + gap + ' fs-row-align-' + align">
+  <div [class]="'fs-row.gap-' + gap + '.align-' + align">
     <fs-label-field>
       <fs-label>Column</fs-label>
       100$
@@ -47,7 +47,7 @@
   
   <h3>Multi Column Blocks (Wrap)</h3>
 
-  <div class="fs-row fs-row-gap-large fs-row-wrap">
+  <div class="fs-row fs-row.gap-large fs-row.wrap">
     <fs-label-field>
       <fs-label>Column</fs-label>
       1

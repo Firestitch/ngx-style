@@ -12,46 +12,50 @@
   }
 
   .fs-row,
-  .fs-row-form-field {
+  [class*='fs-row'] {
     display: flex;
     flex-direction: row;
     align-items: center;
 
+    &[class*='.gap-large'],    
     &.fs-row-gap-large {
       column-gap: 40px;
     }
-
+    
+    &[class*='.gap-small'],    
     &.fs-row-gap-small {
       column-gap: 10px;
     }
 
+    &[class*='.gap-tiny'],    
     &.fs-row-gap-tiny {
       column-gap: 5px;
     }
 
+    &[class*='.align-start'],
     &.fs-row-align-start {
       align-items: flex-start;
     }
 
+    &[class*='.align-end'],
     &.fs-row-align-end {
       align-items: flex-end;
     }
 
+    &[class*='.align-baseline'],
     &.fs-row-align-baseline {
       align-items: baseline;
     }
     
-    &.fs-row-wrap {
+    &[class*='.wrap'],
+    .fs-row-wrap {
       flex-wrap: wrap;
     }
 
-    &.form-field,
-    &.fs-row-form-field {
+    &[class*='.form-field'],
+    .fs-row-form-field {
       column-gap: 10px;
-    }
 
-    &.fs-row-form-field,
-    &.form-field {
       .mat-form-field-infix {
         width: auto;
       }
@@ -60,11 +64,14 @@
         width: 100%;
       }
     }
+
+    .fs-column {
+      flex-direction: column;
+    }
   }
 
   @media (max-width: variables.$break-xsmall) {
-    .fs-row.form-field,
-    .fs-row-form-field {
+    .fs-row[class*='.form-field'] {
       flex-direction: column;
     }
   }

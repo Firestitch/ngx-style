@@ -10,6 +10,7 @@ import { FsMessageModule } from '@firestitch/message';
 
 import { AppComponent } from './app.component';
 import {
+  ColumnComponent,
   ExamplesComponent,
   FormFieldComponent,
   GenericHelpersComponent,
@@ -43,6 +44,7 @@ const routes: Routes = [
     FormFieldComponent,
     HelpersComponent,
     RowComponent,
+    ColumnComponent,
   ],
 })
 export class PlaygroundModule {
