@@ -1,0 +1,132 @@
+@use '../variables';
+
+@mixin layout() {
+  .fs-row,
+  [class*='fs-row'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &[class*='.gap-lg'],
+    &[class*='.gap-large'],    
+    &.fs-row-gap-large {
+      column-gap: 40px;
+    }
+    
+    &[class*='.gap-md'] {
+      column-gap: 20px;
+    }
+          
+    &[class*='.gap-sm'],
+    &[class*='.gap-small'],  
+    &.fs-row-gap-small {
+      column-gap: 10px;
+    }
+
+    &[class*='.gap-xs'],    
+    &[class*='.gap-tiny'],    
+    &.fs-row-gap-tiny {
+      column-gap: 5px;
+    }
+
+    &[class*='.align-start'],
+    &.fs-row-align-start {
+      align-items: flex-start;
+    }
+
+    &[class*='.align-end'],
+    &.fs-row-align-end {
+      align-items: flex-end;
+    }
+
+    &[class*='.align-baseline'],
+    &.fs-row-align-baseline {
+      align-items: baseline;
+    }
+    
+    &[class*='.wrap'],
+    .fs-row-wrap {
+      flex-wrap: wrap;
+    }
+
+    &[class*='.form-field'],
+    .fs-row-form-field {
+      column-gap: 10px;
+
+      .mat-form-field-infix {
+        width: auto;
+      }
+
+      >* {
+        width: 100%;
+      }
+    }
+  }
+
+  .fs-column {
+    display: flex;
+    flex-direction: column;
+    
+    @include rowGaps;
+  }
+
+  .fs-flex {
+    flex: 1;
+  }
+
+  @media (max-width: variables.$break-xsmall) {
+    [fs\.lt-xs*='fs-column'] {
+      display: flex;
+      flex-direction: column;
+        
+      @include rowGaps;
+      @include rowGapNone;
+    }
+  }
+
+  @media (max-width: variables.$break-small) {
+    [fs\.lt-sm*='fs-column'] {
+      display: flex;
+      flex-direction: column;
+        
+      @include rowGaps;
+      @include rowGapNone;
+    }
+  }
+  
+  @media (max-width: variables.$break-medium) {
+    [fs\.lt-md*='fs-column'] {
+      display: flex;
+      flex-direction: column;
+        
+      @include rowGaps;
+      @include rowGapNone;
+    }
+  }
+}
+
+@mixin rowGaps {
+  &[class*='.gap-lg'] {
+    row-gap: 40px;
+  }
+  
+  &[class*='.gap-md'] {
+    row-gap: 20px;
+  }
+  
+  &[class*='.gap-sm'] {
+    row-gap: 10px;
+  }
+
+  &[class*='.gap-xs'] {
+    row-gap: 5px;
+  }
+}
+
+@mixin rowGapNone {
+  &[fs\.lt-xs*='.gap-none'],
+  &[fs\.lt-sm*='.gap-none'],
+  &[fs\.lt-md*='.gap-none'] {
+    row-gap: 0px;
+  }
+}

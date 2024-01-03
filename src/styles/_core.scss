@@ -1,14 +1,15 @@
 @use 'headings';
 @use 'helpers';
+@use 'layout';
 @use 'overflow';
 @use 'typography';
-
 @use 'form-field';
 
 @mixin core() {
   @include headings.headings();
   @include form-field.form-field();
   @include helpers.helpers();
+  @include layout.layout();
   @include overflow.overflow();
   @include typography.typography();
 }

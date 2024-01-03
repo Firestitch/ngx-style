@@ -1,5 +1,5 @@
 
-  <h3 class="fs-row.gap-large">
+  <h3 class="fs-row.gap-lg.wrap">
     Row (Gap and Alignment)
     
     <mat-form-field class="form-field-padless-bottom">
@@ -7,9 +7,11 @@
       <mat-select
           [(ngModel)]="gap"
           name="gap">
-        <mat-option [value]="'small'">Small</mat-option>
-        <mat-option [value]="'tiny'">Tiny</mat-option>
-        <mat-option [value]="'large'">Large</mat-option>
+        <mat-option [value]="'none'">None</mat-option>
+        <mat-option [value]="'xs'">X-small</mat-option>
+        <mat-option [value]="'sm'">Small</mat-option>
+        <mat-option [value]="'md'">Medium</mat-option>
+        <mat-option [value]="'lg'">Large</mat-option>
       </mat-select>
     </mat-form-field>
     
@@ -43,11 +45,10 @@
       None
     </fs-label-field>
   </div>
-
   
   <h3>Multi Column Blocks (Wrap)</h3>
 
-  <div class="fs-row fs-row.gap-large fs-row.wrap">
+  <div class="fs-row fs-row.gap-lg fs-row.wrap">
     <fs-label-field>
       <fs-label>Column</fs-label>
       1
@@ -98,3 +99,43 @@
       10
     </fs-label-field>
   </div>
+
+  <h3>Responsive <= X-Small</h3>
+  <div class="fs-row.gap-lg" fs.lt-xs="fs-column.gap-none">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      100
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      100
+    </fs-label-field>
+  </div>
+
+  <h3>Responsive <= Small</h3>
+  <div class="fs-row.gap-lg" fs.lt-sm="fs-column.gap-none">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      100
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      100
+    </fs-label-field>
+  </div>
+
+  <h3>Responsive <= Medium</h3>
+  <div class="fs-row.gap-lg" fs.lt-md="fs-column.gap-none">
+    <fs-label-field>
+      <fs-label>Column</fs-label>
+      100
+    </fs-label-field>
+
+    <fs-label-field>
+      <fs-label>Column2</fs-label>
+      100
+    </fs-label-field>
+  </div>
+  

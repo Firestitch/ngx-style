@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class RowComponent {
 
-  public gap = 'small';
+  public gap = 'xs';
   public align = 'start';
+  public size = 'lt-xs';
 }
