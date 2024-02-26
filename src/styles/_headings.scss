@@ -3,7 +3,7 @@
 @mixin headings {
   h1 {
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-size: variables.$h1-font-size;
     color: variables.$heading-color;
     margin-bottom: variables.$h1-margin-bottom;
