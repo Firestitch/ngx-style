@@ -1,5 +1,7 @@
+@use '../src/variables' with (
+  $small-font-size: 13px
+);
 @use '../src/styles' as fs-style;
-
 @use "~@firestitch/component-tools/assets/playground.scss";
 @use "~@firestitch/message/styles";
 @use "~@firestitch/drawer/styles" as fs-drawer;
