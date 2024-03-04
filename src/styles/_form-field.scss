@@ -46,10 +46,15 @@
       &.form-field-padless-top, &.form-field-padless {
         .mat-form-field-flex {
           padding-top: 0;
+          margin-top: 0;
+        }
+
+        .mat-form-field-wrapper {
+          margin: 0;
         }
 
         .mat-form-field-infix {
-          border-top-width: 2px;
+          border-top-width: 0;
         }
 
         .mat-form-field-outline {
