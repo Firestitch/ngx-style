@@ -1,13 +1,13 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
   <h2>Standard</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'standard', class: 'outline' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'standard', class: 'row outline' }"></ng-container>
   
   <h2>Outline</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'outline', class: '' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'outline', class: 'row' }"></ng-container>
 
   <h2>Legacy</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'legacy', class: 'outline' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'legacy', class: 'row outline' }"></ng-container>
 </div>
 
 
