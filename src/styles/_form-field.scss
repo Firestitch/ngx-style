@@ -43,7 +43,8 @@
 
     &.mat-form-field-appearance-standard,
     &.mat-form-field-appearance-outline {
-      &.form-field-padless-top, &.form-field-padless {
+      &.form-field-padless-top, 
+      &.form-field-padless {
         .mat-form-field-flex {
           padding-top: 0;
           margin-top: 0;
@@ -51,6 +52,10 @@
 
         .mat-form-field-wrapper {
           margin: 0;
+        }
+
+        .mat-select-arrow-wrapper {
+          transform: none;
         }
 
         .mat-form-field-infix {
