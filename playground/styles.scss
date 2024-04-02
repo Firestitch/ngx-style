@@ -1,6 +1,10 @@
 @use '../src/variables' with (
-  $small-font-size: 13px
+  $small-font-size: 11px,
+  $h1-margin-top: 0px,
+  $h2-margin-top: 0px,
+  $h3-margin-top: 0px
 );
+
 @use '../src/styles' as fs-style;
 @use "~@firestitch/component-tools/assets/playground.scss";
 @use "~@firestitch/message/styles";

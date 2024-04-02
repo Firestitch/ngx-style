@@ -14,6 +14,7 @@ import {
   ExamplesComponent,
   FormFieldComponent,
   GenericHelpersComponent,
+  HeadingsComponent,
   HelpersComponent,
   RowComponent,
   TypographyComponent
@@ -45,6 +46,7 @@ const routes: Routes = [
     HelpersComponent,
     RowComponent,
     ColumnComponent,
+    HeadingsComponent,
   ],
 })
 export class PlaygroundModule {
