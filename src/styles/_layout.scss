@@ -3,64 +3,7 @@
 @mixin layout() {
   .fs-row,
   [class*='fs-row'] {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    &[class*='.gap-lg'],
-    &[class*='.gap-large'],    
-    &.fs-row-gap-large {
-      column-gap: 40px;
-    }
-    
-    &[class*='.gap-md'] {
-      column-gap: 20px;
-    }
-          
-    &[class*='.gap-sm'],
-    &[class*='.gap-small'],  
-    &.fs-row-gap-small {
-      column-gap: 10px;
-    }
-
-    &[class*='.gap-xs'],    
-    &[class*='.gap-tiny'],    
-    &.fs-row-gap-tiny {
-      column-gap: 5px;
-    }
-
-    &[class*='.align-start'],
-    &.fs-row-align-start {
-      align-items: flex-start;
-    }
-
-    &[class*='.align-end'],
-    &.fs-row-align-end {
-      align-items: flex-end;
-    }
-
-    &[class*='.align-baseline'],
-    &.fs-row-align-baseline {
-      align-items: baseline;
-    }
-    
-    &[class*='.wrap'],
-    .fs-row-wrap {
-      flex-wrap: wrap;
-    }
-
-    &[class*='.form-field'],
-    .fs-row-form-field {
-      column-gap: 10px;
-
-      .mat-form-field-infix {
-        width: auto;
-      }
-
-      >* {
-        width: 100%;
-      }
-    }
+    @include attributeRow('class');
   }
 
   .fs-column {
@@ -74,33 +17,51 @@
     flex: 1;
   }
 
+  @media (min-width: #{variables.$break-xsmall + 1px}) {
+    [fs\.gt-xs*='fs-row'] {
+      @include attributeRow('fs\\.gt-xs');
+    }
+  }
+
+  @media (min-width: #{variables.$break-small + 1px}) {
+    [fs\.gt-sm*='fs-row'] {
+      @include attributeRow('fs\\.gt-sm');
+    }
+  }
+
+  @media (min-width: #{variables.$break-medium + 1px}) {
+    [fs\.gt-md*='fs-row'] {
+      @include attributeRow('fs\\.gt-md');
+    }
+  }
+
+  @media (min-width: #{variables.$break-large + 1px}) {
+    [fs\.gt-lg*='fs-row'] {
+      @include attributeRow('fs\\.gt-lg');
+    }
+  }
+  
   @media (max-width: variables.$break-xsmall) {
     [fs\.lt-xs*='fs-column'] {
-      display: flex;
-      flex-direction: column;
-        
-      @include rowGaps;
-      @include rowGapNone;
+      @include columnLess;
     }
   }
 
   @media (max-width: variables.$break-small) {
     [fs\.lt-sm*='fs-column'] {
-      display: flex;
-      flex-direction: column;
-        
-      @include rowGaps;
-      @include rowGapNone;
+      @include columnLess;
     }
   }
   
   @media (max-width: variables.$break-medium) {
     [fs\.lt-md*='fs-column'] {
-      display: flex;
-      flex-direction: column;
-        
-      @include rowGaps;
-      @include rowGapNone;
+      @include columnLess;
+    }
+  }
+  
+  @media (max-width: variables.$break-large) {
+    [fs\.lt-lg*='fs-column'] {
+      @include columnLess;
     }
   }
 }
@@ -128,5 +89,78 @@
   &[fs\.lt-sm*='.gap-none'],
   &[fs\.lt-md*='.gap-none'] {
     row-gap: 0px;
+  }
+}
+
+@mixin columnLess {
+  & {
+    display: flex;
+    flex-direction: column;
+      
+    @include rowGaps;
+    @include rowGapNone;
+  }
+}
+
+@mixin attributeRow($attributeName) {
+  & {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &[#{$attributeName}*='.gap-lg'],
+    &[#{$attributeName}*='.gap-large'],    
+    &.fs-row-gap-large {
+      column-gap: 40px;
+    }
+    
+    &[#{$attributeName}*='.gap-md'] {
+      column-gap: 20px;
+    }
+          
+    &[#{$attributeName}*='.gap-sm'],
+    &[#{$attributeName}*='.gap-small'],  
+    &.fs-row-gap-small {
+      column-gap: 10px;
+    }
+
+    &[#{$attributeName}*='.gap-xs'],    
+    &[#{$attributeName}*='.gap-tiny'],    
+    &.fs-row-gap-tiny {
+      column-gap: 5px;
+    }
+
+    &[#{$attributeName}*='.align-start'],
+    &.fs-row-align-start {
+      align-items: flex-start;
+    }
+
+    &[#{$attributeName}*='.align-end'],
+    &.fs-row-align-end {
+      align-items: flex-end;
+    }
+
+    &[#{$attributeName}*='.align-baseline'],
+    &.fs-row-align-baseline {
+      align-items: baseline;
+    }
+    
+    &[#{$attributeName}*='.wrap'],
+    .fs-row-wrap {
+      flex-wrap: wrap;
+    }
+
+    &[#{$attributeName}*='.form-field'],
+    .fs-row-form-field {
+      column-gap: 10px;
+
+      .mat-form-field-infix {
+        width: auto;
+      }
+
+      >* {
+        width: 100%;
+      }
+    }
   }
 }
