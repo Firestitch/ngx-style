@@ -149,6 +149,10 @@
       justify-content: flex-start;
     }
 
+    &[#{$attributeName}*='.justify-center'] {
+      justify-content: center;
+    }
+
     &[#{$attributeName}*='.justify-end'] {
       justify-content: flex-end;
     }
