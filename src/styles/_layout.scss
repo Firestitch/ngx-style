@@ -144,6 +144,14 @@
     &.fs-row-align-baseline {
       align-items: baseline;
     }
+
+    &[#{$attributeName}*='.justify-start'] {
+      justify-content: flex-start;
+    }
+
+    &[#{$attributeName}*='.justify-end'] {
+      justify-content: flex-end;
+    }
     
     &[#{$attributeName}*='.wrap'],
     .fs-row-wrap {

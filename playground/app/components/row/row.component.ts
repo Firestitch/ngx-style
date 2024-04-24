@@ -10,5 +10,6 @@ export class RowComponent {
 
   public gap = 'xs';
   public align = 'start';
+  public justify = '';
   public size = 'lt-xs';
 }

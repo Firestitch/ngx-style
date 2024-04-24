@@ -26,9 +26,20 @@
         <mat-option [value]="'baseline'">Baseline</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Justify</mat-label>
+      <mat-select
+          [(ngModel)]="justify"
+          name="justify">
+        <mat-option [value]="'start'">Start</mat-option>
+        <mat-option [value]="'center'">Center</mat-option>
+        <mat-option [value]="'end'">End</mat-option>
+      </mat-select>
+    </mat-form-field>    
   </h3>
 
-  <div [class]="'fs-row.gap-' + gap + '.align-' + align">
+  <div [class]="'fs-row.gap-' + gap + '.align-' + align + (justify ? '.justify-'+ justify : '')">
     <fs-label-field>
       <fs-label>Column</fs-label>
       100$
