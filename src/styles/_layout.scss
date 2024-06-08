@@ -89,6 +89,7 @@
   &[fs\.lt-sm*='.gap-none'],
   &[fs\.lt-md*='.gap-none'] {
     row-gap: 0px;
+    column-gap: 0px;
   }
 }
 
@@ -109,24 +110,25 @@
     align-items: center;
 
     &[#{$attributeName}*='.gap-lg'],
-    &[#{$attributeName}*='.gap-large'],    
-    &.fs-row-gap-large {
+    &[#{$attributeName}*='.gap-large'] {
+      row-gap: 40px;
       column-gap: 40px;
     }
     
     &[#{$attributeName}*='.gap-md'] {
+      row-gap: 20px;
       column-gap: 20px;
     }
           
     &[#{$attributeName}*='.gap-sm'],
-    &[#{$attributeName}*='.gap-small'],  
-    &.fs-row-gap-small {
+    &[#{$attributeName}*='.gap-small'] {
+      row-gap: 10px;
       column-gap: 10px;
     }
 
     &[#{$attributeName}*='.gap-xs'],    
-    &[#{$attributeName}*='.gap-tiny'],    
-    &.fs-row-gap-tiny {
+    &[#{$attributeName}*='.gap-tiny'] {
+      row-gap: 5px;
       column-gap: 5px;
     }
 
@@ -162,8 +164,7 @@
       flex-wrap: wrap;
     }
 
-    &[#{$attributeName}*='.form-field'],
-    .fs-row-form-field {
+    &[#{$attributeName}*='.form-field'] {
       column-gap: 10px;
 
       .mat-form-field-infix {
