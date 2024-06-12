@@ -45,24 +45,40 @@
     [fs\.lt-xs*='fs-column'] {
       @include columnLess;
     }
+
+    [fs\.lt-xs*='fs-row'] {
+      @include attributeRow('fs\\.lt-xs');
+    }
   }
 
   @media (max-width: variables.$break-small) {
     [fs\.lt-sm*='fs-column'] {
       @include columnLess;
     }
+
+    [fs\.lt-sm*='fs-row'] {
+      @include attributeRow('fs\\.lt-sm');
+    }    
   }
   
   @media (max-width: variables.$break-medium) {
     [fs\.lt-md*='fs-column'] {
       @include columnLess;
     }
+
+    [fs\.lt-md*='fs-row'] {
+      @include attributeRow('fs\\.lt-md');
+    }   
   }
   
   @media (max-width: variables.$break-large) {
     [fs\.lt-lg*='fs-column'] {
       @include columnLess;
     }
+
+    [fs\.lt-lg*='fs-row'] {
+      @include attributeRow('fs\\.lt-lg');
+    } 
   }
 }
 
