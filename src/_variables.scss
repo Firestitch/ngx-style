@@ -1,40 +1,64 @@
 @use '@angular/material' as mat;
 @forward 'styles/safe-area';
 
-$color-danger: #FF3548 !default;
-$color-warn: #FFBB34 !default;
-$color-success: #00C753 !default;
-$color-info: #33B5E7 !default;
-
-$color-dark-danger: #CC0001 !default;
-$color-dark-warn: #FF8800 !default;
-$color-dark-success: #007E34 !default;
-$color-dark-info: #0099CB !default;
-
-$color-light: #676767 !default;
-$color-dark: #343A40 !default;
-
 $palette: mat.define-palette(mat.$blue-palette) !default;
 
+
+/**
+  * Colors
+  */
+$grey-color: #757575 !default;
+$grey-dark-color: #696E74 !default;
+$grey-light-color: #F2F2F2 !default;
+
+$danger-color: #ea4266 !default;
+$error-color: $danger-color !default;
+$warn-color: #FFC000 !default;
+$success-color: #92D050 !default;
+$info-color: #33B5E7 !default;
+
+$dark-danger-color: #af324d !default;
+$dark-warn-color: #c69505 !default;
+$dark-success-color: #628b36 !default;
+$dark-info-color: #288ab0 !default;
+
+
+/**
+  * Headings
+  */
 $heading-color: #383838 !default;
-$subheading-color: $color-light;
+$subheading-color: $grey-color;
 
 $h1-font-size: 1.125rem !default;
 $h1-margin-top: 20px !default;
 $h1-margin-bottom: 10px !default;
+$h1-color: $heading-color !default;
 
 $h2-font-size: 1.125rem !default;
 $h2-margin-top: 20px !default;
 $h2-margin-bottom: 10px !default;
+$h2-color: $heading-color !default;
 
 $h3-font-size: 1rem !default;
 $h3-margin-top: 20px !default;
 $h3-margin-bottom: 10px !default;
+$h3-color: $heading-color !default;
 
-$error-color: $color-dark-danger;
-$small-color: $color-light;
+
+/**
+  * Font-sizes
+  */
+$small-color: $grey-color;
+
 $small-font-size: .75rem !default;
+$large-font-size: 110% !default;
+$xlarge-font-size: 130% !default;
+$xxlarge-font-size: 150% !default;
 
+
+/**
+  * Breakpoints
+  */
 $break-xsmall: 599px !default;
 $break-small: 1023px !default;
 $break-medium: 1439px !default;
