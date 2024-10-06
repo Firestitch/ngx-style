@@ -6,7 +6,7 @@
   $color: map-get($palette, primary-rgb);
 
   @if $color == null {
-    $color: mat.get-color-from-palette($palette, default);
+    $color: mat.m2-get-color-from-palette($palette, default);
     @return rgba($color, if($opacity == null, 1, $opacity));
   }
 

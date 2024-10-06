@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @forward 'styles/safe-area';
 
-$palette: mat.define-palette(mat.$blue-palette) !default;
+$palette: mat.m2-define-palette(mat.$m2-blue-palette) !default;
 
 
 /**
