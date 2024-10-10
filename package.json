@@ -2,7 +2,7 @@
   "name": "@firestitch/style",
   "title": "Style",
   "description": "@firestitch/style",
-  "version": "18.0.1",
+  "version": "18.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-style"
@@ -45,7 +45,7 @@
     "@firestitch/core": "^18.0.1",
     "@firestitch/date": "^18.0.1",
     "@firestitch/drawer": "^18.0.0",
-    "@firestitch/example": "^18.0.2",
+    "@firestitch/example": "^18.0.4",
     "@firestitch/file": "^18.0.0",
     "@firestitch/html": "^18.0.0",
     "@firestitch/iframe": "^18.0.0",

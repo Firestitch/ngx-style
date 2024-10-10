@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsLabelModule } from '@firestitch/label';
 import { FsMessageModule } from '@firestitch/message';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import {
@@ -17,7 +18,7 @@ import {
   HeadingsComponent,
   HelpersComponent,
   RowComponent,
-  TypographyComponent
+  TypographyComponent,
 } from './components';
 import { AppMaterialModule } from './material.module';
 
@@ -30,12 +31,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    
     AppMaterialModule,
     FormsModule,
     FsLabelModule,
-    FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
-    RouterModule.forRoot(routes, {}),
+    FsExampleModule.forRoot(),
   ],
   declarations: [
     AppComponent,

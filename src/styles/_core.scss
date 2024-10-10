@@ -4,6 +4,7 @@
 @use 'overflow';
 @use 'typography';
 @use 'form-field';
+@use 'material';
 
 @mixin core() {
   @include headings.headings();
@@ -12,4 +13,5 @@
   @include layout.layout();
   @include overflow.overflow();
   @include typography.typography();
+  @include material.material();
 }
