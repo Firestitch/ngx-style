@@ -1,70 +1,67 @@
-<div class="fs-row.gap-xl.wrap">
-
-  <h2>Fill</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'fill', class: 'row outline' }"></ng-container>
-  
-  <h2>Outline</h2>
-  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'outline', class: 'row' }"></ng-container>
+<div class="fs-row.gap-lg.wrap">
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'fill', class: 'row outline', name: 'Fill' }"></ng-container>
+  <ng-container [ngTemplateOutlet]="fields" [ngTemplateOutletContext]="{ appearance: 'outline', class: 'row', name: 'Outline' }"></ng-container>
 </div>
 
 
-<ng-template let-appearance="appearance" let-class="class" #fields>
-  <div [class]="class">
-    <mat-form-field 
-        [appearance]="appearance">
-      <mat-label>Default Form Field</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </div>
-<!-- 
-  <div [class]="class">
-    <mat-form-field
-        class="form-field-padless"
-        [floatLabel]="'never'"
-        [appearance]="appearance">
-      <input 
-        matInput
-        [placeholder]="'Padless Form Field'">
-    </mat-form-field>
-  </div>
+<ng-template let-appearance="appearance" let-name="name" let-class="class" #fields>
+  <div class="fs-column">
+    <h2>{{name}}</h2>
+    <div [class]="class">
+      <mat-form-field 
+          [appearance]="appearance">
+        <mat-label>Default Form Field</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
 
-  <div [class]="class">
-    <mat-form-field
-        class="form-field-padless-top"
-        [floatLabel]="'never'"
-        [appearance]="appearance">
-      <input 
-        matInput 
-        [placeholder]="'Padless Top Form Field'">
-    </mat-form-field>
+    <div [class]="class">
+      <mat-form-field
+          class="form-field-padless"
+          [appearance]="appearance">
+        <input 
+          matInput
+          [placeholder]="'Padless Form Field'">
+      </mat-form-field>
+    </div>
+
+    <div [class]="class">
+      <mat-form-field
+          class="form-field-padless-top"
+          [appearance]="appearance">
+        <input 
+          matInput 
+          [placeholder]="'Padless Top Form Field'">
+      </mat-form-field>
+    </div>
+
+
+    <div [class]="class">
+      <mat-form-field
+          class="form-field-padless-bottom"        
+          [appearance]="appearance">
+        <mat-label>Padless Bottom Form Field</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+
+    <div [class]="class">
+      <mat-form-field
+          class="form-field-multiline-subscript"
+          [appearance]="appearance">
+        <mat-label>Multi-line Subscript Form Field</mat-label>
+        <input matInput>
+        <mat-hint>Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="lineless">
+      <mat-form-field
+          class="form-field-lineless"
+          [appearance]="appearance">
+        <mat-label>Lineless Form Field</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div> 
   </div>
-
-
-  <div [class]="class">
-    <mat-form-field
-        class="form-field-padless-bottom"        
-        [appearance]="appearance">
-      <mat-label>Padless Bottom Form Field</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </div>
-
-  <div [class]="class">
-    <mat-form-field
-        class="form-field-multiline-subscript"
-        [appearance]="appearance">
-      <mat-label>Multi-line Subscript Form Field</mat-label>
-      <input matInput>
-      <mat-hint>Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.</mat-hint>
-    </mat-form-field>
-  </div>
-
-  <div class="lineless">
-    <mat-form-field
-        class="form-field-lineless"
-        [appearance]="appearance">
-      <mat-label>Lineless Form Field</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </div> -->
 </ng-template>

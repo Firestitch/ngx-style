@@ -1,90 +1,24 @@
-@use 'form-field-multiline-subscript' as *;
 @use 'functions';
 
-@use '../variables';
-
 @mixin form-field {
-  .form-field-lineless:not(.mat-focused) {
-    &:hover {
-      .mat-form-field-underline {
-        border-top: 1px dashed functions.color-rgb(variables.$palette, .3);
+  mat-form-field {
+    &.form-field-multiline-subscript {
+      .mat-mdc-form-field-bottom-align::before {
+        display: none;
       }
-    }
-  }
-
-  .form-field-multiline-subscript {
-    @include form-field-multiline-subscript;
-  }
-
-  .mat-form-field {
-    &.mat-form-field-appearance-legacy {
-      &.form-field-padless-top, &.form-field-padless {
-        .mat-form-field-infix {
-          border-top: 0;
-        }
-      }
-
-      &.form-field-padless-bottom, &.form-field-padless {
-        .mat-form-field-underline {
-          bottom: 0;
-        }
-
-        .mat-form-field-wrapper {
-          padding-bottom: 0;
-
-          .mat-form-field-subscript-wrapper {
-            position: absolute !important;
-            top: unset;
-            margin-top: 0;
-          }
-        }
+      .mat-mdc-form-field-hint-wrapper {
+        position: relative;
+        padding-top: 3px;
       }
     }
 
-    &.mat-form-field-appearance-standard,
-    &.mat-form-field-appearance-outline {
-      &.form-field-padless-top, 
-      &.form-field-padless {
-        .mat-form-field-flex {
-          padding-top: 0;
-          margin-top: 0;
-        }
-
-        .mat-form-field-wrapper {
-          margin: 0;
-        }
-
-        .mat-select-arrow-wrapper {
-          transform: none;
-        }
-
-        .mat-form-field-infix {
-          border-top-width: 0;
-        }
-
-        .mat-form-field-outline {
-          top: 0;
-        }
-      }
-
-      &.form-field-padless-bottom, &.form-field-padless {
-        .mat-form-field-underline {
-          bottom: 0;
-        }
-
-        .mat-form-field-wrapper {
-          padding-bottom: 0;
-
-          .mat-form-field-subscript-wrapper {
-            position: absolute !important;
-            top: unset;
-            margin-top: 0;
-          }
-        }
+    &.form-field-padless-bottom, 
+    &.form-field-padless {
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
       }
     }
   }
-
 
   .form-field-grow {
     .mat-form-field-infix {
@@ -98,8 +32,8 @@
   }
 
   .form-field-lineless:not(.mat-focused) {
-    .mat-form-field-underline {
-      background-color: transparent;
+    .mdc-text-field--outlined .mat-mdc-notch-piece {
+      border-color: transparent;
     }
 
     input {
