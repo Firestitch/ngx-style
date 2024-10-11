@@ -6,9 +6,11 @@
       .mat-mdc-form-field-bottom-align::before {
         display: none;
       }
+
       .mat-mdc-form-field-hint-wrapper {
         position: relative;
         padding-top: 3px;
+        min-height: 20px;
       }
     }
 
