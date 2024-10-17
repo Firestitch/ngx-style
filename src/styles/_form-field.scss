@@ -2,16 +2,18 @@
 
 @mixin form-field {
   mat-form-field {
-    &.form-field-multiline-subscript {
-      .mat-mdc-form-field-bottom-align::before {
-        display: none;
-      }
+    .mat-mdc-form-field-bottom-align::before {
+      display: none;
+    }
 
-      .mat-mdc-form-field-hint-wrapper {
-        position: relative;
-        padding-top: 3px;
-        line-height: normal;
-        min-height: 22px;
+    .mat-mdc-form-field-hint-wrapper {
+      position: relative;
+      padding-top: 3px;
+      line-height: normal;
+      min-height: 22px;
+
+      .mat-mdc-form-field-hint{
+        padding-bottom: 22px;
       }
     }
 
