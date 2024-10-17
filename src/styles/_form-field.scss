@@ -15,7 +15,9 @@
 
     &:not(.mat-form-field-invalid) {
       .mat-mdc-form-field-hint-wrapper {
-        padding-bottom: 22px;
+        .mat-mdc-form-field-hint {
+          padding-bottom: 22px;
+        }
       }
     }
 
