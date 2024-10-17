@@ -11,8 +11,10 @@
       padding-top: 3px;
       line-height: normal;
       min-height: 22px;
+    }
 
-      .mat-mdc-form-field-hint{
+    &:not(.mat-form-field-invalid) {
+      .mat-mdc-form-field-hint-wrapper {
         padding-bottom: 22px;
       }
     }
