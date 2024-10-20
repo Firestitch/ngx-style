@@ -17,6 +17,7 @@ import {
   GenericHelpersComponent,
   HeadingsComponent,
   HelpersComponent,
+  ResponsiveComponent,
   RowComponent,
   TypographyComponent,
 } from './components';
@@ -49,6 +50,7 @@ const routes: Routes = [
     RowComponent,
     ColumnComponent,
     HeadingsComponent,
+    ResponsiveComponent,
   ],
 })
 export class PlaygroundModule {

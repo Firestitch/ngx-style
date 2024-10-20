@@ -3,128 +3,114 @@
 @mixin layout() {
   .fs-row,
   [class*='fs-row'] {
-    @include attributeRow('class');
+    display: flex;
+    align-items: center;
+
+    @include attributeMixin('class');
   }
 
-  .fs-column {
+  .fs-column,
+  [class*='fs-column'] {
     display: flex;
     flex-direction: column;
-    
-    @include rowGaps;
+    align-items: start;
+
+    @include attributeMixin('class');
   }
 
   .fs-flex {
     flex: 1;
   }
 
+  /**
+   * Greater than breakpoints
+   */
   @media (min-width: #{variables.$break-xsmall + 1px}) {
     [fs\.gt-xs*='fs-row'] {
-      @include attributeRow('fs\\.gt-xs');
+      @include attributeMixin('fs\\.gt-xs');
+    }
+
+    [fs\.gt-xs*='fs-column'] {
+      @include attributeMixin('fs\\.gt-xs');
     }
   }
 
   @media (min-width: #{variables.$break-small + 1px}) {
     [fs\.gt-sm*='fs-row'] {
-      @include attributeRow('fs\\.gt-sm');
+      @include attributeMixin('fs\\.gt-sm');
+    }
+
+    [fs\.gt-sm*='fs-column'] {
+      @include attributeMixin('fs\\.gt-sm');
     }
   }
 
   @media (min-width: #{variables.$break-medium + 1px}) {
     [fs\.gt-md*='fs-row'] {
-      @include attributeRow('fs\\.gt-md');
+      @include attributeMixin('fs\\.gt-md');
+    }
+
+    [fs\.gt-md*='fs-column'] {
+      @include attributeMixin('fs\\.gt-md');
     }
   }
 
   @media (min-width: #{variables.$break-large + 1px}) {
     [fs\.gt-lg*='fs-row'] {
-      @include attributeRow('fs\\.gt-lg');
-    }
-  }
-  
-  @media (max-width: variables.$break-xsmall) {
-    [fs\.lt-xs*='fs-column'] {
-      @include columnLess;
+      @include attributeMixin('fs\\.gt-lg');
     }
 
+    [fs\.gt-lg*='fs-column'] {
+      @include attributeMixin('fs\\.gt-lg');
+    }
+  }
+
+  /**
+   * Less than breakpoints
+   */
+  @media (max-width: variables.$break-xsmall) {
     [fs\.lt-xs*='fs-row'] {
-      @include attributeRow('fs\\.lt-xs');
+      @include attributeMixin('fs\\.lt-xs');
+    }
+
+    [fs\.lt-xs*='fs-column'] {
+      @include attributeMixin('fs\\.lt-xs');
     }
   }
 
   @media (max-width: variables.$break-small) {
-    [fs\.lt-sm*='fs-column'] {
-      @include columnLess;
-    }
-
     [fs\.lt-sm*='fs-row'] {
-      @include attributeRow('fs\\.lt-sm');
-    }    
+      @include attributeMixin('fs\\.lt-sm');
+    }  
+
+    [fs\.lt-sm*='fs-column'] {
+      @include attributeMixin('fs\\.lt-sm');
+    }  
   }
   
   @media (max-width: variables.$break-medium) {
-    [fs\.lt-md*='fs-column'] {
-      @include columnLess;
+    [fs\.lt-md*='fs-row'] {
+      @include attributeMixin('fs\\.lt-md');
     }
 
-    [fs\.lt-md*='fs-row'] {
-      @include attributeRow('fs\\.lt-md');
-    }   
+    [fs\.lt-md*='fs-column'] {
+      @include attributeMixin('fs\\.lt-md');
+    }     
   }
   
   @media (max-width: variables.$break-large) {
-    [fs\.lt-lg*='fs-column'] {
-      @include columnLess;
-    }
-
     [fs\.lt-lg*='fs-row'] {
-      @include attributeRow('fs\\.lt-lg');
+      @include attributeMixin('fs\\.lt-lg');
+    } 
+
+    [fs\.lt-lg*='fs-column'] {
+      @include attributeMixin('fs\\.lt-lg');
     } 
   }
 }
 
-@mixin rowGaps {
-  &[class*='.gap-lg'] {
-    row-gap: 40px;
-  }
-  
-  &[class*='.gap-md'] {
-    row-gap: 20px;
-  }
-  
-  &[class*='.gap-sm'] {
-    row-gap: 10px;
-  }
-
-  &[class*='.gap-xs'] {
-    row-gap: 5px;
-  }
-}
-
-@mixin rowGapNone {
-  &[fs\.lt-xs*='.gap-none'],
-  &[fs\.lt-sm*='.gap-none'],
-  &[fs\.lt-md*='.gap-none'] {
-    row-gap: 0px;
-    column-gap: 0px;
-  }
-}
-
-@mixin columnLess {
+@mixin attributeMixin($attributeName) {
   & {
-    display: flex;
-    flex-direction: column;
-      
-    @include rowGaps;
-    @include rowGapNone;
-  }
-}
-
-@mixin attributeRow($attributeName) {
-  & {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
     &[#{$attributeName}*='.gap-lg'],
     &[#{$attributeName}*='.gap-large'] {
       row-gap: 40px;
@@ -147,19 +133,21 @@
       row-gap: 5px;
       column-gap: 5px;
     }
+    
+    &[#{$attributeName}*='.gap-none'] {
+      row-gap: 0px;
+      column-gap: 0px;
+    }
 
-    &[#{$attributeName}*='.align-start'],
-    &.fs-row-align-start {
+    &[#{$attributeName}*='.align-start'] {
       align-items: flex-start;
     }
 
-    &[#{$attributeName}*='.align-end'],
-    &.fs-row-align-end {
+    &[#{$attributeName}*='.align-end'] {
       align-items: flex-end;
     }
 
-    &[#{$attributeName}*='.align-baseline'],
-    &.fs-row-align-baseline {
+    &[#{$attributeName}*='.align-baseline'] {
       align-items: baseline;
     }
 
@@ -187,21 +175,8 @@
       justify-content: space-evenly;
     }
     
-    &[#{$attributeName}*='.wrap'],
-    .fs-row-wrap {
+    &[#{$attributeName}*='.wrap'] {
       flex-wrap: wrap;
-    }
-
-    &[#{$attributeName}*='.form-field'] {
-      column-gap: 10px;
-
-      .mat-form-field-infix {
-        width: auto;
-      }
-
-      >* {
-        width: 100%;
-      }
     }
   }
 }

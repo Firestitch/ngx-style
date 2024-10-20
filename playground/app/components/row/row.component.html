@@ -1,208 +1,116 @@
 
-  <h3 class="fs-row.gap-lg.wrap">
-    Row (Gap and Alignment)
-    
-    <mat-form-field class="form-field-padless-bottom">
-      <mat-label>Gap</mat-label>
-      <mat-select
-          [(ngModel)]="gap"
-          name="gap">
-        <mat-option [value]="'none'">None</mat-option>
-        <mat-option [value]="'xs'">X-small</mat-option>
-        <mat-option [value]="'sm'">Small</mat-option>
-        <mat-option [value]="'md'">Medium</mat-option>
-        <mat-option [value]="'lg'">Large</mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field class="form-field-padless-bottom">
-      <mat-label>Alignment</mat-label>
-      <mat-select
-          [(ngModel)]="align"
-          name="align">
-        <mat-option [value]="'start'">Start</mat-option>
-        <mat-option [value]="'center'">Center</mat-option>
-        <mat-option [value]="'end'">End</mat-option>
-        <mat-option [value]="'baseline'">Baseline</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="form-field-padless-bottom">
-      <mat-label>Justify</mat-label>
-      <mat-select
-          [(ngModel)]="justify"
-          name="justify">
-        <mat-option [value]="'start'">Start</mat-option>
-        <mat-option [value]="'center'">Center</mat-option>
-        <mat-option [value]="'end'">End</mat-option>
-        <mat-option [value]="'around'">Space around</mat-option>
-        <mat-option [value]="'between'">Space between</mat-option>
-        <mat-option [value]="'evenly'">Space evenly</mat-option>
-      </mat-select>
-    </mat-form-field>    
-  </h3>
-
-  <div [class]="'fs-row.gap-' + gap + '.align-' + align + (justify ? '.justify-'+ justify : '')">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100$
-      <div class="small">Text text text</div>
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100%
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column3</fs-label>
-      None
-    </fs-label-field>
-  </div>
+<h3 class="fs-row.gap-lg.wrap">
+  Row (Gap and Alignment)
   
-  <h3>Multi Column Blocks (Wrap)</h3>
-
-  <div class="fs-row fs-row.gap-lg fs-row.wrap">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      1
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      2
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column3</fs-label>
-      3
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column4</fs-label>
-      4
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column5</fs-label>
-      5
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column6</fs-label>
-      6
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column7</fs-label>
-      7
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column8</fs-label>
-      8
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column9</fs-label>
-      9
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column10</fs-label>
-      10
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive <= X-Small</h3>
-  <div class="fs-row.gap-lg" fs.lt-xs="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive <= Small</h3>
-  <div class="fs-row.gap-lg" fs.lt-sm="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive <= Medium</h3>
-  <div class="fs-row.gap-lg" fs.lt-md="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
+  <mat-form-field class="form-field-padless-bottom">
+    <mat-label>Gap</mat-label>
+    <mat-select
+        [(ngModel)]="gap"
+        name="gap">
+      <mat-option [value]="'none'">None</mat-option>
+      <mat-option [value]="'xs'">X-small</mat-option>
+      <mat-option [value]="'sm'">Small</mat-option>
+      <mat-option [value]="'md'">Medium</mat-option>
+      <mat-option [value]="'lg'">Large</mat-option>
+    </mat-select>
+  </mat-form-field>
   
+  <mat-form-field class="form-field-padless-bottom">
+    <mat-label>Alignment</mat-label>
+    <mat-select
+        [(ngModel)]="align"
+        name="align">
+      <mat-option [value]="'start'">Start</mat-option>
+      <mat-option [value]="'center'">Center</mat-option>
+      <mat-option [value]="'end'">End</mat-option>
+      <mat-option [value]="'baseline'">Baseline</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <h3>Responsive > X-Small</h3>
-  <div fs.gt-xs="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
+  <mat-form-field class="form-field-padless-bottom">
+    <mat-label>Justify</mat-label>
+    <mat-select
+        [(ngModel)]="justify"
+        name="justify">
+      <mat-option [value]="'start'">Start</mat-option>
+      <mat-option [value]="'center'">Center</mat-option>
+      <mat-option [value]="'end'">End</mat-option>
+      <mat-option [value]="'around'">Space around</mat-option>
+      <mat-option [value]="'between'">Space between</mat-option>
+      <mat-option [value]="'evenly'">Space evenly</mat-option>
+    </mat-select>
+  </mat-form-field>    
+</h3>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
+<div [class]="'fs-row.gap-' + gap + '.align-' + align + (justify ? '.justify-'+ justify : '')">
+  <fs-label-field>
+    <fs-label>Column</fs-label>
+    100$
+    <div class="small">Text text text</div>
+  </fs-label-field>
 
-  <h3>Responsive > Small</h3>
-  <div fs.gt-sm="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
+  <fs-label-field>
+    <fs-label>Column2</fs-label>
+    100%
+  </fs-label-field>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
+  <fs-label-field>
+    <fs-label>Column3</fs-label>
+    None
+  </fs-label-field>
+</div>
 
-  <h3>Responsive > Medium</h3>
-  <div fs.gt-md="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
+<h3>Multi Column Blocks (Wrap)</h3>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
+<div class="fs-row.gap-lg.wrap">
+  <fs-label-field>
+    <fs-label>Column</fs-label>
+    1
+  </fs-label-field>
 
-  <h3>Responsive > Large</h3>
-  <div fs.gt-lg="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
+  <fs-label-field>
+    <fs-label>Column2</fs-label>
+    2
+  </fs-label-field>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-  
+  <fs-label-field>
+    <fs-label>Column3</fs-label>
+    3
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column4</fs-label>
+    4
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column5</fs-label>
+    5
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column6</fs-label>
+    6
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column7</fs-label>
+    7
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column8</fs-label>
+    8
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column9</fs-label>
+    9
+  </fs-label-field>
+
+  <fs-label-field>
+    <fs-label>Column10</fs-label>
+    10
+  </fs-label-field>
+</div>
+

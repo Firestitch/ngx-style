@@ -4,5 +4,6 @@ export * from './form-field';
 export * from './generic-helpers';
 export * from './headings';
 export * from './helpers';
+export * from './responsive';
 export * from './row';
 export * from './typography';
