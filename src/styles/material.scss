@@ -9,4 +9,8 @@
     --mdc-elevated-card-container-shape: 12px;
     --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
   }
+
+  .mat-mdc-form-field.mat-form-field-appearance-outline {
+    margin-top: 3px;
+  }
 }
