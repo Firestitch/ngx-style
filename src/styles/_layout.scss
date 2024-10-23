@@ -155,6 +155,10 @@
       align-items: center;
     }
 
+    &[#{$attributeName}*='.align-normal'] {
+      align-items: normal;
+    }
+
     &[#{$attributeName}*='.justify-start'] {
       justify-content: flex-start;
     }
