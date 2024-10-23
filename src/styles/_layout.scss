@@ -13,7 +13,7 @@
   [class*='fs-column'] {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: unset;
 
     @include attributeMixin('class', false);
   }
