@@ -117,7 +117,7 @@
   & {
     @if($row) {
       flex-direction: row;
-    } else {
+    } @else {
       flex-direction: column;
     }
 
