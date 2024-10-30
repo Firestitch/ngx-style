@@ -1,5 +1,7 @@
 @mixin material() {
   :root {
+    --mat-protected-button-touch-target-display: display: none;
+
     --mat-sidenav-container-shape: 16px;
 
     --mdc-text-button-container-shape: 999px;
