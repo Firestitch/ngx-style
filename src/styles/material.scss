@@ -1,27 +1,30 @@
 @mixin material() {
   :root {
-    --mat-protected-button-touch-target-display: none;
 
+    --mdc-dialog-supporting-text-color: --mat-app-on-background;
+    --mdc-elevated-card-container-shape: 12px;
+    --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
     --mat-sidenav-container-shape: 16px;
 
+    --mat-text-button-touch-target-display: none;
     --mdc-text-button-container-shape: 999px;
     --mat-text-button-horizontal-padding: 10px;
     --mdc-text-button-container-height: 40px;
 
+    --mat-protected-button-touch-target-display: none;
     --mdc-protected-button-container-shape: 999px;
     --mat-protected-button-horizontal-padding: 24px;
     --mdc-protected-button-container-height: 40px;
 
+    --mat-outlined-button-touch-target-display: none;
     --mdc-outlined-button-container-shape: 999px;
     --mat-outlined-button-horizontal-padding: 24px;
     --mdc-outlined-button-container-height: 40px;
 
+    --mat-filled-button-touch-target-display: none;
     --mdc-filled-button-container-shape: 999px;
     --mat-filled-button-horizontal-padding: 24px;
     --mdc-filled-button-container-height: 40px;
-
-    --mdc-elevated-card-container-shape: 12px;
-    --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
   }
 
   .mat-mdc-form-field.mat-form-field-appearance-outline {
