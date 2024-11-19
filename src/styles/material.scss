@@ -27,7 +27,9 @@
     --mdc-filled-button-container-height: 40px;
   }
 
-  .mat-mdc-form-field.mat-form-field-appearance-outline {
-    margin-top: 5px;
+  .mat-mdc-form-field {
+    &.mat-form-field-appearance-outline {
+      margin-top: 5px;
+    }
   }
 }
