@@ -27,6 +27,31 @@
     --mdc-filled-button-container-shape: 999px;
     --mat-filled-button-horizontal-padding: 24px;
     --mdc-filled-button-container-height: 40px;
+
+    .mat-mdc-slide-toggle {
+      --mat-switch-with-icon-handle-size: 24px;
+      --mdc-switch-handle-shape: 9999px;
+      --mdc-switch-track-shape: 9999px;
+      --mdc-switch-track-height: 32px;
+      --mdc-switch-track-width: 52px;
+      --mdc-switch-handle-width: 52px;
+      --mat-switch-selected-with-icon-handle-horizontal-margin: 0 24px;
+      --mat-switch-unselected-with-icon-handle-horizontal-margin: 0 3px;
+      --mat-switch-unselected-pressed-handle-horizontal-margin: 0 3px;
+      --mat-switch-selected-pressed-handle-horizontal-margin: 0 3px;
+      --mdc-switch-selected-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-unselected-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-selected-hover-track-color: #cdced6;
+      --mdc-switch-selected-focus-track-color: #cdced6;
+      --mdc-switch-unselected-focus-track-color: #cdced6;
+      --mdc-switch-selected-pressed-track-color: #cdced6;
+      --mat-switch-pressed-handle-size: 24px;
+      --mat-switch-track-outline-width: 2px;
+      --mat-switch-track-outline-color: #70737B;
+      --mat-switch-selected-track-outline-width: 2px;
+      --mat-switch-selected-track-outline-color: #70737B;
+      --mdc-switch-selected-icon-color: var(--brand-primary-color, #202020);
+    }
   }
 
   .mat-mdc-form-field {
