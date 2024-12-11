@@ -2,6 +2,9 @@
   :root {
 
     --mdc-dialog-supporting-text-color: --mat-app-on-background;
+    --mat-dialog-actions-padding: 16px 24px;
+    --mat-dialog-with-actions-content-padding: 24px 24px 0;
+
     --mdc-elevated-card-container-shape: 12px;
     --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
 
