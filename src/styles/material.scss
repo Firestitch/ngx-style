@@ -29,13 +29,13 @@
     --mdc-filled-button-container-height: 40px;
 
     .mat-mdc-slide-toggle {
-      --mat-switch-with-icon-handle-size: 24px;
+      --mat-switch-with-icon-handle-size: 20px;
       --mdc-switch-handle-shape: 9999px;
       --mdc-switch-track-shape: 9999px;
-      --mdc-switch-track-height: 32px;
-      --mdc-switch-track-width: 52px;
-      --mdc-switch-handle-width: 52px;
-      --mat-switch-selected-with-icon-handle-horizontal-margin: 0 24px;
+      --mdc-switch-track-height: 26px;
+      --mdc-switch-track-width: 40px;
+      --mdc-switch-handle-width: 40px;
+      --mat-switch-selected-with-icon-handle-horizontal-margin: 0 17px;
       --mat-switch-unselected-with-icon-handle-horizontal-margin: 0 3px;
       --mat-switch-unselected-pressed-handle-horizontal-margin: 0 3px;
       --mat-switch-selected-pressed-handle-horizontal-margin: 0 3px;
@@ -44,11 +44,7 @@
       --mdc-switch-selected-focus-track-color: #cdced6;
       --mdc-switch-unselected-focus-track-color: #cdced6;
       --mdc-switch-selected-pressed-track-color: #cdced6;
-      --mat-switch-pressed-handle-size: 24px;
-      --mat-switch-track-outline-width: 2px;
-      --mat-switch-track-outline-color: #70737B;
-      --mat-switch-selected-track-outline-width: 2px;
-      --mat-switch-selected-track-outline-color: #70737B;
+      --mat-switch-pressed-handle-size: 20px;
       --mdc-switch-selected-icon-color: var(--brand-primary-color, #202020);
     }
   }
