@@ -40,13 +40,15 @@
       --mat-switch-unselected-pressed-handle-horizontal-margin: 0 3px;
       --mat-switch-selected-pressed-handle-horizontal-margin: 0 3px;
       --mdc-switch-selected-track-color: var(--brand-primary-color, #E0E2EC);
-      --mdc-switch-unselected-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-unselected-track-color: #E0E2EC;
       --mdc-switch-selected-focus-track-color: #cdced6;
       --mdc-switch-unselected-focus-track-color: #cdced6;
       --mdc-switch-selected-pressed-track-color: #cdced6;
       --mat-switch-pressed-handle-size: 20px;
       --mdc-switch-selected-icon-color: var(--brand-primary-color, #202020);
-      --mdc-switch-unselected-hover-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-selected-hover-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-selected-focus-track-color: var(--brand-primary-color, #E0E2EC);
+      --mdc-switch-unselected-hover-track-color: #E0E2EC;
     }
   }
 
