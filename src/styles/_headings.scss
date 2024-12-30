@@ -90,12 +90,14 @@
   }
 
   h1, h2, h3 {
-    &[class*='.top'][class*='fs-heading'] {
-      margin-top: 20px;
-    }
+    &[class*='fs-heading'] {
+      &[class*='.top'] {
+        margin-top: 20px;
+      }
 
-    &[class*='.top-none'] {
-      margin-top: 0px;
+      &[class*='.top-none'] {
+        margin-top: 0px;
+      }
     }
   }
 }
