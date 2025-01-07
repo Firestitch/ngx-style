@@ -11,7 +11,11 @@
 }
 
 .fs-delimit {
-  > *:not(:last-child):after {
-    content: ',\00a0';
+  > * {
+    display: inline-flex;
+
+    &:not(:last-child):after {
+      content: ',\00a0';
+    }
   }
 }
