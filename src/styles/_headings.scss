@@ -91,14 +91,22 @@
 
   h1, h2, h3 {
     &[class*='fs-heading'] {
-      &[class*='.top'] {
-        margin-top: 20px;
-      }
-
       &[class*='.top-none'] {
         margin-top: 0px;
       }
     }
+  }
+
+  h1[class*='fs-heading'][class*='.top'] {
+    margin-top: variables.$h1-margin-top;
+  }
+
+  h2[class*='fs-heading'][class*='.top'] {
+    margin-top: variables.$h2-margin-top;
+  }
+
+  h3[class*='fs-heading'][class*='.top'] {
+    margin-top: variables.$h3-margin-top;
   }
 }
 
