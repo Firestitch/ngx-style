@@ -149,6 +149,26 @@
       column-gap: 0px;
     }
 
+    &[#{$attributeName}*='.row-gap-none'] {
+      row-gap: 0px;
+    }
+
+    &[#{$attributeName}*='.row-gap-xs'] {
+      row-gap: 5px;
+    }
+
+    &[#{$attributeName}*='.row-gap-sm'] {
+      row-gap: 10px;
+    }
+
+    &[#{$attributeName}*='.row-gap-md'] {
+      row-gap: 20px;
+    }
+
+    &[#{$attributeName}*='.row-gap-lg'] {
+      row-gap: 40px;
+    }
+
     &[#{$attributeName}*='.align-start'] {
       align-items: flex-start;
     }
