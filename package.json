@@ -45,7 +45,7 @@
     "@firestitch/core": "^18.0.1",
     "@firestitch/date": "^18.0.1",
     "@firestitch/drawer": "^18.0.0",
-    "@firestitch/example": "^18.0.5",
+    "@firestitch/example": "^18.0.6",
     "@firestitch/file": "^18.0.2",
     "@firestitch/html": "^18.0.0",
     "@firestitch/iframe": "^18.0.0",
