@@ -13,9 +13,14 @@
 .fs-delimit {
   > * {
     display: inline-flex;
+    flex-wrap: wrap;
 
-    &:not(:last-child):after {
+    &:not(.middot):not(:last-child):after {
       content: ',\00a0';
+    }
+
+    &.middot:not(:last-child):after {
+      content: '\00a0·\00a0';
     }
   }
 }
