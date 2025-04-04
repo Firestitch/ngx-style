@@ -10,17 +10,16 @@
   }
 }
 
-.fs-delimit {
+div[class*='fs-delimit'] {
+  &:not([class*='.middot']) > :not(:last-child):after {
+    content: ',\00a0';
+  }
+    
+  &[class*='.middot'] > :not(:last-child):after {
+    content: '\00a0·\00a0';
+  }
+
   > * {
     display: inline-flex;
-    flex-wrap: wrap;
-
-    &:not(.middot):not(:last-child):after {
-      content: ',\00a0';
-    }
-
-    &.middot:not(:last-child):after {
-      content: '\00a0·\00a0';
-    }
   }
 }

@@ -2,7 +2,8 @@
 
 @mixin layout() {
   .fs-row,
-  [class*='fs-row'] {
+  span[class*='fs-row'],
+  div[class*='fs-row'] {
     display: flex;
     align-items: center;
 
@@ -10,7 +11,8 @@
   }
 
   .fs-column,
-  [class*='fs-column'] {
+  div[class*='fs-column'],
+  span[class*='fs-column'] {
     display: flex;
     flex-direction: column;
     align-items: unset;
@@ -26,37 +28,44 @@
    * Greater than breakpoints
    */
   @media (min-width: #{variables.$break-xsmall + 1px}) {
-    [fs\.gt-xs*='fs-row'] {
+    div[fs\.gt-xs*='fs-row'],
+    span[fs\.gt-xs*='fs-row'] {
       @include attributeMixin('fs\\.gt-xs');
     }
 
-    [fs\.gt-xs*='fs-column'] {
+    div[fs\.gt-xs*='fs-column'],
+    span[fs\.gt-xs*='fs-column'] {
       @include attributeMixin('fs\\.gt-xs', false);
     }
   }
 
   @media (min-width: #{variables.$break-small + 1px}) {
-    [fs\.gt-sm*='fs-row'] {
+    div[fs\.gt-sm*='fs-row'],
+    span[fs\.gt-sm*='fs-row'] {
       @include attributeMixin('fs\\.gt-sm');
     }
 
-    [fs\.gt-sm*='fs-column'] {
+    div[fs\.gt-sm*='fs-column'],
+    span[fs\.gt-sm*='fs-column'] {
       @include attributeMixin('fs\\.gt-sm', false);
     }
   }
 
   @media (min-width: #{variables.$break-medium + 1px}) {
-    [fs\.gt-md*='fs-row'] {
+    div[fs\.gt-md*='fs-row'],
+    span[fs\.gt-md*='fs-row'] {
       @include attributeMixin('fs\\.gt-md');
     }
 
-    [fs\.gt-md*='fs-column'] {
+    div[fs\.gt-md*='fs-column'],
+    span[fs\.gt-md*='fs-column'] {
       @include attributeMixin('fs\\.gt-md', false);
     }
   }
 
   @media (min-width: #{variables.$break-large + 1px}) {
-    [fs\.gt-lg*='fs-row'] {
+    div[fs\.gt-lg*='fs-row'],
+    span[fs\.gt-lg*='fs-row'] {
       & {
         flex-direction: row;
       }
@@ -64,7 +73,8 @@
       @include attributeMixin('fs\\.gt-lg');
     }
 
-    [fs\.gt-lg*='fs-column'] {
+    div[fs\.gt-lg*='fs-column'],
+    span[fs\.gt-lg*='fs-column'] {
       @include attributeMixin('fs\\.gt-lg', false);
     }
   }
@@ -73,41 +83,49 @@
    * Less than breakpoints
    */
   @media (max-width: variables.$break-xsmall) {
-    [fs\.lt-xs*='fs-row'] {
+    div[fs\.lt-xs*='fs-row'],
+    span[fs\.lt-xs*='fs-row'] {
       @include attributeMixin('fs\\.lt-xs');
     }
 
-    [fs\.lt-xs*='fs-column'] {
+    div[fs\.lt-xs*='fs-column'],
+    span[fs\.lt-xs*='fs-column'] {
       @include attributeMixin('fs\\.lt-xs', false);
     }
   }
 
   @media (max-width: variables.$break-small) {
-    [fs\.lt-sm*='fs-row'] {
+    div[fs\.lt-sm*='fs-row'],
+    span[fs\.lt-sm*='fs-row'] {
       @include attributeMixin('fs\\.lt-sm');
     }  
 
-    [fs\.lt-sm*='fs-column'] {
+    div[fs\.lt-sm*='fs-column'],
+    span[fs\.lt-sm*='fs-column'] {
       @include attributeMixin('fs\\.lt-sm', false);
     }  
   }
   
   @media (max-width: variables.$break-medium) {
-    [fs\.lt-md*='fs-row'] {
+    div[fs\.lt-md*='fs-row'],
+    span[fs\.lt-md*='fs-row'] {
       @include attributeMixin('fs\\.lt-md');
     }
 
-    [fs\.lt-md*='fs-column'] {
+    div[fs\.lt-md*='fs-column'],
+    span[fs\.lt-md*='fs-column'] {
       @include attributeMixin('fs\\.lt-md', false);
     }     
   }
   
   @media (max-width: variables.$break-large) {
-    [fs\.lt-lg*='fs-row'] {
+    div[fs\.lt-lg*='fs-row'],
+    span[fs\.lt-lg*='fs-row'] {
       @include attributeMixin('fs\\.lt-lg');
     } 
 
-    [fs\.lt-lg*='fs-column'] {
+    div[fs\.lt-lg*='fs-column'],
+    span[fs\.lt-lg*='fs-column'] {
       @include attributeMixin('fs\\.lt-lg', false);
     } 
   }
