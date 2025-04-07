@@ -11,13 +11,13 @@
       padding-top: 3px;
       line-height: normal;
       min-height: 22px;
-    }
+      display: block;
 
-    &:not(.mat-form-field-invalid) {
-      .mat-mdc-form-field-hint-wrapper {
-        .mat-mdc-form-field-hint {
-          padding-bottom: 22px;
-        }
+      &:after {
+        content: '';
+        display: block;
+        height: 22px;
+        width: 100%;
       }
     }
 
