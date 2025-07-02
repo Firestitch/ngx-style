@@ -48,7 +48,7 @@ $h3-color: $heading-color !default;
 /**
   * Font-sizes
   */
-$small-color: $grey-color;
+$small-color: $grey-color !default;
 
 $small-font-size: 12px !default;
 $large-font-size: 110% !default;
