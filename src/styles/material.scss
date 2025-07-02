@@ -1,7 +1,5 @@
 @mixin material() {
   :root {
-    --mat-tab-header-label-text-tracking: normal;
-
     --mdc-dialog-supporting-text-color: --mat-app-on-background;
     --mat-dialog-actions-padding: 16px 24px;
     --mat-dialog-with-actions-content-padding: 24px 24px 0;
