@@ -6,6 +6,10 @@
     font-size: variables.$small-font-size;
   }
 
+  body {
+    color: variables.$body-color;
+  }
+
   .error {
     color: variables.$error-color;
   }
