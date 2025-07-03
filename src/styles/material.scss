@@ -2,7 +2,7 @@
 
 @mixin material() {
   :root {
-    --mat-app-on-background: variables.$body-color;
+    --mat-app-on-background: #{variables.$body-color};
     --mat-sidenav-content-text-color: --mat-app-on-background;
     --mdc-dialog-supporting-text-color: --mat-app-on-background;
     --mat-dialog-actions-padding: 16px 24px;
