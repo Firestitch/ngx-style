@@ -1,7 +1,15 @@
 @use '../variables' as variables;
 
 @mixin material() {
+
+  $button-shape: 999px;
+  $button-height: 40px;
+  $button-horizontal-padding: 24px;
+
   :root {
+    /*
+     * < Angular 20
+     */
     --mat-app-on-background: #{variables.$body-color};
     --mat-sidenav-content-text-color: --mat-app-on-background;
     --mdc-dialog-supporting-text-color: --mat-app-on-background;
@@ -11,25 +19,41 @@
     --mdc-elevated-card-container-shape: 12px;
     --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
 
+    /*
+     * Buttons < Angular 20
+     */
     --mat-text-button-touch-target-display: none;
-    --mdc-text-button-container-shape: 999px;
+    --mdc-text-button-container-shape: $button-shape;
     --mat-text-button-horizontal-padding: 10px;
-    --mdc-text-button-container-height: 40px;
+    --mdc-text-button-container-height: $button-height;
 
     --mat-protected-button-touch-target-display: none;
-    --mdc-protected-button-container-shape: 999px;
-    --mat-protected-button-horizontal-padding: 24px;
-    --mdc-protected-button-container-height: 40px;
+    --mdc-protected-button-container-shape: $button-shape;
+    --mat-protected-button-horizontal-padding: $button-horizontal-padding;
+    --mdc-protected-button-container-height: $button-height;
 
     --mat-outlined-button-touch-target-display: none;
-    --mdc-outlined-button-container-shape: 999px;
-    --mat-outlined-button-horizontal-padding: 24px;
-    --mdc-outlined-button-container-height: 40px;
+    --mdc-outlined-button-container-shape: $button-shape;
+    --mat-outlined-button-horizontal-padding: $button-horizontal-padding;
+    --mdc-outlined-button-container-height: $button-height;
 
     --mat-filled-button-touch-target-display: none;
-    --mdc-filled-button-container-shape: 999px;
-    --mat-filled-button-horizontal-padding: 24px;
-    --mdc-filled-button-container-height: 40px;
+    --mdc-filled-button-container-shape: $button-shape;
+    --mat-filled-button-horizontal-padding:  $button-horizontal-padding;
+    --mdc-filled-button-container-height: $button-height;
+    
+
+    /*
+     * Buttons >= Angular 20
+     */
+    --mat-button-outlined-container-shape: $button-shape;
+    --mat-button-outlined-container-height: $button-height;
+    --mat-button-outlined-horizontal-padding: $button-horizontal-padding;
+    
+    --mat-button-filled-container-shape: $button-shape;
+    --mat-button-filled-container-height: $button-height;
+    --mat-button-filled-horizontal-padding: $button-horizontal-padding;
+
 
     .mat-mdc-slide-toggle {
       --mat-switch-with-icon-handle-size: 20px;
