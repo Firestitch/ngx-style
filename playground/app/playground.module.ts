@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import {
+  ButtonsComponent,
   ColumnComponent,
   ExamplesComponent,
   FormFieldComponent,
@@ -51,6 +52,7 @@ const routes: Routes = [
     ColumnComponent,
     HeadingsComponent,
     ResponsiveComponent,
+    ButtonsComponent,
   ],
 })
 export class PlaygroundModule {

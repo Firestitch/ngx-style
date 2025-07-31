@@ -23,36 +23,36 @@
      * Buttons < Angular 20
      */
     --mat-text-button-touch-target-display: none;
-    --mdc-text-button-container-shape: $button-shape;
+    --mdc-text-button-container-shape: #{$button-shape};
     --mat-text-button-horizontal-padding: 10px;
-    --mdc-text-button-container-height: $button-height;
+    --mdc-text-button-container-height: #{$button-height};
 
     --mat-protected-button-touch-target-display: none;
-    --mdc-protected-button-container-shape: $button-shape;
-    --mat-protected-button-horizontal-padding: $button-horizontal-padding;
-    --mdc-protected-button-container-height: $button-height;
+    --mdc-protected-button-container-shape: #{$button-shape};
+    --mat-protected-button-horizontal-padding: #{$button-horizontal-padding};
+    --mdc-protected-button-container-height: #{$button-height};
 
     --mat-outlined-button-touch-target-display: none;
-    --mdc-outlined-button-container-shape: $button-shape;
-    --mat-outlined-button-horizontal-padding: $button-horizontal-padding;
-    --mdc-outlined-button-container-height: $button-height;
+    --mdc-outlined-button-container-shape: #{$button-shape};
+    --mat-outlined-button-horizontal-padding: #{$button-horizontal-padding};
+    --mdc-outlined-button-container-height: #{$button-height};
 
     --mat-filled-button-touch-target-display: none;
-    --mdc-filled-button-container-shape: $button-shape;
-    --mat-filled-button-horizontal-padding:  $button-horizontal-padding;
-    --mdc-filled-button-container-height: $button-height;
+    --mdc-filled-button-container-shape: #{$button-shape};
+    --mat-filled-button-horizontal-padding:  #{$button-horizontal-padding};
+    --mdc-filled-button-container-height: #{$button-height};
     
 
     /*
      * Buttons >= Angular 20
      */
-    --mat-button-outlined-container-shape: $button-shape;
-    --mat-button-outlined-container-height: $button-height;
-    --mat-button-outlined-horizontal-padding: $button-horizontal-padding;
+    --mat-button-outlined-container-shape: #{$button-shape};
+    --mat-button-outlined-container-height: #{$button-height};
+    --mat-button-outlined-horizontal-padding: #{$button-horizontal-padding};
     
-    --mat-button-filled-container-shape: $button-shape;
-    --mat-button-filled-container-height: $button-height;
-    --mat-button-filled-horizontal-padding: $button-horizontal-padding;
+    --mat-button-filled-container-shape: #{$button-shape} ;
+    --mat-button-filled-container-height: #{$button-height};
+    --mat-button-filled-horizontal-padding: #{$button-horizontal-padding};
 
 
     .mat-mdc-slide-toggle {
