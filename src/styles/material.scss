@@ -54,6 +54,7 @@
     --mat-button-filled-container-height: #{$button-height};
     --mat-button-filled-horizontal-padding: #{$button-horizontal-padding};
 
+    --mat-button-text-container-shape: #{$button-shape};
 
     .mat-mdc-slide-toggle {
       --mat-switch-with-icon-handle-size: 20px;
@@ -76,6 +77,7 @@
       --mdc-switch-selected-hover-track-color: var(--brand-primary-color, #E0E2EC);
       --mdc-switch-selected-focus-track-color: var(--brand-primary-color, #E0E2EC);
       --mdc-switch-unselected-hover-track-color: #E0E2EC;
+      --mat-optgroup-label-text-color: #AEAEAE;  
     }
   }
 
