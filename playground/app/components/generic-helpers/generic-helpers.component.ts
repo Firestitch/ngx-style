@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-generic-helpers',
-  templateUrl: './generic-helpers.component.html',
-  styleUrls: ['./generic-helpers.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-generic-helpers',
+    templateUrl: './generic-helpers.component.html',
+    styleUrls: ['./generic-helpers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class GenericHelpersComponent {
 
