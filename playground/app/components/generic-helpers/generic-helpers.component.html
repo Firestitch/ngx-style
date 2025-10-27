@@ -2,20 +2,20 @@
   Delimit: Comma
 </h3>
 <div class="fs-delimit">
-  <ng-container *ngFor="let item of items">
+  @for (item of items; track item) {
     <span>
       {{ item.name }}
     </span>
-  </ng-container>
+  }
 </div>
 <br>
-<h3>
-  Delimit: Middot
-</h3>
-<div class="fs-delimit.middot">
-  <ng-container *ngFor="let item of items">
-    <span>
-      {{ item.name }}
-    </span>
-  </ng-container>
-</div>
+  <h3>
+    Delimit: Middot
+  </h3>
+  <div class="fs-delimit.middot">
+    @for (item of items; track item) {
+      <span>
+        {{ item.name }}
+      </span>
+    }
+  </div>
