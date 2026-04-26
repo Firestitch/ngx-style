@@ -82,7 +82,9 @@
     }
   }
 
-  .mat-mdc-dialog-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline) {
+  .mat-mdc-dialog-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline):before {
     padding-top: 5px;
+    display: block;
+    content: ' ';
   }
 }
