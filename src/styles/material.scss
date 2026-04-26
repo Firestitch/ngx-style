@@ -82,9 +82,7 @@
     }
   }
 
-  .mat-mdc-form-field {
-    &.mat-form-field-appearance-outline {
-      margin-top: 5px;
-    }
+  .mat-mdc-dialog-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline) {
+    padding-top: 5px;
   }
 }
