@@ -83,7 +83,7 @@
   }
 
   .mat-mdc-dialog-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline):not(:has(.mat-mdc-tab-group)):before,
-  .mat-mdc-tab-group .mat-mdc-tab-body-content .tab-content :has(.mat-mdc-form-field.mat-form-field-appearance-outline):before {
+  .mat-mdc-tab-group .mat-mdc-tab-body-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline):not(:has(.mat-mdc-tab-group)):before {
     padding-top: 5px;
     display: block;
     content: ' ';
