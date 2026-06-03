@@ -25,14 +25,28 @@
         <input matInput>
       </mat-form-field>
     </div>
-    <div [class]="class">
-      <mat-form-field
-          class="form-field-padless"
-          [appearance]="appearance">
-        <input
-          matInput
-          [placeholder]="'Padless Form Field'">
-      </mat-form-field>
+    <div class="fs-row.gap-sm.align-start">
+      <div [class]="class">
+        <mat-form-field
+            class="form-field-padless"
+            [appearance]="appearance">
+          <input
+            matInput
+            [placeholder]="'Padless Form Field'">
+        </mat-form-field>
+      </div>
+      <div [class]="class">
+        <mat-form-field
+            class="form-field-padless"
+            [appearance]="appearance">
+          <input
+            matInput
+            [placeholder]="'Padless Form Field (with hint)'">
+          <mat-hint>
+            This hint lives in the collapsed subscript
+          </mat-hint>
+        </mat-form-field>
+      </div>
     </div>
     <div [class]="class">
       <mat-form-field

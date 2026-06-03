@@ -21,10 +21,15 @@
       }
     }
 
-    &.form-field-padless-bottom, 
+    &.form-field-padless-bottom,
     &.form-field-padless {
-      .mat-mdc-form-field-subscript-wrapper {
-        display: none;
+      .mat-mdc-form-field-hint-wrapper {
+        padding-top: 0;
+        min-height: 0;
+
+        &:after {
+          display: none;
+        }
       }
     }
   }
