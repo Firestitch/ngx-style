@@ -1,0 +1,86 @@
+<div class="demo">
+  @if (caption || description) {
+    <div class="demo__head">
+      @if (caption) {
+        <div class="demo__caption">{{ caption }}</div>
+      }
+      @if (description) {
+        <div class="demo__description">{{ description }}</div>
+      }
+    </div>
+  }
+
+  @if (viewport) {
+    <div class="demo__viewport">
+      <div class="demo__viewport-row">
+        <span class="demo__viewport-title">Screen width</span>
+        <input
+            class="demo__slider"
+            type="range"
+            [min]="minWidth"
+            [max]="maxWidth"
+            [value]="frameWidth"
+            (input)="setWidth($any($event.target).value)">
+        <output class="demo__viewport-value">{{ frameWidth }}px</output>
+      </div>
+      <div class="demo__viewport-row">
+        @for (preset of presets; track preset) {
+          <button
+              type="button"
+              class="demo__preset"
+              [class.demo__preset--on]="preset === frameWidth"
+              (click)="setWidth(preset)">
+            {{ preset }}
+          </button>
+        }
+        <span class="demo__viewport-spacer"></span>
+        @for (range of ranges; track range.name) {
+          <span
+              class="demo__range"
+              [class.demo__range--on]="range.name === activeRange"
+              [title]="range.label">
+            {{ range.name }}
+          </span>
+        }
+      </div>
+    </div>
+  }
+
+  <div class="demo__stage" [class.demo__stage--viewport]="viewport">
+    @if (viewport) {
+      <iframe
+          #frame
+          class="demo__frame"
+          title="Resizable stage"
+          [style.width.px]="frameWidth"></iframe>
+    }
+    <div #content class="demo__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  @if (targets.length) {
+    <div class="demo__chips">
+      @for (target of targets; track target.directive) {
+        <button
+            type="button"
+            class="demo__chip"
+            title="Copy markup"
+            (mouseenter)="highlight(target, true)"
+            (mouseleave)="highlight(target, false)"
+            (click)="copy(target)">
+          @if (target.label) {
+            <span class="demo__chip-label">{{ target.label }}</span>
+          }
+          <span class="demo__chip-tag">&lt;{{ target.tag }}&gt;</span>
+          @if (target.classes) {
+            <span class="demo__chip-attr">class="<em>{{ target.classes }}</em>"</span>
+          }
+          @for (attr of target.attrs; track attr.name) {
+            <span class="demo__chip-attr">{{ attr.name }}="<em>{{ attr.value }}</em>"</span>
+          }
+        </button>
+      }
+    </div>
+  }
+</div>

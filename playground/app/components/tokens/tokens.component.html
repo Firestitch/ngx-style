@@ -1,0 +1,75 @@
+<div class="demo-note">
+  These are the Sass variables the library exposes. Every value below is read back out of this
+  running app, so it shows what actually got built. Each one can be overridden when you import the
+  library — this playground overrides <code>$small-font-size</code> as an example.
+</div>
+
+<h2>Colors</h2>
+
+<div class="demo-grid">
+  @for (token of colors; track token.name) {
+    <div class="demo-swatch">
+      <div class="demo-swatch__chip" [style.background]="token.value"></div>
+      <div class="demo-swatch__body">
+        <div class="demo-swatch__name">{{ token.name }}</div>
+        <div class="demo-swatch__value">{{ token.value }}</div>
+        @if (token.unused) {
+          <div class="demo-swatch__unused" title="Available to your app; the library never applies it.">
+            palette only
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+<h2>Sizes</h2>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (token of sizes; track token.name) {
+      <tr>
+        <td><code>{{ token.name }}</code></td>
+        <td>{{ token.value }}</td>
+        <td>
+          @if (token.unused) {
+            <span class="demo-swatch__unused">palette only</span>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<h2>Breakpoints</h2>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (token of breakpoints; track token.name) {
+      <tr>
+        <td><code>{{ token.name }}</code></td>
+        <td>{{ token.value }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="demo-note">
+  <strong>Palette only</strong> means the variable is exported for you to use, but nothing in the
+  library applies it. There is no <code>warn</code> or <code>success</code> class, for example —
+  those colours are there for you to build with. Contrast that with
+  <code>$error-color</code>, which the <code>error</code> class does apply.
+</div>

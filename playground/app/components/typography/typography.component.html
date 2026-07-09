@@ -1,3 +1,31 @@
-<small>Small Text Element</small>
-<div class="small">Small Text Class</div>
-<div class="error">Error Class</div>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>small</code> (class or element)</td><td>Smaller, muted grey text</td></tr>
+    <tr><td><code>error</code></td><td>Text in the error colour</td></tr>
+  </tbody>
+</table>
+
+<fs-demo
+    caption="Small text"
+    description="The small element and the small class look identical. Use whichever reads better in your markup.">
+  <p>
+    Body copy for contrast.
+    <small fsInspect="element">Small element</small>
+  </p>
+  <div class="small" fsInspect="class">Small class</div>
+</fs-demo>
+
+<fs-demo caption="Error text">
+  <div class="error" fsInspect>Something went wrong</div>
+</fs-demo>
+
+<div class="demo-note">
+  Body text is set to a soft near-black rather than pure black, so you do not need to do anything to
+  get readable copy. See the Tokens example for the exact values.
+</div>

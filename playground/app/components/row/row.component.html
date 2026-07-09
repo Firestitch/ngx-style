@@ -1,116 +1,133 @@
-
-<h3 class="fs-row.gap-lg.wrap">
-  Row (Gap and Alignment)
-  
-  <mat-form-field class="form-field-padless-bottom">
-    <mat-label>Gap</mat-label>
-    <mat-select
-        [(ngModel)]="gap"
-        name="gap">
-      <mat-option [value]="'none'">None</mat-option>
-      <mat-option [value]="'xs'">X-small</mat-option>
-      <mat-option [value]="'sm'">Small</mat-option>
-      <mat-option [value]="'md'">Medium</mat-option>
-      <mat-option [value]="'lg'">Large</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <mat-form-field class="form-field-padless-bottom">
-    <mat-label>Alignment</mat-label>
-    <mat-select
-        [(ngModel)]="align"
-        name="align">
-      <mat-option [value]="'start'">Start</mat-option>
-      <mat-option [value]="'center'">Center</mat-option>
-      <mat-option [value]="'end'">End</mat-option>
-      <mat-option [value]="'baseline'">Baseline</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="form-field-padless-bottom">
-    <mat-label>Justify</mat-label>
-    <mat-select
-        [(ngModel)]="justify"
-        name="justify">
-      <mat-option [value]="'start'">Start</mat-option>
-      <mat-option [value]="'center'">Center</mat-option>
-      <mat-option [value]="'end'">End</mat-option>
-      <mat-option [value]="'around'">Space around</mat-option>
-      <mat-option [value]="'between'">Space between</mat-option>
-      <mat-option [value]="'evenly'">Space evenly</mat-option>
-    </mat-select>
-  </mat-form-field>    
-</h3>
-
-<div [class]="'fs-row.gap-' + gap + '.align-' + align + (justify ? '.justify-'+ justify : '')">
-  <fs-label-field>
-    <fs-label>Column</fs-label>
-    100$
-    <div class="small">Text text text</div>
-  </fs-label-field>
-
-  <fs-label-field>
-    <fs-label>Column2</fs-label>
-    100%
-  </fs-label-field>
-
-  <fs-label-field>
-    <fs-label>Column3</fs-label>
-    None
-  </fs-label-field>
+<div class="demo-note">
+  A row lays its children out horizontally. Write one class name, chaining the options you want with
+  dots: <code>fs-row.gap-md.align-center</code>. That is <strong>one</strong> class, not three —
+  the dots belong to the name.
 </div>
 
-<h3>Multi Column Blocks (Wrap)</h3>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>fs-row</code></td><td>Children sit side by side, vertically centred</td></tr>
+    <tr><td><code>.gap-none .gap-xs .gap-sm .gap-md .gap-lg</code></td><td>Space between children: 0, 5, 10, 20 or 40px</td></tr>
+    <tr><td><code>.align-start .align-center .align-end .align-baseline .align-normal</code></td><td>Where children sit vertically</td></tr>
+    <tr><td><code>.justify-start .justify-center .justify-end .justify-around .justify-between .justify-evenly</code></td><td>How leftover horizontal space is shared out</td></tr>
+    <tr><td><code>.wrap</code></td><td>Children run onto a second line instead of squeezing</td></tr>
+    <tr><td><code>fs-flex</code></td><td>Put on a <em>child</em>: it grows to fill the leftover space</td></tr>
+  </tbody>
+</table>
 
-<div class="fs-row.gap-lg.wrap">
-  <fs-label-field>
-    <fs-label>Column</fs-label>
-    1
-  </fs-label-field>
+<fs-demo
+    caption="A row"
+    description="Hover a chip underneath to outline the element it belongs to, or click it to copy the markup.">
+  <div class="fs-row.gap-md.align-center" fsInspect="container">
+    <div class="demo-box">1</div>
+    <div class="demo-box">2</div>
+    <div class="demo-box">3</div>
+  </div>
+</fs-demo>
 
-  <fs-label-field>
-    <fs-label>Column2</fs-label>
-    2
-  </fs-label-field>
+<fs-demo caption="Build a row" description="Change the selects and watch the chip below follow along.">
+  <div class="fs-row.gap-md.wrap.align-end">
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Gap</mat-label>
+      <mat-select [(ngModel)]="gap" name="gap">
+        @for (value of gaps; track value) {
+          <mat-option [value]="value">{{ value }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <fs-label-field>
-    <fs-label>Column3</fs-label>
-    3
-  </fs-label-field>
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Align</mat-label>
+      <mat-select [(ngModel)]="align" name="align">
+        @for (value of aligns; track value) {
+          <mat-option [value]="value">{{ value }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <fs-label-field>
-    <fs-label>Column4</fs-label>
-    4
-  </fs-label-field>
+    <mat-form-field class="form-field-padless-bottom">
+      <mat-label>Justify</mat-label>
+      <mat-select [(ngModel)]="justify" name="justify">
+        <mat-option [value]="''">none</mat-option>
+        @for (value of justifies; track value) {
+          <mat-option [value]="value">{{ value }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-  <fs-label-field>
-    <fs-label>Column5</fs-label>
-    5
-  </fs-label-field>
+  <div [class]="builderClass" fsInspect="container">
+    <div class="demo-box">1</div>
+    <div class="demo-box demo-box--tall">2</div>
+    <div class="demo-box demo-box--taller">3</div>
+  </div>
+</fs-demo>
 
-  <fs-label-field>
-    <fs-label>Column6</fs-label>
-    6
-  </fs-label-field>
+<fs-demo caption="Gap — space between children">
+  @for (value of gaps; track value) {
+    <fs-variant [classes]="'fs-row.gap-' + value">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+      <div class="demo-box">3</div>
+    </fs-variant>
+  }
+</fs-demo>
 
-  <fs-label-field>
-    <fs-label>Column7</fs-label>
-    7
-  </fs-label-field>
+<fs-demo caption="Align — where children sit vertically" description="The boxes are different heights so the effect is visible.">
+  @for (value of aligns; track value) {
+    <fs-variant [classes]="'fs-row.gap-md.align-' + value">
+      <div class="demo-box">short</div>
+      <div class="demo-box demo-box--tall">taller</div>
+      <div class="demo-box demo-box--taller">tallest</div>
+    </fs-variant>
+  }
+</fs-demo>
 
-  <fs-label-field>
-    <fs-label>Column8</fs-label>
-    8
-  </fs-label-field>
+<fs-demo caption="Justify — how leftover horizontal space is shared out">
+  @for (value of justifies; track value) {
+    <fs-variant [classes]="'fs-row.gap-sm.justify-' + value">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+      <div class="demo-box">3</div>
+    </fs-variant>
+  }
+</fs-demo>
 
-  <fs-label-field>
-    <fs-label>Column9</fs-label>
-    9
-  </fs-label-field>
+<fs-demo caption="Wrap and fs-flex">
+  <fs-variant classes="fs-row.gap-sm.wrap" label="wrapping row">
+    @for (value of items; track value) {
+      <div class="demo-box demo-box--wide">{{ value }}</div>
+    }
+  </fs-variant>
 
-  <fs-label-field>
-    <fs-label>Column10</fs-label>
-    10
-  </fs-label-field>
-</div>
+  <fs-variant classes="fs-row.gap-sm" label="middle child grows">
+    <div class="demo-box">fixed</div>
+    <div class="demo-box demo-box--accent fs-flex" fsInspect="fs-flex child">fs-flex</div>
+    <div class="demo-box">fixed</div>
+  </fs-variant>
+</fs-demo>
 
+<fs-demo
+    caption="Gotcha: only div and span"
+    description="On any other element the dotted class name does nothing at all. The h3 below never becomes a row — its boxes just stack. Use a div, or use the plain fs-row class with no dots.">
+  <h3 class="fs-row.gap-md" fsInspect="h3 — class ignored entirely">
+    <span class="demo-box">1</span>
+    <span class="demo-box">2</span>
+  </h3>
+
+  <div class="fs-row.gap-md" fsInspect="div — works">
+    <div class="demo-box">1</div>
+    <div class="demo-box">2</div>
+  </div>
+
+  <h3 class="fs-row" fsInspect="h3 — plain fs-row works, but no gap option">
+    <span class="demo-box">1</span>
+    <span class="demo-box">2</span>
+  </h3>
+</fs-demo>

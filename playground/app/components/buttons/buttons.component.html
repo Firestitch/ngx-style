@@ -1,24 +1,23 @@
-<div class="fs-row.gap-md">
-  <div>
-    <button mat-button>
-      Button
-    </button>
+<div class="demo-note">
+  There is nothing to add here. Importing the library restyles Angular Material for you — buttons
+  become pill shaped and a consistent height, and the slide toggle is reshaped and recoloured. Use
+  the standard Material components exactly as you normally would.
+</div>
+
+<fs-demo caption="Buttons" description="All four Material button styles, restyled. Pill shaped and 40px tall. The three solid styles get roomy side padding; the plain text button stays tight so it reads as a link.">
+  <div class="fs-row.gap-md.wrap.align-center">
+    <button mat-button>Text</button>
+    <button mat-raised-button>Raised</button>
+    <button mat-flat-button color="primary">Flat</button>
+    <button mat-stroked-button>Stroked</button>
   </div>
-  <div>
-    <button mat-raised-button>
-      Raised
-    </button>
-  </div>
-  <div>
-    <button
-        mat-flat-button
-        color="primary">
-      Flat
-    </button>
-  </div>
-  <div>
-    <button mat-stroked-button>
-      Stroked
-    </button>
-  </div>
+</fs-demo>
+
+<fs-demo caption="Slide toggle" description="A wider track and a larger handle than the Material default.">
+  <mat-slide-toggle>Slide me</mat-slide-toggle>
+</fs-demo>
+
+<div class="demo-note">
+  The slide toggle picks up your brand colour from a
+  <code>--brand-primary-color</code> variable if your app sets one, and falls back to grey if not.
 </div>

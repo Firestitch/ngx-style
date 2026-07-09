@@ -1,21 +1,68 @@
+<div class="demo-note">
+  A column stacks its children vertically. Exactly the same class grammar as <code>fs-row</code>,
+  and every suffix a row accepts a column accepts too — chain them onto the name with dots.
+</div>
 
-  <h3>
-    Column
-  </h3>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>fs-column</code></td><td>Children stack top to bottom, each as wide as the container</td></tr>
+    <tr><td><code>.gap-none .gap-xs .gap-sm .gap-md .gap-lg</code></td><td>Space between children: 0, 5, 10, 20 or 40px</td></tr>
+    <tr><td><code>.align-start .align-center .align-end .align-baseline .align-normal</code></td><td>Where children sit <em>horizontally</em></td></tr>
+    <tr><td><code>.justify-start .justify-center .justify-end .justify-around .justify-between .justify-evenly</code></td><td>How leftover <em>vertical</em> space is shared out</td></tr>
+  </tbody>
+</table>
 
-  <div class="fs-column">
-    <fs-label-field>
-      <fs-label>Row 1</fs-label>
-      1
-    </fs-label-field>
+<div class="demo-note">
+  The axes swap compared with a row. On a column, <code>.align-*</code> moves children left and
+  right, and <code>.justify-*</code> moves them up and down.
+</div>
 
-    <fs-label-field>
-      <fs-label>Row 2</fs-label>
-      2
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Row 3</fs-label>
-      3
-    </fs-label-field>
+<fs-demo caption="A column">
+  <div class="fs-column.gap-md" fsInspect="container">
+    <div class="demo-box">1</div>
+    <div class="demo-box">2</div>
+    <div class="demo-box">3</div>
   </div>
+</fs-demo>
+
+<fs-demo caption="Gap — space between children">
+  @for (value of gaps; track value) {
+    <fs-variant [classes]="'fs-column.gap-' + value">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+    </fs-variant>
+  }
+</fs-demo>
+
+<fs-demo
+    caption="Align — where children sit horizontally"
+    description="Without an .align-* class the children stretch to the full width of the column.">
+  @for (value of aligns; track value) {
+    <fs-variant [classes]="'fs-column.gap-sm.align-' + value">
+      <div class="demo-box">1</div>
+      <div class="demo-box demo-box--wide">2</div>
+    </fs-variant>
+  }
+</fs-demo>
+
+<fs-demo
+    caption="Justify — how leftover vertical space is shared out"
+    description="Only does something when the column is taller than its children, so these stages are given a fixed height.">
+  @for (value of justifies; track value) {
+    <fs-variant [classes]="'fs-column.gap-none.justify-' + value" [stageHeight]="150">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+    </fs-variant>
+  }
+</fs-demo>
+
+<div class="demo-note">
+  Same gotcha as <code>fs-row</code>: the dotted class names only work on a <code>div</code> or a
+  <code>span</code>.
+</div>

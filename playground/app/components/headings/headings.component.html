@@ -1,14 +1,82 @@
-<h1>
-  H1 Heading
-  <div class="subheading">H1 Subheading</div>
-</h1>  
+<div class="demo-note">
+  Headings are styled by element. Write a plain <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code> or
+  <code>&lt;h3&gt;</code> and you get the size, colour and spacing for free — no class needed.
+</div>
 
-<h2 class="fs-heading.top" fs.lt-xs="fs-heading.top-none">
-  H2 Heading
-  <div class="subheading">H2 Subheading</div>
-</h2>
+<fs-demo caption="No classes required">
+  <h1 fsInspect>h1</h1>
+  <h2 fsInspect>h2</h2>
+  <h3 fsInspect>h3</h3>
+</fs-demo>
 
-<h3 class="fs-heading.top" fs.lt-sm="fs-heading.top-none">
-  H3 Heading
-  <div class="subheading">H3 Subheading</div>
-</h3>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>subheading</code></td><td>A muted second line. Put it <em>inside</em> the heading, or directly after it.</td></tr>
+    <tr><td><code>subheading-1 subheading-2 subheading-3</code></td><td>The same muted line, standing on its own without a heading above it. All three are identical — the number is just a hint about which heading it goes with.</td></tr>
+    <tr><td><code>fs-heading.top-none</code></td><td>Removes the space above the heading</td></tr>
+    <tr><td><code>fs-heading.top</code></td><td>Keeps the normal space above the heading — needed to pair with the responsive form below</td></tr>
+    <tr><td><code>h1-container h2-container</code></td><td>On a wrapper, pulls the heading up so it sits flush at the top of a card</td></tr>
+  </tbody>
+</table>
+
+<fs-demo
+    caption="Subheading inside a heading"
+    description="Nested, it is sized relative to the heading it sits in — so it shrinks as the heading shrinks.">
+  <h1 fsInspect="heading">
+    Invoice #1041
+    <div class="subheading" fsInspect="subheading">Issued 4 March</div>
+  </h1>
+
+  <h2 fsInspect="heading">
+    Invoice #1041
+    <div class="subheading" fsInspect="subheading">Issued 4 March</div>
+  </h2>
+
+  <h3 fsInspect="heading">
+    Invoice #1041
+    <div class="subheading" fsInspect="subheading">Issued 4 March</div>
+  </h3>
+</fs-demo>
+
+<fs-demo
+    caption="Subheading after a heading"
+    description="Placed after a heading rather than inside it, a subheading is sized against the surrounding text instead — so it stays one size whichever heading it follows — and it is pulled up tight underneath. The numbered form is the same size but is not pulled up; use it when no heading sits directly above.">
+  <h2 fsInspect="heading">Sibling subheading</h2>
+  <div class="subheading" fsInspect="subheading">Pulled up tight under the heading</div>
+
+  <h2 fsInspect="heading">Numbered subheading</h2>
+  <div class="subheading-2" fsInspect="subheading-2">Same size, normal spacing</div>
+</fs-demo>
+
+<fs-demo
+    caption="Removing the space above a heading"
+    description="Headings reserve 20px of space above them. When a heading starts a card or a section, that space is usually unwanted. The shaded blocks stand in for whatever content sits above.">
+  <div class="demo-box demo-box--accent demo-box--wide">content above</div>
+  <h2 fsInspect="normal space above">Default heading</h2>
+
+  <div class="demo-box demo-box--accent demo-box--wide">content above</div>
+  <h2 class="fs-heading.top-none" fsInspect="no space above">fs-heading.top-none</h2>
+</fs-demo>
+
+<fs-demo
+    caption="Removing the space only on small screens"
+    description="Put fs-heading.top on the class attribute and fs-heading.top-none on the responsive one. Drag the slider below 600px and the space above the heading collapses."
+    viewport
+    [width]="800">
+  <div class="demo-box demo-box--accent demo-box--wide">content above</div>
+  <h2 class="fs-heading.top" fs.lt-xs="fs-heading.top-none" fsInspect="heading">
+    Space disappears below 600px
+  </h2>
+</fs-demo>
+
+<div class="demo-note">
+  <code>fs-heading.top</code> on its own looks like it does nothing — and on a wide screen it does
+  not. Its job is to mark the heading so that the <code>fs.lt-*</code> attribute has something to
+  switch off. You need both halves for the responsive version to work.
+</div>

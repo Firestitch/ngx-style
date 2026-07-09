@@ -1,0 +1,430 @@
+@use '../src/variables' as v;
+
+/**
+ * Every Sass variable @firestitch/style exposes, re-published as a custom property so the token
+ * gallery can read real values out of the stylesheet instead of hardcoding a copy that rots.
+ * These reflect the playground's own configuration of the library (see styles.scss).
+ */
+:root {
+  --fs-token-grey-color: #{v.$grey-color};
+  --fs-token-grey-dark-color: #{v.$grey-dark-color};
+  --fs-token-grey-light-color: #{v.$grey-light-color};
+
+  --fs-token-danger-color: #{v.$danger-color};
+  --fs-token-error-color: #{v.$error-color};
+  --fs-token-warn-color: #{v.$warn-color};
+  --fs-token-success-color: #{v.$success-color};
+  --fs-token-info-color: #{v.$info-color};
+  --fs-token-disabled-color: #{v.$disabled-color};
+
+  --fs-token-dark-danger-color: #{v.$dark-danger-color};
+  --fs-token-dark-warn-color: #{v.$dark-warn-color};
+  --fs-token-dark-success-color: #{v.$dark-success-color};
+  --fs-token-dark-info-color: #{v.$dark-info-color};
+
+  --fs-token-heading-color: #{v.$heading-color};
+  --fs-token-subheading-color: #{v.$subheading-color};
+  --fs-token-body-color: #{v.$body-color};
+  --fs-token-small-color: #{v.$small-color};
+  --fs-token-h1-color: #{v.$h1-color};
+  --fs-token-h2-color: #{v.$h2-color};
+  --fs-token-h3-color: #{v.$h3-color};
+
+  --fs-token-h1-font-size: #{v.$h1-font-size};
+  --fs-token-h1-margin-top: #{v.$h1-margin-top};
+  --fs-token-h1-margin-bottom: #{v.$h1-margin-bottom};
+  --fs-token-h2-font-size: #{v.$h2-font-size};
+  --fs-token-h2-margin-top: #{v.$h2-margin-top};
+  --fs-token-h2-margin-bottom: #{v.$h2-margin-bottom};
+  --fs-token-h3-font-size: #{v.$h3-font-size};
+  --fs-token-h3-margin-top: #{v.$h3-margin-top};
+  --fs-token-h3-margin-bottom: #{v.$h3-margin-bottom};
+  --fs-token-small-font-size: #{v.$small-font-size};
+  --fs-token-large-font-size: #{v.$large-font-size};
+  --fs-token-xlarge-font-size: #{v.$xlarge-font-size};
+  --fs-token-xxlarge-font-size: #{v.$xxlarge-font-size};
+
+  --fs-token-break-xsmall: #{v.$break-xsmall};
+  --fs-token-break-small: #{v.$break-small};
+  --fs-token-break-medium: #{v.$break-medium};
+  --fs-token-break-large: #{v.$break-large};
+}
+
+$demo-line: #e2e5ea;
+$demo-ink: #38414d;
+$demo-muted: #7b8694;
+$demo-accent: #2f6fd0;
+$demo-code: 'SFMono-Regular', 'Roboto Mono', Menlo, Consolas, monospace;
+
+/**
+ * Playground chrome. Everything here is prefixed `demo-` so it never reads as part of the
+ * library's own class vocabulary.
+ */
+/* Custom elements default to display: inline, which would let the stages overlap each other. */
+fs-demo {
+  display: block;
+
+  + fs-demo {
+    margin-top: 28px;
+  }
+}
+
+fs-variant {
+  display: block;
+
+  + fs-variant {
+    margin-top: 12px;
+  }
+}
+
+.demo {
+  display: block;
+}
+
+.demo__head {
+  margin-bottom: 10px;
+}
+
+.demo__caption {
+  color: $demo-ink;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.demo__description {
+  color: $demo-muted;
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin-top: 3px;
+  max-width: 760px;
+}
+
+.demo__stage {
+  background:
+    linear-gradient(45deg, #fbfbfc 25%, transparent 25%, transparent 75%, #fbfbfc 75%) 0 0 / 16px 16px,
+    linear-gradient(45deg, #fbfbfc 25%, transparent 25%, transparent 75%, #fbfbfc 75%) 8px 8px / 16px 16px,
+    #fff;
+  border: 1px solid $demo-line;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.demo__stage--viewport {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.demo__frame {
+  background: #fff;
+  border: 0;
+  border-right: 1px dashed $demo-line;
+  display: block;
+  min-height: 48px;
+}
+
+.demo__viewport {
+  border: 1px solid $demo-line;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: #fafbfc;
+  padding: 10px 12px;
+}
+
+.demo__viewport + .demo__stage {
+  border-radius: 0 0 8px 8px;
+}
+
+.demo__viewport-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+
+  + .demo__viewport-row {
+    margin-top: 8px;
+  }
+}
+
+.demo__viewport-title {
+  color: $demo-muted;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.demo__viewport-spacer {
+  flex: 1;
+}
+
+.demo__slider {
+  flex: 1;
+  max-width: 320px;
+}
+
+.demo__viewport-value {
+  color: $demo-ink;
+  font-family: $demo-code;
+  font-size: 12px;
+  min-width: 56px;
+}
+
+.demo__preset,
+.demo__chip {
+  background: #fff;
+  border: 1px solid $demo-line;
+  border-radius: 999px;
+  color: $demo-ink;
+  cursor: pointer;
+  font-family: $demo-code;
+  font-size: 11.5px;
+  padding: 4px 10px;
+
+  &:hover {
+    border-color: $demo-accent;
+    color: $demo-accent;
+  }
+}
+
+.demo__preset--on {
+  background: $demo-accent;
+  border-color: $demo-accent;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.demo__range {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: $demo-muted;
+  font-family: $demo-code;
+  font-size: 11px;
+  padding: 2px 6px;
+}
+
+.demo__range--on {
+  background: #eaf2fd;
+  border-color: #bcd4f4;
+  color: $demo-accent;
+  font-weight: 600;
+}
+
+.demo__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.demo__chip {
+  align-items: baseline;
+  display: inline-flex;
+  gap: 6px;
+  text-align: left;
+}
+
+.demo__chip-label {
+  color: $demo-muted;
+  font-family: inherit;
+  font-style: italic;
+}
+
+.demo__chip-tag {
+  color: #9c27b0;
+}
+
+.demo__chip-attr {
+  color: $demo-muted;
+
+  em {
+    color: #0d904f;
+    font-style: normal;
+  }
+}
+
+/**
+ * Compact labelled swatch used by the galleries.
+ */
+.demo-variant__labels {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.demo-variant__caption {
+  color: $demo-muted;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.demo-variant__label {
+  background: #f2f4f7;
+  border-radius: 4px;
+  color: #0d904f;
+  font-family: $demo-code;
+  font-size: 11.5px;
+  padding: 2px 6px;
+}
+
+.demo-variant__label--attr {
+  color: #b0761f;
+}
+
+.demo-variant__stage {
+  border: 1px dashed #d8dde4;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+/* Lets the inspected target inherit the stage's fixed height. */
+.demo-variant__stage--fill {
+  align-items: stretch;
+  box-sizing: border-box;
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
+
+/**
+ * Neutral filler used inside layout demos: visible edges, no opinions about spacing.
+ */
+.demo-box {
+  align-items: center;
+  background: #eaf2fd;
+  border: 1px solid #bcd4f4;
+  border-radius: 4px;
+  color: #2f6fd0;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  min-height: 32px;
+  min-width: 48px;
+  padding: 6px 10px;
+}
+
+.demo-box--tall {
+  min-height: 64px;
+}
+
+.demo-box--taller {
+  min-height: 96px;
+}
+
+.demo-box--wide {
+  min-width: 120px;
+}
+
+.demo-box--accent {
+  background: #fdf0e6;
+  border-color: #f2cba6;
+  color: #b0761f;
+}
+
+/* Sized parent for `.overflow-shadow`, which is itself height: 100%. */
+.demo-scroll {
+  height: 180px;
+  max-width: 460px;
+}
+
+.demo-note {
+  border-left: 3px solid #f2cba6;
+  background: #fffaf3;
+  color: #6b5636;
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin: 12px 0;
+  padding: 8px 12px;
+
+  code {
+    background: #f6ecdf;
+    border-radius: 3px;
+    font-family: $demo-code;
+    font-size: 11.5px;
+    padding: 1px 4px;
+  }
+}
+
+.demo-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.demo-swatch {
+  align-items: center;
+  border: 1px solid $demo-line;
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+}
+
+.demo-swatch__chip {
+  border: 1px solid rgb(0 0 0 / 12%);
+  border-radius: 5px;
+  flex: none;
+  height: 34px;
+  width: 34px;
+}
+
+.demo-swatch__body {
+  min-width: 0;
+}
+
+.demo-swatch__name {
+  color: $demo-ink;
+  font-family: $demo-code;
+  font-size: 11.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-swatch__value {
+  color: $demo-muted;
+  font-family: $demo-code;
+  font-size: 11px;
+}
+
+.demo-swatch__unused {
+  color: #b0761f;
+  font-size: 10px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.demo-table {
+  border-collapse: collapse;
+  font-size: 12.5px;
+  width: 100%;
+
+  th,
+  td {
+    border-bottom: 1px solid $demo-line;
+    padding: 7px 10px;
+    text-align: left;
+  }
+
+  th {
+    color: $demo-muted;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  code {
+    color: #0d904f;
+    font-family: $demo-code;
+    font-size: 11.5px;
+  }
+}
+
+.demo-table__on td {
+  background: #f2f9f4;
+}

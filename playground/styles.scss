@@ -1,14 +1,15 @@
+// Left configured on purpose: the token gallery calls this out as a live example of the
+// `!default` overrides a consuming app can make. Heading margins are deliberately NOT overridden
+// here, so the heading examples show the library's real spacing.
 @use '../src/variables' with (
   $small-font-size: .6875rem,
-  $h1-margin-top: 0px,
-  $h2-margin-top: 0px,
-  $h3-margin-top: 0px,
 );
 
 @use '../src/styles' as fs-style;
 @use "@firestitch/component-tools/assets/playground.scss";
 @use "@firestitch/message/styles";
 @use "@firestitch/drawer/styles" as fs-drawer;
+@use 'demo-theme';
 
 @include fs-style.core();
 @include fs-drawer.fs-drawer(playground.$primary-palette);

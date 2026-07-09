@@ -1,0 +1,73 @@
+<div class="demo-note">
+  Every layout class uses the same five steps for spacing. <code>.gap-*</code> spaces children in
+  both directions. When you want to control one direction only, reach for
+  <code>.row-gap-*</code> or <code>.column-gap-*</code> instead.
+</div>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Space</th>
+      <th>Both directions</th>
+      <th>Between lines only</th>
+      <th>Between items on a line only</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (size of sizes; track size.name) {
+      <tr>
+        <td><code>{{ size.name }}</code></td>
+        <td>{{ size.value }}</td>
+        <td><code>.gap-{{ size.name }}</code></td>
+        <td><code>.row-gap-{{ size.name }}</code></td>
+        <td><code>.column-gap-{{ size.name }}</code></td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="demo-note">
+  The names describe the <em>gap</em>, not the direction of the layout. On a wrapping row,
+  <code>.row-gap-*</code> is the space between the rows of items (vertical), and
+  <code>.column-gap-*</code> is the space between the items in a row (horizontal). The three
+  galleries below use identical markup.
+</div>
+
+<fs-demo caption="Both directions — .gap-*">
+  @for (size of sizes; track size.name) {
+    <fs-variant [classes]="'fs-row.wrap.gap-' + size.name">
+      @for (item of items; track item) {
+        <div class="demo-box demo-box--wide">{{ item }}</div>
+      }
+    </fs-variant>
+  }
+</fs-demo>
+
+<fs-demo caption="Between lines only — .row-gap-*" description="Lines are pushed apart, items on a line stay touching.">
+  @for (size of sizes; track size.name) {
+    <fs-variant [classes]="'fs-row.wrap.row-gap-' + size.name">
+      @for (item of items; track item) {
+        <div class="demo-box demo-box--wide">{{ item }}</div>
+      }
+    </fs-variant>
+  }
+</fs-demo>
+
+<fs-demo caption="Between items on a line only — .column-gap-*" description="Items on a line are pushed apart, the lines stay touching.">
+  @for (size of sizes; track size.name) {
+    <fs-variant [classes]="'fs-row.wrap.column-gap-' + size.name">
+      @for (item of items; track item) {
+        <div class="demo-box demo-box--wide">{{ item }}</div>
+      }
+    </fs-variant>
+  }
+</fs-demo>
+
+<fs-demo caption="Mixing the two" description="Chain them to be tight in one direction and loose in the other.">
+  <fs-variant classes="fs-row.wrap.column-gap-xs.row-gap-lg">
+    @for (item of items; track item) {
+      <div class="demo-box demo-box--wide">{{ item }}</div>
+    }
+  </fs-variant>
+</fs-demo>

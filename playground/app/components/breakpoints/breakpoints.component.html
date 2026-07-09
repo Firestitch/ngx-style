@@ -1,0 +1,29 @@
+<div class="demo-note">
+  Your browser window is currently <code>{{ width }}px</code> wide. Resize it and the
+  <em>Active</em> column updates live — the highlighted rows are the responsive attributes that
+  would be taking effect right now.
+</div>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Applies when the screen is</th>
+      <th>Active now</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.attribute) {
+      <tr [class.demo-table__on]="row.active">
+        <td><code>{{ row.attribute }}</code></td>
+        <td>{{ row.when }}</td>
+        <td>{{ row.active ? 'yes' : 'no' }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="demo-note">
+  The asymmetry catches people out: <code>fs.lt-sm</code> <strong>includes</strong> 1023px, and
+  <code>fs.gt-sm</code> starts at 1024px. Exactly one of any lt/gt pair is active at any width.
+</div>

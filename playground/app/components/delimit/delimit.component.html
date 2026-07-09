@@ -1,0 +1,50 @@
+<div class="demo-note">
+  Puts a separator between children automatically — no separator markup in your template, and
+  nothing to tidy up when the list is empty or has a single item.
+</div>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>fs-delimit</code></td><td>A comma and a space between children</td></tr>
+    <tr><td><code>fs-delimit.middot</code></td><td>A middot between children</td></tr>
+  </tbody>
+</table>
+
+<fs-demo caption="Comma separated">
+  <div class="fs-delimit" fsInspect="container">
+    @for (item of items; track item.name) {
+      <span>{{ item.name }}</span>
+    }
+  </div>
+</fs-demo>
+
+<fs-demo caption="Middot separated">
+  <div class="fs-delimit.middot" fsInspect="container">
+    @for (item of items; track item.name) {
+      <span>{{ item.name }}</span>
+    }
+  </div>
+</fs-demo>
+
+<fs-demo
+    caption="Children line up automatically"
+    description="Even block level children like divs sit on one line — you do not have to change them.">
+  <div class="fs-delimit" fsInspect="container">
+    <div>Divs</div>
+    <div>sit</div>
+    <div>inline</div>
+  </div>
+</fs-demo>
+
+<div class="demo-note">
+  Two things to know. <code>fs-delimit</code> only works on a <code>div</code> — stricter than
+  <code>fs-row</code> and <code>fs-column</code>, which also accept a <code>span</code>. And the
+  separator is decoration rather than real text — it will not always come along when a user copies
+  the list, and screen readers may skip it.
+</div>

@@ -1,75 +1,95 @@
-<div class="fs-row.gap-lg.wrap">
-  <ng-container
-    [ngTemplateOutlet]="fields"
-    [ngTemplateOutletContext]="{ appearance: 'fill', class: 'row outline', name: 'Fill' }">
-  </ng-container>
-  <ng-container
-    [ngTemplateOutlet]="fields"
-    [ngTemplateOutletContext]="{ appearance: 'outline', class: 'row', name: 'Outline' }">
-  </ng-container>
+<div class="demo-note">
+  Angular Material reserves a strip of space under every form field for hint and error text, whether
+  or not there is any. These classes reshape that strip so fields line up the way you want.
 </div>
-<ng-template
-    let-appearance="appearance"
-    let-name="name"
-    let-class="class"
-    #fields>
-  <div class="fs-column">
-    <h2>
-      {{ name }}
-    </h2>
-    <div [class]="class">
-      <mat-form-field [appearance]="appearance">
-        <mat-label>
-          Default Form Field
-        </mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="fs-row.gap-sm.align-start">
-      <div [class]="class">
-        <mat-form-field
-            class="form-field-padless"
-            [appearance]="appearance">
-          <input
-            matInput
-            [placeholder]="'Padless Form Field'">
-        </mat-form-field>
-      </div>
-      <div [class]="class">
-        <mat-form-field
-            class="form-field-padless"
-            [appearance]="appearance">
-          <input
-            matInput
-            [placeholder]="'Padless Form Field (with hint)'">
-          <mat-hint>
-            This hint lives in the collapsed subscript
-          </mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
-    <div [class]="class">
-      <mat-form-field
-          [appearance]="appearance"
-          class="form-field-s">
-        <mat-label>
-          Multi-line Subscript Form Field
-        </mat-label>
-        <input matInput>
-        <mat-hint>
-          Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
-        </mat-hint>
-      </mat-form-field>
-    </div>
-    <div class="lineless">
-      <mat-form-field
-          class="form-field-lineless"
-          [appearance]="appearance">
-        <mat-label>
-          Lineless Form Field
-        </mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
+
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>form-field-padless</code></td><td>Removes the reserved space under the field</td></tr>
+    <tr><td><code>form-field-padless-bottom</code></td><td>The same thing, under a different name</td></tr>
+    <tr><td><code>form-field-lineless</code></td><td>Hides the outline until the field is focused</td></tr>
+    <tr><td><code>full-width</code></td><td>Stretches the field to its container</td></tr>
+  </tbody>
+</table>
+
+<fs-demo
+    caption="The reserved space"
+    description="Both fields are the same height, even though only one has a hint. That is what the reserved strip buys you — fields side by side stay aligned.">
+  <div class="fs-row.gap-md.align-start">
+    <mat-form-field appearance="outline" fsInspect="no hint">
+      <mat-label>No hint</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>With hint</mat-label>
+      <input matInput>
+      <mat-hint>The reserved space is now used</mat-hint>
+    </mat-form-field>
   </div>
-</ng-template>
+</fs-demo>
+
+@for (appearance of appearances; track appearance) {
+  <fs-demo
+      [caption]="'form-field-padless — ' + appearance"
+      description="Use it when the field stands alone and nothing needs to line up beneath it. A hint still renders if you add one.">
+    <div class="fs-row.gap-md.align-start">
+      <mat-form-field [appearance]="appearance" fsInspect="default">
+        <mat-label>Default</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field-padless" [appearance]="appearance" fsInspect="padless">
+        <mat-label>Padless</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field-padless" [appearance]="appearance" fsInspect="padless + hint">
+        <mat-label>Padless with hint</mat-label>
+        <input matInput>
+        <mat-hint>Hint still renders</mat-hint>
+      </mat-form-field>
+    </div>
+  </fs-demo>
+}
+
+<div class="demo-note">
+  <code>form-field-padless</code> and <code>form-field-padless-bottom</code> do exactly the same
+  thing. Two names, one behaviour — pick whichever reads better where you use it.
+</div>
+
+<fs-demo
+    caption="form-field-lineless"
+    description="Click into the field and the outline appears. Hiding the outline needs the outline appearance — on a fill field the underline stays put. Long values are cut off with an ellipsis either way.">
+  <div class="fs-row.gap-md.align-start">
+    <mat-form-field class="form-field-lineless" appearance="outline" fsInspect="outline — outline hidden">
+      <mat-label>Click to focus</mat-label>
+      <input matInput value="A rather long value that will be ellipsised">
+    </mat-form-field>
+
+    <mat-form-field class="form-field-lineless" appearance="fill" fsInspect="fill — underline stays">
+      <mat-label>Fill appearance</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+</fs-demo>
+
+<fs-demo
+    caption="full-width"
+    description="Combine with fs-row and fs-flex to build a form that fills the space it is given.">
+  <mat-form-field class="full-width" appearance="outline" fsInspect>
+    <mat-label>Full width</mat-label>
+    <input matInput>
+  </mat-form-field>
+</fs-demo>
+
+<div class="demo-note">
+  <code>form-field-grow</code> is also exported, but it was written for a much older version of
+  Angular Material and does nothing today. Do not reach for it.
+</div>

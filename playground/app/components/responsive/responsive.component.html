@@ -1,93 +1,141 @@
+<div class="demo-note">
+  To change a layout at a screen size, add a second attribute next to <code>class</code>. It takes
+  exactly the same class name you would have written, and applies it only at that size.
+  Drag the <em>Screen width</em> slider on the stages below — they are real, resizable screens.
+</div>
 
-  <h3>Responsive <= X-Small</h3>
-  <div class="fs-row.gap-lg" fs.lt-xs="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>Applies when the screen is</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>fs.lt-xs="…"</code></td><td>599px wide or narrower</td></tr>
+    <tr><td><code>fs.lt-sm="…"</code></td><td>1023px wide or narrower</td></tr>
+    <tr><td><code>fs.lt-md="…"</code></td><td>1439px wide or narrower</td></tr>
+    <tr><td><code>fs.lt-lg="…"</code></td><td>1919px wide or narrower</td></tr>
+    <tr><td><code>fs.gt-xs="…"</code></td><td>600px wide or wider</td></tr>
+    <tr><td><code>fs.gt-sm="…"</code></td><td>1024px wide or wider</td></tr>
+    <tr><td><code>fs.gt-md="…"</code></td><td>1440px wide or wider</td></tr>
+    <tr><td><code>fs.gt-lg="…"</code></td><td>1920px wide or wider</td></tr>
+  </tbody>
+</table>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
+<fs-demo
+    caption="A row that becomes a column on small screens"
+    description="class describes the default. fs.lt-sm describes what to do at 1023px and below. Drag the slider past 1024 and back."
+    viewport
+    [width]="900">
+  <div class="fs-row.gap-md" fs.lt-sm="fs-column.gap-none" fsInspect="container">
+    <div class="demo-box demo-box--wide">1</div>
+    <div class="demo-box demo-box--wide">2</div>
+    <div class="demo-box demo-box--wide">3</div>
   </div>
+</fs-demo>
 
-  <h3>Responsive <= Small</h3>
-  <div class="fs-row.gap-lg" fs.lt-sm="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
+<div class="demo-note">
+  <strong>lt</strong> means <em>at or below</em> that size, <strong>gt</strong> means
+  <em>above</em> it. So <code>fs.lt-sm</code> and <code>fs.gt-sm</code> between them cover every
+  screen width, with no gap and no overlap.
+</div>
 
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
+<div class="demo-note">
+  Worth knowing: only the things you name in the responsive attribute change. Above, the row centres
+  its children, and that centring carries over when it becomes a column — which is why the boxes
+  sit in the middle rather than stretching. Name an alignment in the attribute too
+  (<code>fs.lt-sm="fs-column.gap-none.align-normal"</code>) if you want them to stretch.
+</div>
+
+<fs-demo
+    caption="Every breakpoint attribute"
+    description="Identical markup, one row per attribute. Each starts as a row and flips to a column when its own attribute takes over."
+    viewport
+    [width]="900">
+  <div class="fs-column.gap-md">
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.lt-xs</code>
+      <div class="fs-row.gap-md" fs.lt-xs="fs-column.gap-none">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.lt-sm</code>
+      <div class="fs-row.gap-md" fs.lt-sm="fs-column.gap-none">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.lt-md</code>
+      <div class="fs-row.gap-md" fs.lt-md="fs-column.gap-none">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.lt-lg</code>
+      <div class="fs-row.gap-md" fs.lt-lg="fs-column.gap-none">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.gt-xs</code>
+      <div class="fs-column.gap-none" fs.gt-xs="fs-row.gap-md">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.gt-sm</code>
+      <div class="fs-column.gap-none" fs.gt-sm="fs-row.gap-md">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.gt-md</code>
+      <div class="fs-column.gap-none" fs.gt-md="fs-row.gap-md">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
+
+    <div>
+      <code class="demo-variant__label demo-variant__label--attr">fs.gt-lg</code>
+      <div class="fs-column.gap-none" fs.gt-lg="fs-row.gap-md">
+        <div class="demo-box demo-box--wide">1</div>
+        <div class="demo-box demo-box--wide">2</div>
+      </div>
+    </div>
   </div>
+</fs-demo>
 
-  <h3>Responsive <= Medium</h3>
-  <div class="fs-row.gap-lg" fs.lt-md="fs-column.gap-none">
-    <fs-label-field>
-      <fs-label>Column</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
+<fs-demo
+    caption="Gap, align and justify are responsive too"
+    description="The attribute takes the whole class name, so anything you can chain onto fs-row you can chain here."
+    viewport
+    [width]="900">
+  <div
+      class="fs-row.gap-lg.justify-between.align-center"
+      fs.lt-sm="fs-column.gap-xs.align-start"
+      fsInspect="container">
+    <div class="demo-box">start</div>
+    <div class="demo-box demo-box--tall">middle</div>
+    <div class="demo-box">end</div>
   </div>
-  
+</fs-demo>
 
-  <h3>Responsive > X-Small</h3>
-  <div class="fs-column" fs.gt-xs="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive > Small</h3>
-  <div class="fs-column" fs.gt-sm="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive > Medium</h3>
-  <div class="fs-column" fs.gt-md="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-
-  <h3>Responsive > Large</h3>
-  <div class="fs-column" fs.gt-lg="fs-row.gap-large">
-    <fs-label-field>
-      <fs-label>Column1</fs-label>
-      100
-    </fs-label-field>
-
-    <fs-label-field>
-      <fs-label>Column2</fs-label>
-      100
-    </fs-label-field>
-  </div>
-  
+<div class="demo-note">
+  Same gotcha as the classes: these attributes only work on a <code>div</code> or a
+  <code>span</code>.
+</div>

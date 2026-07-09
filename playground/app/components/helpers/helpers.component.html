@@ -1,38 +1,55 @@
-<h3>100% Full width Form Field</h3>
+<table class="demo-table">
+  <thead>
+    <tr>
+      <th>Write this</th>
+      <th>To get this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>full-width</code></td><td>Stretches the element to the full width of its container</td></tr>
+    <tr><td><code>fs-flex</code></td><td>On a child of a row or column: grows to fill the leftover space</td></tr>
+    <tr><td><code>overflow-shadow</code></td><td>Makes a scrolling box, with a soft shadow at whichever edge has more content</td></tr>
+  </tbody>
+</table>
 
-<mat-form-field class="full-width">
-  <input matInput placeholder="100% Full Width">
-</mat-form-field>
-
-<h3>Multi Column Form Field</h3>
-
-<div class="fs-row.form-field">
-  <mat-form-field>
-    <input matInput placeholder="Multi column Form Field">
+<fs-demo
+    caption="full-width"
+    description="Most often used on a mat-form-field, which is only as wide as its content by default.">
+  <mat-form-field class="full-width" fsInspect="stretched">
+    <mat-label>Full width</mat-label>
+    <input matInput>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Multi column Form Field">
+  <mat-form-field fsInspect="default width">
+    <mat-label>Default</mat-label>
+    <input matInput>
   </mat-form-field>
+</fs-demo>
 
-  <mat-form-field>
-    <input matInput placeholder="Multi column Form Field">
-  </mat-form-field>
-</div>
-
-<div>
-  <fs-label>Overflow Shadow</fs-label>
-  <div class="overflow-shadow">
-    Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
-    <br>
-    Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
-    <br>
-    Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
-    <br>
-    Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
-    <br>
-    Pellentesque maximus magna id gravida posuere. Fusce odio nulla, porta ut feugiat ut, posuere non eros. Mauris purus nunc, gravida sed ipsum quis, tincidunt rutrum mauris. In a nisl scelerisque, iaculis felis cursus, dictum mi. Curabitur sagittis lorem vel euismod efficitur. Etiam aliquet magna diam, at consectetur nisi pharetra sit amet. Nunc hendrerit sapien orci, in pretium elit efficitur vitae. Sed eros enim, varius euismod scelerisque faucibus, hendrerit a lacus.
+<fs-demo
+    caption="fs-flex"
+    description="The fixed children keep their size, the fs-flex child takes everything that is left.">
+  <div class="fs-row.gap-sm">
+    <div class="demo-box">fixed</div>
+    <div class="demo-box demo-box--accent fs-flex" fsInspect="grows">fs-flex</div>
+    <div class="demo-box">fixed</div>
   </div>
+</fs-demo>
+
+<fs-demo
+    caption="overflow-shadow"
+    description="Scroll the box. A shadow appears at the top or bottom edge whenever there is more content that way, and fades out when you reach the end.">
+  <!-- overflow-shadow fills its parent, so give it a parent with a height. -->
+  <div class="demo-scroll">
+    <div class="overflow-shadow" fsInspect="scroll box">
+      @for (line of lines; track line) {
+        <p>{{ line }}. {{ paragraph }}</p>
+      }
+    </div>
+  </div>
+</fs-demo>
+
+<div class="demo-note">
+  <code>overflow-shadow</code> fills the height of whatever contains it, so put it inside an element
+  that has a height. It also assumes a white background — the fade is painted in white.
 </div>
-
-
