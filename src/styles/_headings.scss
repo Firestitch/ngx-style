@@ -89,24 +89,25 @@
     }
   }
 
+  // `[class*='.top']` substring-matches `.top-none`, so `.top-none` must be excluded here
+  h1[class*='fs-heading'][class*='.top']:not([class*='.top-none']) {
+    margin-top: variables.$h1-margin-top;
+  }
+
+  h2[class*='fs-heading'][class*='.top']:not([class*='.top-none']) {
+    margin-top: variables.$h2-margin-top;
+  }
+
+  h3[class*='fs-heading'][class*='.top']:not([class*='.top-none']) {
+    margin-top: variables.$h3-margin-top;
+  }
+
   h1, h2, h3 {
     &[class*='fs-heading'] {
       &[class*='.top-none'] {
         margin-top: 0px;
       }
     }
-  }
-
-  h1[class*='fs-heading'][class*='.top'] {
-    margin-top: variables.$h1-margin-top;
-  }
-
-  h2[class*='fs-heading'][class*='.top'] {
-    margin-top: variables.$h2-margin-top;
-  }
-
-  h3[class*='fs-heading'][class*='.top'] {
-    margin-top: variables.$h3-margin-top;
   }
 }
 
