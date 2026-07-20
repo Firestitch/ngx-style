@@ -40,8 +40,8 @@
   // outlined MDC tokens, so hover/focus/error/disabled states track the
   // project's outline theme exactly.
   .mat-mdc-form-field.mat-form-field-appearance-fill {
-    --mdc-filled-text-field-container-color: transparent;
-    --mdc-filled-text-field-disabled-container-color: transparent;
+    --mdc-filled-text-field-container-color: white;
+    --mdc-filled-text-field-disabled-container-color: #F5F5F5;
 
     .mat-mdc-text-field-wrapper {
       border: 1px solid var(--mdc-outlined-text-field-outline-color, rgba(0, 0, 0, 0.38));
