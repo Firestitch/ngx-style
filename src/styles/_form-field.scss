@@ -66,11 +66,17 @@
       }
     }
 
-    // Outline's focused border is 2px; the inset shadow adds the second
-    // pixel so the field doesn't reflow
+    // Outline's focused border is 2px. Drawing it as a CSS outline with a
+    // matching negative offset lays the 2px band flush *inside* the wrapper's
+    // resting edge — outlines never occupy layout space, so the field keeps
+    // the exact same width, height and position focused or not, and nothing
+    // around it moves. The 1px border underneath is painted over by the
+    // outline; it stays set to the focus color so the corner arcs still read
+    // correctly if a browser rounds the outline radius differently.
     &.mat-focused .mat-mdc-text-field-wrapper {
       border-color: var(--mdc-outlined-text-field-focus-outline-color, var(--mat-form-field-outlined-focus-outline-color));
-      box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-focus-outline-color, var(--mat-form-field-outlined-focus-outline-color));
+      outline: 2px solid var(--mdc-outlined-text-field-focus-outline-color, var(--mat-form-field-outlined-focus-outline-color));
+      outline-offset: -2px;
     }
 
     &.mat-form-field-invalid {
@@ -84,7 +90,7 @@
 
       &.mat-focused .mat-mdc-text-field-wrapper {
         border-color: var(--mdc-outlined-text-field-error-focus-outline-color, var(--mat-form-field-outlined-error-focus-outline-color));
-        box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-error-focus-outline-color, var(--mat-form-field-outlined-error-focus-outline-color));
+        outline-color: var(--mdc-outlined-text-field-error-focus-outline-color, var(--mat-form-field-outlined-error-focus-outline-color));
       }
     }
 
