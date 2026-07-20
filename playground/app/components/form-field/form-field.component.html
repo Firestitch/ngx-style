@@ -47,7 +47,7 @@
     <tr>
       <td>
         <code>
-          form-field-lineless-active
+          form-field-lineless-always
         </code>
       </td>
       <td>
@@ -189,7 +189,7 @@
 </div>
 <fs-demo
     caption="form-field-lineless"
-    description="Hovering previews the border and clicking into the field shows it. Toggle form-field-lineless-active on fields whose overlay panels steal focus mid-interaction (autocomplete chips in a drawer) — while it is set, the line stays visible even without focus. Long values are cut off with an ellipsis either way.">
+    description="Hovering previews the border and clicking into the field shows it. Toggle form-field-lineless-always on fields whose overlay panels steal focus mid-interaction (autocomplete chips in a drawer) — while it is set, the line stays visible even without focus. Long values are cut off with an ellipsis either way.">
   <div class="fs-row.gap-md.align-start">
     <mat-form-field
         class="form-field-lineless"
@@ -214,9 +214,9 @@
         value="Also a rather long ellipsised value">
     </mat-form-field>
     <mat-form-field
-        class="form-field-lineless form-field-lineless-active"
+        class="form-field-lineless form-field-lineless-always"
         appearance="fill"
-        fsInspect="fill — lineless-active">
+        fsInspect="fill — lineless-always">
       <mat-label>
         Lineless always
       </mat-label>

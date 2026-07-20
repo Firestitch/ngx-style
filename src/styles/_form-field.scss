@@ -106,11 +106,11 @@
 
   // Lineless hides the border only at rest — hovering or focusing falls
   // through to the native Material hover/focus styling. Adding
-  // form-field-lineless-active suspends the hiding so the line stays
+  // form-field-lineless-always suspends the hiding so the line stays
   // visible even without focus — toggle it on fields whose overlay panels
   // steal focus mid-interaction (autocomplete chips in a drawer) so the
   // line doesn't drop out while the panel is open.
-  .form-field-lineless:not(.mat-focused):not(.form-field-lineless-active):not(:hover) {
+  .form-field-lineless:not(.mat-focused):not(.form-field-lineless-always):not(:hover) {
     // !important: Material injects its component styles after this sheet,
     // and its invalid/disabled border selectors out-rank anything
     // reasonable here. At rest the lineless contract — no line — must
