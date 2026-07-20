@@ -39,13 +39,17 @@
   // a border instead of the gray tint + underline. Colors come from the
   // outlined MDC tokens, so hover/focus/error/disabled states track the
   // project's outline theme exactly.
+  // Tokens are set/read under both the v18/v19 --mdc-* names and the
+  // v20+ --mat-form-field-* names so consumers on Material 18-22 all work.
   .mat-mdc-form-field.mat-form-field-appearance-fill {
     --mdc-filled-text-field-container-color: white;
     --mdc-filled-text-field-disabled-container-color: #F5F5F5;
+    --mat-form-field-filled-container-color: white;
+    --mat-form-field-filled-disabled-container-color: #F5F5F5;
 
     .mat-mdc-text-field-wrapper {
-      border: 1px solid var(--mdc-outlined-text-field-outline-color, rgba(0, 0, 0, 0.38));
-      border-radius: var(--mdc-outlined-text-field-container-shape, 4px);
+      border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-form-field-outlined-outline-color, rgba(0, 0, 0, 0.38)));
+      border-radius: var(--mdc-outlined-text-field-container-shape, var(--mat-form-field-outlined-container-shape, 4px));
     }
 
     .mdc-line-ripple {
@@ -58,34 +62,34 @@
 
     &:hover:not(.mat-focused):not(.mat-form-field-invalid):not(.mat-form-field-disabled) {
       .mat-mdc-text-field-wrapper {
-        border-color: var(--mdc-outlined-text-field-hover-outline-color, rgba(0, 0, 0, 0.87));
+        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, rgba(0, 0, 0, 0.87)));
       }
     }
 
     // Outline's focused border is 2px; the inset shadow adds the second
     // pixel so the field doesn't reflow
     &.mat-focused .mat-mdc-text-field-wrapper {
-      border-color: var(--mdc-outlined-text-field-focus-outline-color);
-      box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-focus-outline-color);
+      border-color: var(--mdc-outlined-text-field-focus-outline-color, var(--mat-form-field-outlined-focus-outline-color));
+      box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-focus-outline-color, var(--mat-form-field-outlined-focus-outline-color));
     }
 
     &.mat-form-field-invalid {
       .mat-mdc-text-field-wrapper {
-        border-color: var(--mdc-outlined-text-field-error-outline-color);
+        border-color: var(--mdc-outlined-text-field-error-outline-color, var(--mat-form-field-outlined-error-outline-color));
       }
 
       &:hover:not(.mat-focused) .mat-mdc-text-field-wrapper {
-        border-color: var(--mdc-outlined-text-field-error-hover-outline-color);
+        border-color: var(--mdc-outlined-text-field-error-hover-outline-color, var(--mat-form-field-outlined-error-hover-outline-color));
       }
 
       &.mat-focused .mat-mdc-text-field-wrapper {
-        border-color: var(--mdc-outlined-text-field-error-focus-outline-color);
-        box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-error-focus-outline-color);
+        border-color: var(--mdc-outlined-text-field-error-focus-outline-color, var(--mat-form-field-outlined-error-focus-outline-color));
+        box-shadow: inset 0 0 0 1px var(--mdc-outlined-text-field-error-focus-outline-color, var(--mat-form-field-outlined-error-focus-outline-color));
       }
     }
 
     &.mat-form-field-disabled .mat-mdc-text-field-wrapper {
-      border-color: var(--mdc-outlined-text-field-disabled-outline-color, rgba(0, 0, 0, 0.06));
+      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, rgba(0, 0, 0, 0.06)));
     }
   }
 
