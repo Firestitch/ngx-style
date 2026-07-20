@@ -104,17 +104,23 @@
     }
   }
 
-  .form-field-lineless:not(.mat-focused) {
+  // Lineless hides the border only at rest — hovering or focusing falls
+  // through to the native Material hover/focus styling. Adding
+  // form-field-lineless-active suspends the hiding so the line stays
+  // visible even without focus — toggle it on fields whose overlay panels
+  // steal focus mid-interaction (autocomplete chips in a drawer) so the
+  // line doesn't drop out while the panel is open.
+  .form-field-lineless:not(.mat-focused):not(.form-field-lineless-active):not(:hover) {
     // !important: Material injects its component styles after this sheet,
-    // and its hover/invalid border selectors out-rank anything reasonable
-    // here. The lineless contract — no line until focused — must always win;
-    // focus still shows the border because of the :not(.mat-focused) above.
+    // and its invalid/disabled border selectors out-rank anything
+    // reasonable here. At rest the lineless contract — no line — must
+    // always win.
     .mdc-text-field--outlined .mat-mdc-notch-piece {
       border-color: transparent !important;
     }
 
     // Fill renders its outline-style border on the wrapper (see the fill
-    // block above); hide it and the container tint until focus
+    // block above); hide it and the container tint while at rest
     &.mat-form-field-appearance-fill {
       --mdc-filled-text-field-container-color: transparent;
       --mat-form-field-filled-container-color: transparent;
@@ -123,9 +129,9 @@
         border-color: transparent !important;
       }
     }
+  }
 
-    input {
-      text-overflow: ellipsis;
-    }
+  .form-field-lineless input {
+    text-overflow: ellipsis;
   }
 }

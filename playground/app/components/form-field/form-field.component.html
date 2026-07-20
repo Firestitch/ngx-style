@@ -2,121 +2,247 @@
   Angular Material reserves a strip of space under every form field for hint and error text, whether
   or not there is any. These classes reshape that strip so fields line up the way you want.
 </div>
-
 <table class="demo-table">
   <thead>
     <tr>
-      <th>Write this</th>
-      <th>To get this</th>
+      <th>
+        Write this
+      </th>
+      <th>
+        To get this
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr><td><code>form-field-padless</code></td><td>Removes the reserved space under the field</td></tr>
-    <tr><td><code>form-field-padless-bottom</code></td><td>The same thing, under a different name</td></tr>
-    <tr><td><code>form-field-lineless</code></td><td>Hides the outline until the field is focused</td></tr>
-    <tr><td><code>full-width</code></td><td>Stretches the field to its container</td></tr>
+    <tr>
+      <td>
+        <code>
+          form-field-padless
+        </code>
+      </td>
+      <td>
+        Removes the reserved space under the field
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          form-field-padless-bottom
+        </code>
+      </td>
+      <td>
+        The same thing, under a different name
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          form-field-lineless
+        </code>
+      </td>
+      <td>
+        Hides the outline until the field is hovered or focused
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          form-field-lineless-active
+        </code>
+      </td>
+      <td>
+        With lineless, keeps the line visible even without focus
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>
+          full-width
+        </code>
+      </td>
+      <td>
+        Stretches the field to its container
+      </td>
+    </tr>
   </tbody>
 </table>
-
 <fs-demo
     caption="The reserved space"
     description="Both fields are the same height, even though only one has a hint. That is what the reserved strip buys you — fields side by side stay aligned.">
   <div class="fs-row.gap-md.align-start">
-    <mat-form-field appearance="outline" fsInspect="no hint">
-      <mat-label>No hint</mat-label>
+    <mat-form-field
+        appearance="outline"
+        fsInspect="no hint">
+      <mat-label>
+        No hint
+      </mat-label>
       <input matInput>
     </mat-form-field>
-
     <mat-form-field appearance="outline">
-      <mat-label>With hint</mat-label>
+      <mat-label>
+        With hint
+      </mat-label>
       <input matInput>
-      <mat-hint>The reserved space is now used</mat-hint>
+      <mat-hint>
+        The reserved space is now used
+      </mat-hint>
     </mat-form-field>
   </div>
 </fs-demo>
-
 <fs-demo
     caption="Fill appearance looks like outline"
     description="The library restyles the fill appearance to match outline: border, hover, focus, error and disabled colors all come from the outline theme tokens. Only the label placement stays fill's — it floats inside the field instead of cutting a notch in the border.">
   <div class="fs-row.gap-md.align-start">
-    <mat-form-field appearance="fill" fsInspect="fill — styled as outline">
-      <mat-label>Fill appearance</mat-label>
-      <input matInput value="Label floats inside">
+    <mat-form-field
+        appearance="fill"
+        fsInspect="fill — styled as outline">
+      <mat-label>
+        Fill appearance
+      </mat-label>
+      <input
+        matInput
+        value="Label floats inside">
     </mat-form-field>
-
-    <mat-form-field appearance="outline" fsInspect="outline — for comparison">
-      <mat-label>Outline appearance</mat-label>
-      <input matInput value="Label cuts the border">
+    <mat-form-field
+        appearance="outline"
+        fsInspect="outline — for comparison">
+      <mat-label>
+        Outline appearance
+      </mat-label>
+      <input
+        matInput
+        value="Label cuts the border">
     </mat-form-field>
-
-    <mat-form-field appearance="fill" fsInspect="fill — invalid">
-      <mat-label>Invalid</mat-label>
-      <input matInput [formControl]="invalid">
-      <mat-error>This field is required</mat-error>
+    <mat-form-field
+        appearance="fill"
+        fsInspect="fill — invalid">
+      <mat-label>
+        Invalid
+      </mat-label>
+      <input
+        matInput
+        [formControl]="invalid">
+      <mat-error>
+        This field is required
+      </mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="fill" fsInspect="fill — disabled">
-      <mat-label>Disabled</mat-label>
-      <input matInput disabled value="Disabled">
+    <mat-form-field
+        appearance="fill"
+        fsInspect="fill — disabled">
+      <mat-label>
+        Disabled
+      </mat-label>
+      <input
+        matInput
+        disabled
+        value="Disabled">
     </mat-form-field>
   </div>
 </fs-demo>
-
 @for (appearance of appearances; track appearance) {
   <fs-demo
       [caption]="'form-field-padless — ' + appearance"
       description="Use it when the field stands alone and nothing needs to line up beneath it. A hint still renders if you add one.">
     <div class="fs-row.gap-md.align-start">
-      <mat-form-field [appearance]="appearance" fsInspect="default">
-        <mat-label>Default</mat-label>
+      <mat-form-field
+          [appearance]="appearance"
+          fsInspect="default">
+        <mat-label>
+          Default
+        </mat-label>
         <input matInput>
       </mat-form-field>
-
-      <mat-form-field class="form-field-padless" [appearance]="appearance" fsInspect="padless">
-        <mat-label>Padless</mat-label>
+      <mat-form-field
+          class="form-field-padless"
+          [appearance]="appearance"
+          fsInspect="padless">
+        <mat-label>
+          Padless
+        </mat-label>
         <input matInput>
       </mat-form-field>
-
-      <mat-form-field class="form-field-padless" [appearance]="appearance" fsInspect="padless + hint">
-        <mat-label>Padless with hint</mat-label>
+      <mat-form-field
+          class="form-field-padless"
+          [appearance]="appearance"
+          fsInspect="padless + hint">
+        <mat-label>
+          Padless with hint
+        </mat-label>
         <input matInput>
-        <mat-hint>Hint still renders</mat-hint>
+        <mat-hint>
+          Hint still renders
+        </mat-hint>
       </mat-form-field>
     </div>
   </fs-demo>
 }
-
 <div class="demo-note">
-  <code>form-field-padless</code> and <code>form-field-padless-bottom</code> do exactly the same
+  <code>
+    form-field-padless
+  </code>
+  and
+  <code>
+    form-field-padless-bottom
+  </code>
+  do exactly the same
   thing. Two names, one behaviour — pick whichever reads better where you use it.
 </div>
-
 <fs-demo
     caption="form-field-lineless"
-    description="Click into the field and the border appears. Works with both appearances. Long values are cut off with an ellipsis either way.">
+    description="Hovering previews the border and clicking into the field shows it. Toggle form-field-lineless-active on fields whose overlay panels steal focus mid-interaction (autocomplete chips in a drawer) — while it is set, the line stays visible even without focus. Long values are cut off with an ellipsis either way.">
   <div class="fs-row.gap-md.align-start">
-    <mat-form-field class="form-field-lineless" appearance="outline" fsInspect="outline — border hidden">
-      <mat-label>Click to focus</mat-label>
-      <input matInput value="A rather long value that will be ellipsised">
+    <mat-form-field
+        class="form-field-lineless"
+        appearance="outline"
+        fsInspect="outline — border hidden">
+      <mat-label>
+        Outline appearance
+      </mat-label>
+      <input
+        matInput
+        value="A rather long value that will be ellipsised">
     </mat-form-field>
-
-    <mat-form-field class="form-field-lineless" appearance="fill" fsInspect="fill — border hidden">
-      <mat-label>Fill appearance</mat-label>
-      <input matInput value="Also a rather long ellipsised value">
+    <mat-form-field
+        class="form-field-lineless"
+        appearance="fill"
+        fsInspect="fill — border hidden">
+      <mat-label>
+        Fill appearance
+      </mat-label>
+      <input
+        matInput
+        value="Also a rather long ellipsised value">
+    </mat-form-field>
+    <mat-form-field
+        class="form-field-lineless form-field-lineless-active"
+        appearance="fill"
+        fsInspect="fill — lineless-active">
+      <mat-label>
+        Lineless always
+      </mat-label>
+      <input
+        matInput
+        value="Line stays visible without focus">
     </mat-form-field>
   </div>
 </fs-demo>
-
 <fs-demo
     caption="full-width"
     description="Combine with fs-row and fs-flex to build a form that fills the space it is given.">
-  <mat-form-field class="full-width" appearance="outline" fsInspect>
-    <mat-label>Full width</mat-label>
+  <mat-form-field
+      class="full-width"
+      appearance="outline"
+      fsInspect>
+    <mat-label>
+      Full width
+    </mat-label>
     <input matInput>
   </mat-form-field>
 </fs-demo>
-
 <div class="demo-note">
-  <code>form-field-grow</code> is also exported, but it was written for a much older version of
+  <code>
+    form-field-grow
+  </code>
+  is also exported, but it was written for a much older version of
   Angular Material and does nothing today. Do not reach for it.
 </div>
