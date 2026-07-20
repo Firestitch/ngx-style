@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatHint, MatLabel, MatFormField } from '@angular/material/form-field';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatError, MatHint, MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
 import { FsDemoComponent, FsInspectDirective } from '../../demo';
@@ -10,9 +11,19 @@ import { FsDemoComponent, FsInspectDirective } from '../../demo';
   templateUrl: 'form-field.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatFormField, MatLabel, MatInput, MatHint, FsDemoComponent, FsInspectDirective],
+  imports: [
+    ReactiveFormsModule,
+    MatFormField, MatLabel, MatInput, MatHint, MatError,
+    FsDemoComponent, FsInspectDirective,
+  ],
 })
 export class FormFieldComponent {
 
   public readonly appearances: ('fill' | 'outline')[] = ['fill', 'outline'];
+
+  public readonly invalid = new FormControl('', Validators.required);
+
+  constructor() {
+    this.invalid.markAsTouched();
+  }
 }

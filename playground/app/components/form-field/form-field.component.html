@@ -35,6 +35,33 @@
   </div>
 </fs-demo>
 
+<fs-demo
+    caption="Fill appearance looks like outline"
+    description="The library restyles the fill appearance to match outline: border, hover, focus, error and disabled colors all come from the outline theme tokens. Only the label placement stays fill's — it floats inside the field instead of cutting a notch in the border.">
+  <div class="fs-row.gap-md.align-start">
+    <mat-form-field appearance="fill" fsInspect="fill — styled as outline">
+      <mat-label>Fill appearance</mat-label>
+      <input matInput value="Label floats inside">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fsInspect="outline — for comparison">
+      <mat-label>Outline appearance</mat-label>
+      <input matInput value="Label cuts the border">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fsInspect="fill — invalid">
+      <mat-label>Invalid</mat-label>
+      <input matInput [formControl]="invalid">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fsInspect="fill — disabled">
+      <mat-label>Disabled</mat-label>
+      <input matInput disabled value="Disabled">
+    </mat-form-field>
+  </div>
+</fs-demo>
+
 @for (appearance of appearances; track appearance) {
   <fs-demo
       [caption]="'form-field-padless — ' + appearance"
@@ -66,16 +93,16 @@
 
 <fs-demo
     caption="form-field-lineless"
-    description="Click into the field and the outline appears. Hiding the outline needs the outline appearance — on a fill field the underline stays put. Long values are cut off with an ellipsis either way.">
+    description="Click into the field and the border appears. Works with both appearances. Long values are cut off with an ellipsis either way.">
   <div class="fs-row.gap-md.align-start">
-    <mat-form-field class="form-field-lineless" appearance="outline" fsInspect="outline — outline hidden">
+    <mat-form-field class="form-field-lineless" appearance="outline" fsInspect="outline — border hidden">
       <mat-label>Click to focus</mat-label>
       <input matInput value="A rather long value that will be ellipsised">
     </mat-form-field>
 
-    <mat-form-field class="form-field-lineless" appearance="fill" fsInspect="fill — underline stays">
+    <mat-form-field class="form-field-lineless" appearance="fill" fsInspect="fill — border hidden">
       <mat-label>Fill appearance</mat-label>
-      <input matInput>
+      <input matInput value="Also a rather long ellipsised value">
     </mat-form-field>
   </div>
 </fs-demo>
