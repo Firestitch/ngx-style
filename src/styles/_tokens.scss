@@ -1,0 +1,66 @@
+// =============================================================================
+// THE SHARED COLOUR CONTRACT
+// =============================================================================
+// The names every @firestitch package reads instead of hardcoding a hex.
+//
+// WHY light-dark() AND NOT A THEME CLASS. These packages have to work unchanged
+// in two worlds at once: legacy apps on Material 2 and new apps on Material 3.
+// A class-based swap would mean every host app agreeing on the same class name
+// and setting it; light-dark() reads the `color-scheme` property, which is the
+// ONE mechanism both Material versions and the browser itself already honour.
+// A package that reads these names needs to know nothing about its host.
+//
+// THE HOST APP MUST DECLARE color-scheme. Without it the browser resolves every
+// light-dark() to its LIGHT value — the pair is not a detector, it is a picker,
+// and `color-scheme` is what it picks from:
+//
+//   :root      { color-scheme: dark; }
+//   .my-light  { color-scheme: light; }
+//
+// DECLARED, NOT DETECTED. Nothing here reads prefers-color-scheme. That media
+// query reports the DEVICE, and an app whose user chose Light on a dark phone
+// would then fight its own setting. Resolving the choice is the app's job; this
+// file only supplies the two values it picks between.
+//
+// EVERY CONSUMER KEEPS ITS OWN FALLBACK. A package reads these as
+// `var(--fs-hairline, light-dark(#f0f0f0, rgba(255,255,255,.22)))` so that it
+// still renders correctly when @firestitch/style is not installed at all. The
+// fallback is the contract's default restated locally — keep the two in step.
+//
+// These are CSS custom properties, not Sass variables, on purpose: they resolve
+// in the browser at paint time, so one declaration re-skins a whole tree
+// including components compiled into other packages. A Sass variable is baked
+// at build time and can never do that.
+
+@mixin tokens() {
+  :root {
+    // ===== INK =====
+    // Three levels. Full-strength is for the text that matters; muted carries
+    // labels and secondary copy; faint is for text that is present but quiet.
+    --fs-color-text: light-dark(rgba(0, 0, 0, 0.87), #E8EDEC);
+    --fs-color-text-muted: light-dark(rgba(0, 0, 0, 0.54), #97A5A6);
+    --fs-color-text-faint: light-dark(rgba(0, 0, 0, 0.38), #6A7779);
+
+    // ===== SURFACES =====
+    // The ground a component sits on, and the surface it draws for itself.
+    // `raised` is for the surface that floats above the page — a menu panel, a
+    // dropdown — which on a dark ground must be LIGHTER, not darker.
+    --fs-color-surface: light-dark(#FFFFFF, #232428);
+    --fs-color-surface-raised: light-dark(#FFFFFF, #292A2F);
+
+    // ===== LINES =====
+    // The hairline does most of the structural work: chip outlines, dividers,
+    // field borders. Deliberately low-contrast in both modes — it should read
+    // as a fold in the surface, not as a drawn line.
+    --fs-hairline: light-dark(#f0f0f0, rgba(255, 255, 255, 0.22));
+    --fs-hairline-strong: light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38));
+
+    // ===== FEEDBACK =====
+    // The wash under a hovered or pressed surface. A package must never express
+    // hover as filter: brightness() — that DARKENS, which is right on a white
+    // page and backwards on a dark one. A translucent wash reads correctly in
+    // both modes because it takes its tone from whatever is behind it.
+    --fs-color-hover: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08));
+    --fs-color-selected: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12));
+  }
+}

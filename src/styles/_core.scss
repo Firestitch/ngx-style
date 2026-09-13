@@ -1,3 +1,4 @@
+@use 'tokens';
 @use 'headings';
 @use 'helpers';
 @use 'layout';
@@ -8,6 +9,12 @@
 
 
 @mixin core() {
+  // FIRST, and it has to be: every block below may read a --fs-* name, and the
+  // packages that consume them fall back to a hardcoded pair when the name is
+  // missing. Declaring them up front means the cascade reads in the order a
+  // person would, even though custom properties resolve at use rather than at
+  // declaration.
+  @include tokens.tokens();
   @include headings.headings();
   @include form-field.form-field();
   @include helpers.helpers();
