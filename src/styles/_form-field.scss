@@ -42,13 +42,24 @@
   // Tokens are set/read under both the v18/v19 --mdc-* names and the
   // v20+ --mat-form-field-* names so consumers on Material 18-22 all work.
   .mat-mdc-form-field.mat-form-field-appearance-fill {
-    --mdc-filled-text-field-container-color: white;
-    --mdc-filled-text-field-disabled-container-color: #F5F5F5;
-    --mat-form-field-filled-container-color: white;
-    --mat-form-field-filled-disabled-container-color: #F5F5F5;
+    // THE FILL GROUND, IN BOTH APPEARANCES. These were flat `white` and
+    // `#F5F5F5`, declared on the field element itself -- which outranks any
+    // :root override a consumer writes, because a custom property declared on
+    // the matching element always beats one inherited from the document root.
+    // So a host app could not correct these from outside; they had to be fixed
+    // here.
+    //
+    // The light values are unchanged (white, #F5F5F5 as the light half of each
+    // pair), so nothing about the light appearance moves. Only the dark half is
+    // new, and light-dark() picks between them off the `color-scheme` the host
+    // declares -- no class, no input, no media query.
+    --mdc-filled-text-field-container-color: var(--fs-color-surface, light-dark(#FFFFFF, #232428));
+    --mdc-filled-text-field-disabled-container-color: var(--fs-color-hover, light-dark(#F5F5F5, rgba(255, 255, 255, 0.08)));
+    --mat-form-field-filled-container-color: var(--fs-color-surface, light-dark(#FFFFFF, #232428));
+    --mat-form-field-filled-disabled-container-color: var(--fs-color-hover, light-dark(#F5F5F5, rgba(255, 255, 255, 0.08)));
 
     .mat-mdc-text-field-wrapper {
-      border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-form-field-outlined-outline-color, rgba(0, 0, 0, 0.38)));
+      border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-form-field-outlined-outline-color, rgb(127 127 127 / 38%)));
       border-radius: var(--mdc-outlined-text-field-container-shape, var(--mat-form-field-outlined-container-shape, 4px));
     }
 
@@ -62,7 +73,10 @@
 
     &:hover:not(.mat-focused):not(.mat-form-field-invalid):not(.mat-form-field-disabled) {
       .mat-mdc-text-field-wrapper {
-        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, rgba(0, 0, 0, 0.87)));
+        // The last-resort fallback is a PAIR, not a flat black: this renders
+        // when @firestitch/style's material layer is absent, and a black hover
+        // border on a dark ground reads as a hole punched in the field.
+        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC)));
       }
     }
 
@@ -95,7 +109,7 @@
     }
 
     &.mat-form-field-disabled .mat-mdc-text-field-wrapper {
-      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, rgba(0, 0, 0, 0.06)));
+      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.12))));
     }
   }
 

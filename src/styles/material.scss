@@ -18,7 +18,24 @@
     --mat-dialog-supporting-text-color: #{variables.$body-color};
 
     --mdc-elevated-card-container-shape: 12px;
+    // FIELD OUTLINE, PLACEHOLDER AND HOVER, IN BOTH APPEARANCES.
+    //
+    // The resting outline is deliberately a NEUTRAL grey at 38% -- it reads on a
+    // white page and on a dark one without needing a pair, which is why it is
+    // stated once rather than through light-dark().
+    //
+    // The rest cannot do that. Material's light theme emits them as flat blacks
+    // (rgba(0,0,0,.6) for the placeholder and the hover label, rgba(0,0,0,.87)
+    // for the hover outline), and black on a dark ground is invisible -- the
+    // placeholder disappears and the hover border reads as a hole. Each keeps
+    // its current light value as the light half, so nothing about the light
+    // appearance changes; only the dark half is new.
     --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
+    --mdc-outlined-text-field-hover-outline-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
+    --mdc-outlined-text-field-input-text-placeholder-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
+    --mdc-filled-text-field-input-text-placeholder-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
+    --mdc-outlined-text-field-hover-label-text-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
+    --mdc-filled-text-field-hover-label-text-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
 
     /*
      * Buttons < Angular 20

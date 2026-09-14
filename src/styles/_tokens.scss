@@ -55,6 +55,28 @@
     --fs-hairline: light-dark(#f0f0f0, rgba(255, 255, 255, 0.22));
     --fs-hairline-strong: light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38));
 
+    // ===== BRAND =====
+    // The application's own colour, and the one name a package reads to render
+    // anything "primary": a selected filter chip's outline and text, an active
+    // state, an accent rule.
+    //
+    // A PACKAGE NEVER READS AN APPLICATION'S OWN NAME. Apps carry their brand
+    // under whatever name they like -- set at runtime from a setting, hardcoded
+    // in a palette, derived from a theme -- and the app maps that onto this one
+    // name at its root:
+    //
+    //   :root { --fs-color-primary: var(--my-app-brand-colour); }
+    //
+    // so nothing inside a package has to know the application exists. Leaving it
+    // unmapped is fine: the default below is a neutral slate that reads on both
+    // grounds, so a package renders sensibly in an app that has set nothing.
+    //
+    // NOT PER-SCHEME BY DEFAULT. A brand colour is picked to work on its own
+    // ground, so this is a single value rather than a light-dark() pair -- an app
+    // whose brand does need to shift between schemes maps it to a pair of its own
+    // when it sets the name above.
+    --fs-color-primary: #1B474E;
+
     // ===== FEEDBACK =====
     // The wash under a hovered or pressed surface. A package must never express
     // hover as filter: brightness() — that DARKENS, which is right on a white
