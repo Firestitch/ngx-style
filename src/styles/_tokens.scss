@@ -41,12 +41,25 @@
     --fs-color-text-muted: light-dark(rgba(0, 0, 0, 0.54), #97A5A6);
     --fs-color-text-faint: light-dark(rgba(0, 0, 0, 0.38), #6A7779);
 
-    // ===== SURFACES =====
-    // The ground a component sits on, and the surface it draws for itself.
-    // `raised` is for the surface that floats above the page — a menu panel, a
-    // dropdown — which on a dark ground must be LIGHTER, not darker.
-    --fs-color-surface: light-dark(#FFFFFF, #232428);
-    --fs-color-surface-raised: light-dark(#FFFFFF, #292A2F);
+    // ===== SURFACE =====
+    // ONE surface colour for everything that is a surface: a page, a dialog, a
+    // card, a menu panel, a dropdown, a bottom sheet. They are all the same kind
+    // of thing, so they take the same colour and the app reads as one material.
+    //
+    // THERE IS DELIBERATELY NO `raised` VARIANT — Ray 2026-09-14. There used to
+    // be --fs-color-surface (#232428) and --fs-color-surface-raised (#292A2F),
+    // the second six luminance steps lighter so a floating panel read as above
+    // the page on a dark ground. Both were #FFFFFF in light mode, so the
+    // distinction only ever existed in dark, and it bought a difference nobody
+    // had asked for while forcing every consumer to decide which of two nearly
+    // identical greys it wanted — and to get it wrong silently, because the
+    // fallbacks differ.
+    //
+    // Elevation is not a colour problem. A surface that must read as floating
+    // separates with a shadow, a hairline or a blur; if a genuine need for a
+    // second surface colour appears later, add it then, with the case that
+    // justifies it. Do not reintroduce `raised` as a default.
+    --fs-surface-background: light-dark(#FFFFFF, #232428);
 
     // ===== LINES =====
     // The hairline does most of the structural work: chip outlines, dividers,

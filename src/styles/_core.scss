@@ -5,6 +5,7 @@
 @use 'overflow';
 @use 'typography';
 @use 'form-field';
+@use 'form-controls';
 @use 'material';
 
 
@@ -17,6 +18,10 @@
   @include tokens.tokens();
   @include headings.headings();
   @include form-field.form-field();
+  // The selection controls - checkbox, radio, slide toggle, slider, chip. After
+  // form-field because it answers the same questions for the same family of
+  // inputs, and before material so an app's own Material overrides still win.
+  @include form-controls.form-controls();
   @include helpers.helpers();
   @include layout.layout();
   @include overflow.overflow();
