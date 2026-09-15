@@ -131,6 +131,26 @@
     // both modes because it takes its tone from whatever is behind it.
     --fs-color-hover: rgba(255, 255, 255, 0.08);
     --fs-color-selected: rgba(255, 255, 255, 0.12);
+
+    // ===== CONTROL FILL =====
+    // The INSIDE of an empty checkbox, radio or multi-select tick.
+    //
+    // MATERIAL HAS NO TOKEN FOR THIS. The whole --mat-checkbox-* family is 33
+    // names and every one is an icon colour, a checkmark, a label, a state
+    // layer or a size — there is no container-color. An unchecked box is drawn
+    // as a transparent square with a border, so on a dark ground the interior
+    // is whatever is behind it: on a dark select panel it reads as a black
+    // hole with a grey edge. That is Material's intent and it is wrong here.
+    //
+    // NEAR-WHITE IN BOTH SCHEMES, deliberately, and this is the one token that
+    // does not flip. An empty checkbox should read as paper you are about to
+    // mark — that is the affordance, and it is the same affordance on a dark
+    // page as on a light one. In light mode it sits on a white surface and
+    // disappears behind its own outline, which is exactly how a checkbox looks
+    // on a light page, so the single value is correct in both.
+    //
+    // Consumed by _form-controls.scss, which is the only place that paints it.
+    --fs-control-fill: #FFFFFF;
   }
 
   // ===========================================================================

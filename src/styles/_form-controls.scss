@@ -231,4 +231,33 @@
     --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(--fs-color-primary, #1B474E);
     --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--fs-color-text-faint, #6A7779);
   }
+
+  // ===========================================================================
+  // THE EMPTY BOX'S INTERIOR
+  // ===========================================================================
+  // The one thing in this file that is a RULE rather than a token, because
+  // Material offers no token for it. An unchecked checkbox is a transparent
+  // square with a border, so on a dark ground its interior is the dark ground -
+  // a black hole with a grey edge. --fs-control-fill paints it as paper.
+  //
+  // BOTH CONTROLS TOGETHER, which is the whole point of this file. A
+  // <mat-checkbox> on a page and the tick inside a <mat-select [multiple]> are
+  // different components with different class names, and a rule written for one
+  // is the reason they drift apart. They are listed here as one selector so
+  // they cannot.
+  //
+  // UNCHECKED ONLY. The checked state is already a filled brand box painted by
+  // the tokens above; filling it again from here would paint over the brand.
+  // For mdc-checkbox that is :not(...__checkmark)-free - Material swaps the
+  // background element's own border/background tokens on check, so the
+  // selector is scoped by the checked class on the host instead.
+  //
+  // NOT !important, and it must not become !important: these land at 0-1-0 and
+  // 0-2-0 against Material's own rules in the same sheet, and an app that
+  // genuinely wants a different control fill sets --fs-control-fill rather than
+  // fighting a weaponised selector.
+  .mat-mdc-checkbox:not(.mat-mdc-checkbox-checked) .mdc-checkbox__background,
+  .mat-pseudo-checkbox-full:not(.mat-pseudo-checkbox-checked):not(.mat-pseudo-checkbox-indeterminate) {
+    background-color: var(--fs-control-fill, #FFFFFF);
+  }
 }
