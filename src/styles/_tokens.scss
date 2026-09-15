@@ -42,11 +42,20 @@
 // property can reach. It no longer drives these tokens, but it is not
 // redundant.
 //
-// EVERY CONSUMER KEEPS ITS OWN FALLBACK. A package reads these as
-// `var(--fs-hairline, light-dark(#f0f0f0, rgba(255,255,255,.22)))` so that it
-// still renders correctly when @firestitch/style is not installed at all. Those
-// fallbacks keep light-dark() and that is fine — they fire only when the token
-// is undefined, which is exactly the case where this file was never loaded.
+// EVERY CONSUMER KEEPS ITS OWN FALLBACK, AS A PLAIN LITERAL. A package reads
+// these as `var(--fs-hairline, rgba(255,255,255,.22))` so it still renders when
+// @firestitch/style is not installed at all.
+//
+// NEVER light-dark() IN A FALLBACK. Given `var(--name, light-dark(A, B))`,
+// esbuild does not just downlevel the inner function — it folds the WHOLE
+// expression to the literal A and throws the var() reference away. The consumer
+// then never reads the token, so correcting the token's value changes nothing
+// on screen. That is why three published versions in a row fixed nothing: the
+// source read correctly every time and the served CSS carried a bare
+// rgba(0, 0, 0, 0.54) where a var() should have been.
+//
+// A fallback covers the case where this block never loaded, which is a
+// single-value situation by definition. One literal, the dark one.
 //
 // These are CSS custom properties, not Sass variables, on purpose: they resolve
 // in the browser at paint time, so one declaration re-skins a whole tree

@@ -31,11 +31,11 @@
     // its current light value as the light half, so nothing about the light
     // appearance changes; only the dark half is new.
     --mdc-outlined-text-field-outline-color: rgb(127 127 127 / 38%);
-    --mdc-outlined-text-field-hover-outline-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mdc-outlined-text-field-input-text-placeholder-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
-    --mdc-filled-text-field-input-text-placeholder-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
-    --mdc-outlined-text-field-hover-label-text-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
-    --mdc-filled-text-field-hover-label-text-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.6), #97A5A6));
+    --mdc-outlined-text-field-hover-outline-color: var(--fs-color-text, #E8EDEC);
+    --mdc-outlined-text-field-input-text-placeholder-color: var(--fs-color-text-muted, #97A5A6);
+    --mdc-filled-text-field-input-text-placeholder-color: var(--fs-color-text-muted, #97A5A6);
+    --mdc-outlined-text-field-hover-label-text-color: var(--fs-color-text-muted, #97A5A6);
+    --mdc-filled-text-field-hover-label-text-color: var(--fs-color-text-muted, #97A5A6);
 
     /*
      * Buttons < Angular 20

@@ -17,10 +17,23 @@
 // palette happens to use, and an undefined custom property is invalid at
 // computed-value time, so a CHECKED box renders unstyled rather than branded.
 //
-// Nothing here is app-specific. Every value is either the shared --fs-* contract
-// or a light-dark() pair restating this package's own default, so an app that
-// sets nothing still renders correctly in both schemes and an app that maps
-// --fs-color-primary onto its brand gets its brand for free.
+// Nothing here is app-specific. Every value is the shared --fs-* contract with
+// this package's own dark default restated as the fallback, so an app that sets
+// nothing still renders, and an app that maps --fs-color-primary onto its brand
+// gets its brand for free.
+//
+// THE FALLBACKS ARE PLAIN LITERALS, NEVER light-dark() - 18.2.1. They were
+// light-dark() pairs, and esbuild does not merely downlevel those on a host
+// whose browserslist includes a pre-123 engine: seeing
+// `var(--name, light-dark(A, B))` it folds the WHOLE expression to the literal
+// A and discards the var() reference entirely. The control then never reads the
+// token at all, so no amount of fixing the token's value changes anything on
+// screen - three published versions in a row changed nothing for exactly this
+// reason. The source looked right every time; only the served CSS showed a bare
+// `rgba(0, 0, 0, 0.54)` where a var() should have been.
+//
+// A fallback exists for the case where this package's own token block never
+// loaded, which is a single-value situation by definition. Keep them literal.
 //
 // ONE FILE FOR THE FAMILY, not one control at a time. These were fixed app-side
 // one control at a time for years, which is why a project could have a correct
@@ -60,10 +73,10 @@
     // pick for its dividers. --fs-color-text-muted is the token that means
     // "visible but secondary", which is the job, and it lands near Material's
     // own default (0.54) rather than under it.
-    --mat-checkbox-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-checkbox-unselected-hover-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-checkbox-unselected-focus-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-checkbox-unselected-pressed-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
+    --mat-checkbox-unselected-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-checkbox-unselected-hover-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-checkbox-unselected-focus-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-checkbox-unselected-pressed-icon-color: var(--fs-color-text-muted, #97A5A6);
 
     // Checked: the brand fills the box and the checkmark sits on it. The
     // checkmark reads the SURFACE colour rather than white, so it stays legible
@@ -71,41 +84,41 @@
     --mat-checkbox-selected-icon-color: var(--fs-color-primary, #1B474E);
     --mat-checkbox-selected-hover-icon-color: var(--fs-color-primary, #1B474E);
     --mat-checkbox-selected-focus-icon-color: var(--fs-color-primary, #1B474E);
-    --mat-checkbox-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-checkbox-selected-checkmark-color: var(--fs-surface-background, #232428);
 
-    --mat-checkbox-label-text-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-checkbox-disabled-label-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
-    --mat-checkbox-disabled-unselected-icon-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-checkbox-disabled-selected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-checkbox-label-text-color: var(--fs-color-text, #E8EDEC);
+    --mat-checkbox-disabled-label-color: var(--fs-color-text-faint, #6A7779);
+    --mat-checkbox-disabled-unselected-icon-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-checkbox-disabled-selected-icon-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
 
     // The wash under a hover or press. Translucent, never a fixed grey: it takes
     // its tone from whatever is behind it and so reads in both schemes.
-    --mat-checkbox-unselected-hover-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-checkbox-unselected-pressed-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-checkbox-selected-hover-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-checkbox-selected-pressed-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
+    --mat-checkbox-unselected-hover-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-checkbox-unselected-pressed-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-checkbox-selected-hover-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-checkbox-selected-pressed-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
 
     // =========================================================================
     // RADIO
     // =========================================================================
     // Same three questions as the checkbox, same answers - the two controls
     // differ in shape and in whether they are exclusive, never in colour.
-    --mat-radio-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-radio-unselected-hover-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-radio-unselected-focus-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-radio-unselected-pressed-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
+    --mat-radio-unselected-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-radio-unselected-hover-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-radio-unselected-focus-icon-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-radio-unselected-pressed-icon-color: var(--fs-color-text-muted, #97A5A6);
 
     --mat-radio-selected-icon-color: var(--fs-color-primary, #1B474E);
     --mat-radio-selected-hover-icon-color: var(--fs-color-primary, #1B474E);
     --mat-radio-selected-focus-icon-color: var(--fs-color-primary, #1B474E);
     --mat-radio-selected-pressed-icon-color: var(--fs-color-primary, #1B474E);
 
-    --mat-radio-label-text-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-radio-disabled-label-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
-    --mat-radio-disabled-unselected-icon-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-radio-disabled-selected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
-    --mat-radio-ripple-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-radio-checked-ripple-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
+    --mat-radio-label-text-color: var(--fs-color-text, #E8EDEC);
+    --mat-radio-disabled-label-color: var(--fs-color-text-faint, #6A7779);
+    --mat-radio-disabled-unselected-icon-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-radio-disabled-selected-icon-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
+    --mat-radio-ripple-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-radio-checked-ripple-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
 
     // =========================================================================
     // SLIDE TOGGLE
@@ -113,15 +126,15 @@
     // The toggle is a TRACK with a HANDLE on it, so "unselected" is two colours
     // rather than one: the track is the hairline it sits in, and the handle is
     // the muted ink so it reads as an object on that track rather than a hole.
-    --mat-slide-toggle-unselected-track-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slide-toggle-unselected-hover-track-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slide-toggle-unselected-focus-track-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slide-toggle-unselected-pressed-track-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slide-toggle-unselected-handle-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
-    --mat-slide-toggle-unselected-hover-handle-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-slide-toggle-unselected-focus-handle-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-slide-toggle-unselected-pressed-handle-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-slide-toggle-unselected-icon-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-slide-toggle-unselected-track-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slide-toggle-unselected-hover-track-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slide-toggle-unselected-focus-track-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slide-toggle-unselected-pressed-track-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slide-toggle-unselected-handle-color: var(--fs-color-text-muted, #97A5A6);
+    --mat-slide-toggle-unselected-hover-handle-color: var(--fs-color-text, #E8EDEC);
+    --mat-slide-toggle-unselected-focus-handle-color: var(--fs-color-text, #E8EDEC);
+    --mat-slide-toggle-unselected-pressed-handle-color: var(--fs-color-text, #E8EDEC);
+    --mat-slide-toggle-unselected-icon-color: var(--fs-surface-background, #232428);
 
     // Selected: the brand fills the track, and the handle goes to the surface
     // colour so it reads as a light knob on a coloured rail in both schemes.
@@ -129,19 +142,19 @@
     --mat-slide-toggle-selected-hover-track-color: var(--fs-color-primary, #1B474E);
     --mat-slide-toggle-selected-focus-track-color: var(--fs-color-primary, #1B474E);
     --mat-slide-toggle-selected-pressed-track-color: var(--fs-color-primary, #1B474E);
-    --mat-slide-toggle-selected-handle-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-slide-toggle-selected-hover-handle-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-slide-toggle-selected-focus-handle-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-slide-toggle-selected-pressed-handle-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-slide-toggle-selected-handle-color: var(--fs-surface-background, #232428);
+    --mat-slide-toggle-selected-hover-handle-color: var(--fs-surface-background, #232428);
+    --mat-slide-toggle-selected-focus-handle-color: var(--fs-surface-background, #232428);
+    --mat-slide-toggle-selected-pressed-handle-color: var(--fs-surface-background, #232428);
     --mat-slide-toggle-selected-icon-color: var(--fs-color-primary, #1B474E);
 
-    --mat-slide-toggle-label-text-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-slide-toggle-disabled-label-text-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
-    --mat-slide-toggle-disabled-unselected-track-outline-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slide-toggle-selected-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-slide-toggle-selected-hover-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-slide-toggle-unselected-focus-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-slide-toggle-unselected-hover-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
+    --mat-slide-toggle-label-text-color: var(--fs-color-text, #E8EDEC);
+    --mat-slide-toggle-disabled-label-text-color: var(--fs-color-text-faint, #6A7779);
+    --mat-slide-toggle-disabled-unselected-track-outline-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slide-toggle-selected-focus-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-slide-toggle-selected-hover-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-slide-toggle-unselected-focus-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-slide-toggle-unselected-hover-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
 
     // =========================================================================
     // SLIDER
@@ -150,21 +163,21 @@
     // handle matches the active track rather than the surface - a slider's knob
     // is part of the value it is showing.
     --mat-slider-active-track-color: var(--fs-color-primary, #1B474E);
-    --mat-slider-inactive-track-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-slider-inactive-track-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
     --mat-slider-handle-color: var(--fs-color-primary, #1B474E);
     --mat-slider-hover-handle-color: var(--fs-color-primary, #1B474E);
     --mat-slider-focus-handle-color: var(--fs-color-primary, #1B474E);
-    --mat-slider-disabled-active-track-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
-    --mat-slider-disabled-inactive-track-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-slider-disabled-handle-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
-    --mat-slider-ripple-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-slider-hover-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-slider-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
+    --mat-slider-disabled-active-track-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
+    --mat-slider-disabled-inactive-track-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-slider-disabled-handle-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
+    --mat-slider-ripple-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-slider-hover-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-slider-focus-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
 
     // The value bubble is a floating surface, so it takes the RAISED surface and
     // the ink that reads on it.
-    --mat-slider-label-container-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-slider-label-label-text-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
+    --mat-slider-label-container-color: var(--fs-surface-background, #232428);
+    --mat-slider-label-label-text-color: var(--fs-color-text, #E8EDEC);
 
     // =========================================================================
     // CHIP
@@ -172,21 +185,21 @@
     // A chip is a SURFACE with a label, not an outline with a tint, so the flat
     // (unselected) chip takes the hover wash rather than the page ground - that
     // is what separates it from whatever it sits on without a border.
-    --mat-chip-elevated-container-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-chip-label-text-color: var(--fs-color-text, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC));
-    --mat-chip-outline-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-chip-elevated-container-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-chip-label-text-color: var(--fs-color-text, #E8EDEC);
+    --mat-chip-outline-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
     --mat-chip-focus-outline-color: var(--fs-color-primary, #1B474E);
 
     --mat-chip-elevated-selected-container-color: var(--fs-color-primary, #1B474E);
-    --mat-chip-selected-label-text-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-chip-selected-trailing-icon-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-chip-selected-label-text-color: var(--fs-surface-background, #232428);
+    --mat-chip-selected-trailing-icon-color: var(--fs-surface-background, #232428);
 
-    --mat-chip-disabled-label-text-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
-    --mat-chip-disabled-outline-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-chip-hover-state-layer-color: var(--fs-color-hover, light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08)));
-    --mat-chip-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-chip-selected-hover-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
-    --mat-chip-selected-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
+    --mat-chip-disabled-label-text-color: var(--fs-color-text-faint, #6A7779);
+    --mat-chip-disabled-outline-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-chip-hover-state-layer-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-chip-focus-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-chip-selected-hover-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
+    --mat-chip-selected-focus-state-layer-color: var(--fs-color-selected, rgba(255, 255, 255, 0.12));
 
     // =========================================================================
     // PSEUDO-CHECKBOX
@@ -205,17 +218,17 @@
     // FULL is the variant that draws a box; MINIMAL draws only a checkmark with
     // no container. Both are themed: an app choosing either gets a control that
     // reads, and the two never disagree about what "selected" looks like.
-    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
+    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-color-text-muted, #97A5A6);
     --mat-pseudo-checkbox-full-selected-icon-color: var(--fs-color-primary, #1B474E);
-    --mat-pseudo-checkbox-full-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-pseudo-checkbox-full-selected-checkmark-color: var(--fs-surface-background, #232428);
 
-    --mat-pseudo-checkbox-full-disabled-unselected-icon-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
-    --mat-pseudo-checkbox-full-disabled-selected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
-    --mat-pseudo-checkbox-full-disabled-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+    --mat-pseudo-checkbox-full-disabled-unselected-icon-color: var(--fs-hairline, rgba(255, 255, 255, 0.22));
+    --mat-pseudo-checkbox-full-disabled-selected-icon-color: var(--fs-hairline-strong, rgba(255, 255, 255, 0.38));
+    --mat-pseudo-checkbox-full-disabled-selected-checkmark-color: var(--fs-surface-background, #232428);
 
     // The minimal variant has no box to fill, so the CHECKMARK carries the
     // brand rather than sitting on it - the inverse of the full variant above.
     --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(--fs-color-primary, #1B474E);
-    --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
+    --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--fs-color-text-faint, #6A7779);
   }
 }

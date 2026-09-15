@@ -53,10 +53,10 @@
     // pair), so nothing about the light appearance moves. Only the dark half is
     // new, and light-dark() picks between them off the `color-scheme` the host
     // declares -- no class, no input, no media query.
-    --mdc-filled-text-field-container-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mdc-filled-text-field-disabled-container-color: var(--fs-color-hover, light-dark(#F5F5F5, rgba(255, 255, 255, 0.08)));
-    --mat-form-field-filled-container-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
-    --mat-form-field-filled-disabled-container-color: var(--fs-color-hover, light-dark(#F5F5F5, rgba(255, 255, 255, 0.08)));
+    --mdc-filled-text-field-container-color: var(--fs-surface-background, #232428);
+    --mdc-filled-text-field-disabled-container-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    --mat-form-field-filled-container-color: var(--fs-surface-background, #232428);
+    --mat-form-field-filled-disabled-container-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
 
     .mat-mdc-text-field-wrapper {
       border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-form-field-outlined-outline-color, rgb(127 127 127 / 38%)));
@@ -76,7 +76,7 @@
         // The last-resort fallback is a PAIR, not a flat black: this renders
         // when @firestitch/style's material layer is absent, and a black hover
         // border on a dark ground reads as a hole punched in the field.
-        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, light-dark(rgba(0, 0, 0, 0.87), #E8EDEC)));
+        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, #E8EDEC));
       }
     }
 
@@ -109,7 +109,7 @@
     }
 
     &.mat-form-field-disabled .mat-mdc-text-field-wrapper {
-      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.12))));
+      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, rgba(255, 255, 255, 0.12)));
     }
   }
 
