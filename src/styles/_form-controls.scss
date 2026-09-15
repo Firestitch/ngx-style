@@ -1,7 +1,7 @@
 // =============================================================================
 // THE SELECTION CONTROLS
 // =============================================================================
-// Checkbox, radio, slide toggle, slider and chip.
+// Checkbox, radio, slide toggle, slider, chip and pseudo-checkbox.
 //
 // WHY THIS FILE EXISTS - Ray 2026-09-14. Material themes these five entirely
 // through its own tokens, and an app on an M2 theme gets the LIGHT theme's
@@ -24,9 +24,15 @@
 //
 // ONE FILE FOR THE FAMILY, not one control at a time. These were fixed app-side
 // one control at a time for years, which is why a project could have a correct
-// select and an invisible checkbox in the same dialog. The five share three
+// select and an invisible checkbox in the same dialog. They share three
 // questions - what colour is the control unselected, selected, and what colour
 // is its label - so they are answered together or they drift.
+//
+// The pseudo-checkbox arrived a version later than the rest and proves the
+// point: it looks like the checkbox, so it was assumed to be themed by the
+// checkbox, and a multi-select shipped with an invisible tick while the
+// checkbox beside it was correct. A control belongs in this file because of
+// what it IS, not because of what it resembles - add the next one here too.
 //
 // GLOBAL, NOT SCOPED. These emit at :root like every other block in this
 // package. A checkbox inside a dialog, menu or select panel renders in a CDK
@@ -167,5 +173,35 @@
     --mat-chip-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
     --mat-chip-selected-hover-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
     --mat-chip-selected-focus-state-layer-color: var(--fs-color-selected, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)));
+
+    // =========================================================================
+    // PSEUDO-CHECKBOX
+    // =========================================================================
+    // The tick in a multi-select option, and in a selection list. It LOOKS like
+    // the checkbox above and is a different component with its own token
+    // family - which is exactly why it was missed when the other five were
+    // themed: a <mat-select [multiple]> renders a mat-pseudo-checkbox, never a
+    // mat-checkbox, so none of the --mat-checkbox-* values above reach it.
+    //
+    // Left unset it falls through to Material's M2 light default
+    // (rgba(0, 0, 0, 0.54) unselected), which on a dark panel is a near-black
+    // outline on a near-black surface - the same invisible-control bug this
+    // file was written to end, one control short of the family.
+    //
+    // FULL is the variant that draws a box; MINIMAL draws only a checkmark with
+    // no container. Both are themed: an app choosing either gets a control that
+    // reads, and the two never disagree about what "selected" looks like.
+    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-pseudo-checkbox-full-selected-icon-color: var(--fs-color-primary, #1B474E);
+    --mat-pseudo-checkbox-full-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+
+    --mat-pseudo-checkbox-full-disabled-unselected-icon-color: var(--fs-hairline, light-dark(#f0f0f0, rgba(255, 255, 255, 0.22)));
+    --mat-pseudo-checkbox-full-disabled-selected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-pseudo-checkbox-full-disabled-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
+
+    // The minimal variant has no box to fill, so the CHECKMARK carries the
+    // brand rather than sitting on it - the inverse of the full variant above.
+    --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(--fs-color-primary, #1B474E);
+    --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--fs-color-text-faint, light-dark(rgba(0, 0, 0, 0.38), #6A7779));
   }
 }
