@@ -3,29 +3,50 @@
 // =============================================================================
 // The names every @firestitch package reads instead of hardcoding a hex.
 //
-// WHY light-dark() AND NOT A THEME CLASS. These packages have to work unchanged
-// in two worlds at once: legacy apps on Material 2 and new apps on Material 3.
-// A class-based swap would mean every host app agreeing on the same class name
-// and setting it; light-dark() reads the `color-scheme` property, which is the
-// ONE mechanism both Material versions and the browser itself already honour.
-// A package that reads these names needs to know nothing about its host.
+// DARK IS THE BASE; LIGHT IS AN OVERRIDE. The dark values are declared plainly
+// on :root, and a second block restates the light ones when the host marks
+// itself light. No light-dark() in any declaration here — read on.
 //
-// THE HOST APP MUST DECLARE color-scheme. Without it the browser resolves every
-// light-dark() to its LIGHT value — the pair is not a detector, it is a picker,
-// and `color-scheme` is what it picks from:
+// WHY NOT light-dark(), WHICH THIS FILE USED UNTIL 18.2.0. It was the right
+// idea and it does not survive the build. light-dark() needs Chrome 123+, and
+// a host whose browserslist still includes an older engine gets it DOWNLEVELLED
+// by esbuild — flattened to its LIGHT half, unconditionally. The failure is
+// silent and total: every token resolves to its light value on a dark ground,
+// so a checkbox outline computes to rgba(0, 0, 0, 0.54) — black on a dark
+// panel, invisible. Nothing warns, the source file looks correct, and the
+// served CSS is the only place the truth shows.
 //
-//   :root      { color-scheme: dark; }
-//   .my-light  { color-scheme: light; }
+// That is not a browser-support question a shared package gets to have an
+// opinion about. A host app chooses its own browserslist for its own reasons,
+// and a colour contract that quietly inverts on some of those choices is
+// broken, not merely modern.
 //
-// DECLARED, NOT DETECTED. Nothing here reads prefers-color-scheme. That media
-// query reports the DEVICE, and an app whose user chose Light on a dark phone
-// would then fight its own setting. Resolving the choice is the app's job; this
-// file only supplies the two values it picks between.
+// HOW A HOST SAYS "LIGHT". Either marker works, and an app almost certainly
+// already sets one:
+//
+//   <html class="theme-light">        or        <html data-theme="light">
+//
+// A host that marks nothing gets the dark values. That is a deliberate default
+// rather than a guess: these packages render on dark app grounds, and a dark
+// token on a light page reads as heavy, while a light token on a dark page
+// disappears completely. Failing toward "too strong" beats failing toward
+// invisible.
+//
+// STILL DECLARED, NOT DETECTED. Nothing here reads prefers-color-scheme. That
+// media query reports the DEVICE, and an app whose user chose Light on a dark
+// phone would then fight its own setting. Resolving the choice is the app's
+// job; this file supplies the values and reads the marker the app already sets.
+//
+// KEEP DECLARING color-scheme TOO. It is what paints the browser's own chrome —
+// caret, scrollbars, autofill, native control internals — which no custom
+// property can reach. It no longer drives these tokens, but it is not
+// redundant.
 //
 // EVERY CONSUMER KEEPS ITS OWN FALLBACK. A package reads these as
 // `var(--fs-hairline, light-dark(#f0f0f0, rgba(255,255,255,.22)))` so that it
-// still renders correctly when @firestitch/style is not installed at all. The
-// fallback is the contract's default restated locally — keep the two in step.
+// still renders correctly when @firestitch/style is not installed at all. Those
+// fallbacks keep light-dark() and that is fine — they fire only when the token
+// is undefined, which is exactly the case where this file was never loaded.
 //
 // These are CSS custom properties, not Sass variables, on purpose: they resolve
 // in the browser at paint time, so one declaration re-skins a whole tree
@@ -37,9 +58,9 @@
     // ===== INK =====
     // Three levels. Full-strength is for the text that matters; muted carries
     // labels and secondary copy; faint is for text that is present but quiet.
-    --fs-color-text: light-dark(rgba(0, 0, 0, 0.87), #E8EDEC);
-    --fs-color-text-muted: light-dark(rgba(0, 0, 0, 0.54), #97A5A6);
-    --fs-color-text-faint: light-dark(rgba(0, 0, 0, 0.38), #6A7779);
+    --fs-color-text: #E8EDEC;
+    --fs-color-text-muted: #97A5A6;
+    --fs-color-text-faint: #6A7779;
 
     // ===== SURFACE =====
     // ONE surface colour for everything that is a surface: a page, a dialog, a
@@ -59,14 +80,18 @@
     // separates with a shadow, a hairline or a blur; if a genuine need for a
     // second surface colour appears later, add it then, with the case that
     // justifies it. Do not reintroduce `raised` as a default.
-    --fs-surface-background: light-dark(#FFFFFF, #232428);
+    --fs-surface-background: #232428;
 
     // ===== LINES =====
     // The hairline does most of the structural work: chip outlines, dividers,
     // field borders. Deliberately low-contrast in both modes — it should read
     // as a fold in the surface, not as a drawn line.
-    --fs-hairline: light-dark(#f0f0f0, rgba(255, 255, 255, 0.22));
-    --fs-hairline-strong: light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38));
+    //
+    // NOT FOR A CONTROL OUTLINE. An empty checkbox or radio is the control's
+    // whole resting state, not a fold in a surface, so it reads
+    // --fs-color-text-muted instead — see _form-controls.scss.
+    --fs-hairline: rgba(255, 255, 255, 0.22);
+    --fs-hairline-strong: rgba(255, 255, 255, 0.38);
 
     // ===== BRAND =====
     // The application's own colour, and the one name a package reads to render
@@ -95,7 +120,39 @@
     // hover as filter: brightness() — that DARKENS, which is right on a white
     // page and backwards on a dark one. A translucent wash reads correctly in
     // both modes because it takes its tone from whatever is behind it.
-    --fs-color-hover: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08));
-    --fs-color-selected: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12));
+    --fs-color-hover: rgba(255, 255, 255, 0.08);
+    --fs-color-selected: rgba(255, 255, 255, 0.12);
+  }
+
+  // ===========================================================================
+  // LIGHT MODE
+  // ===========================================================================
+  // The same names restated with their light values. Custom properties inherit,
+  // so every consumer keeps reading one name and silently gets the right value
+  // — a package component never learns which mode it is in, which is the whole
+  // point of the contract.
+  //
+  // BOTH MARKERS, because apps already differ and neither is worth a migration:
+  // `.theme-light` is what the CloudCure apps set from their ThemeService,
+  // `[data-theme="light"]` is the broader web convention. They are listed as
+  // separate selectors rather than one `:is()` so the specificity stays a flat
+  // 0-1-0 in every engine.
+  //
+  // --fs-color-primary is absent on purpose. A brand colour is picked to work
+  // on its own ground and does not flip with the scheme; an app whose brand
+  // genuinely needs to shift maps the name to a pair of its own.
+  :root.theme-light,
+  :root[data-theme='light'] {
+    --fs-color-text: rgba(0, 0, 0, 0.87);
+    --fs-color-text-muted: rgba(0, 0, 0, 0.54);
+    --fs-color-text-faint: rgba(0, 0, 0, 0.38);
+
+    --fs-surface-background: #FFFFFF;
+
+    --fs-hairline: #f0f0f0;
+    --fs-hairline-strong: rgba(0, 0, 0, 0.38);
+
+    --fs-color-hover: rgba(0, 0, 0, 0.04);
+    --fs-color-selected: rgba(0, 0, 0, 0.08);
   }
 }
