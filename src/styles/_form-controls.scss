@@ -44,9 +44,23 @@
     // =========================================================================
     // CHECKBOX
     // =========================================================================
-    // The unselected box is an OUTLINE, so it takes the hairline rather than a
-    // text colour: it is a drawn edge, and at text strength it reads as heavy.
-    --mat-checkbox-unselected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    // The unselected box is a CONTROL OUTLINE, so it takes a text colour rather
+    // than the hairline.
+    //
+    // It was the hairline until 18.1.2, on the reasoning that a box outline is a
+    // drawn edge. That was wrong, and wrong in a way this package cannot see:
+    // --fs-hairline-strong means "a fold in a surface" - a card edge, a divider,
+    // a progress track - and an app is entitled to tune it down to almost
+    // nothing for exactly that purpose. CloudCure sets it to 22% white, which is
+    // correct for a divider and leaves an empty checkbox all but invisible.
+    //
+    // An empty checkbox is not a fold in a surface. It is the control's entire
+    // resting state, the only thing telling the user there is something here to
+    // click, and it must read as a line at any value an app might reasonably
+    // pick for its dividers. --fs-color-text-muted is the token that means
+    // "visible but secondary", which is the job, and it lands near Material's
+    // own default (0.54) rather than under it.
+    --mat-checkbox-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-checkbox-unselected-hover-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-checkbox-unselected-focus-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-checkbox-unselected-pressed-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
@@ -76,7 +90,7 @@
     // =========================================================================
     // Same three questions as the checkbox, same answers - the two controls
     // differ in shape and in whether they are exclusive, never in colour.
-    --mat-radio-unselected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-radio-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-radio-unselected-hover-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-radio-unselected-focus-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-radio-unselected-pressed-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
@@ -191,7 +205,7 @@
     // FULL is the variant that draws a box; MINIMAL draws only a checkmark with
     // no container. Both are themed: an app choosing either gets a control that
     // reads, and the two never disagree about what "selected" looks like.
-    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-hairline-strong, light-dark(rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.38)));
+    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-color-text-muted, light-dark(rgba(0, 0, 0, 0.54), #97A5A6));
     --mat-pseudo-checkbox-full-selected-icon-color: var(--fs-color-primary, #1B474E);
     --mat-pseudo-checkbox-full-selected-checkmark-color: var(--fs-surface-background, light-dark(#FFFFFF, #232428));
 
