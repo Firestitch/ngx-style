@@ -254,14 +254,5 @@
 
     --fs-color-hover: rgba(255, 255, 255, 0.08);
     --fs-color-selected: rgba(255, 255, 255, 0.12);
-
-    // A FILLED CHIP HOVERS BY BRIGHTENING ON A DARK GROUND. @firestitch/chip
-    // paints its fill as an INLINE style, which beats any stylesheet rule that
-    // is not !important, so its hover has to be a filter rather than a colour —
-    // and a filter is a function, not a colour, so there is nothing for a colour
-    // token to carry. The chip names the AMOUNT instead and this sets it: 90%
-    // (darken) is the light default declared in the chip itself, and dark has to
-    // go the other way or a hovered chip recedes into the page.
-    --fs-chip-hover-brightness: 125%;
   }
 }
