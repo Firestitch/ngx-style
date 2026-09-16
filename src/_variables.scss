@@ -7,6 +7,36 @@ $palette: mat.m2-define-palette(mat.$m2-blue-palette) !default;
 /**
   * Colors
   */
+
+// THE APPLICATION'S BRAND, and the value behind --fs-color-primary: every
+// @firestitch control that renders "primary" -- a checked checkbox, a selected
+// radio, a slide toggle's track, a selected chip -- resolves to this.
+//
+// SET IT HERE, at the point every other knob is set:
+//
+//   @use '@firestitch/style/variables' as fsVariables with (
+//     $primary-color: #005A9C
+//   );
+//
+// A CSS VARIABLE IS A VALID VALUE, and is how an app whose brand is chosen at
+// RUNTIME wires this up -- a per-workspace brand, a theme setting, anything not
+// known when the bundle is built:
+//
+//   with ($primary-color: var(--my-brand-colour))
+//
+// Sass passes it through untouched and the browser resolves it at paint time,
+// so the controls follow the brand with nothing to rebuild. The one thing that
+// then does not work is Sass colour maths on this value (darken(), mix()): at
+// build time it is an opaque string, not a colour. Nothing in this package does
+// that to it, deliberately.
+//
+// LEAVING IT UNSET IS SUPPORTED and is why the default is a neutral slate
+// rather than a brand: it reads on a light and a dark ground, so a package
+// renders sensibly in an app that has configured nothing. It is NOT a colour
+// any app should ship -- if a control is showing this teal, the app has a brand
+// it never passed.
+$primary-color: #1B474E !default;
+
 $grey-color: #757575 !default;
 $grey-dark-color: #696E74 !default;
 $grey-light-color: #F2F2F2 !default;

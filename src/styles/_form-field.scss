@@ -49,14 +49,18 @@
     // So a host app could not correct these from outside; they had to be fixed
     // here.
     //
-    // The light values are unchanged (white, #F5F5F5 as the light half of each
-    // pair), so nothing about the light appearance moves. Only the dark half is
-    // new, and light-dark() picks between them off the `color-scheme` the host
-    // declares -- no class, no input, no media query.
-    --mdc-filled-text-field-container-color: var(--fs-surface-background, #232428);
-    --mdc-filled-text-field-disabled-container-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
-    --mat-form-field-filled-container-color: var(--fs-surface-background, #232428);
-    --mat-form-field-filled-disabled-container-color: var(--fs-color-hover, rgba(255, 255, 255, 0.08));
+    // THE FALLBACK IS THE LIGHT VALUE -- Ray 2026-09-16. It was #232428, the
+    // dark surface, which is what put a black interior in every input in an app
+    // that had set no theme marker at all. A field's ground is the single most
+    // visible thing this package paints, so it is also the place a dark-first
+    // default did the most damage: an unconfigured app got black boxes on a
+    // white page. The token still flips for an app that marks itself dark; only
+    // the no-token-at-all case changed, and it now matches the white page such
+    // an app actually has.
+    --mdc-filled-text-field-container-color: var(--fs-surface-background, #FFFFFF);
+    --mdc-filled-text-field-disabled-container-color: var(--fs-color-hover, rgba(0, 0, 0, 0.04));
+    --mat-form-field-filled-container-color: var(--fs-surface-background, #FFFFFF);
+    --mat-form-field-filled-disabled-container-color: var(--fs-color-hover, rgba(0, 0, 0, 0.04));
 
     .mat-mdc-text-field-wrapper {
       border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-form-field-outlined-outline-color, rgb(127 127 127 / 38%)));
@@ -73,10 +77,11 @@
 
     &:hover:not(.mat-focused):not(.mat-form-field-invalid):not(.mat-form-field-disabled) {
       .mat-mdc-text-field-wrapper {
-        // The last-resort fallback is a PAIR, not a flat black: this renders
-        // when @firestitch/style's material layer is absent, and a black hover
-        // border on a dark ground reads as a hole punched in the field.
-        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, #E8EDEC));
+        // The last-resort fallback renders when @firestitch/style's material
+        // layer is absent -- an unconfigured host, which has a white page, so
+        // it takes the light ink rather than the near-white #E8EDEC that used
+        // to sit here and left the hover border invisible on white.
+        border-color: var(--mdc-outlined-text-field-hover-outline-color, var(--mat-form-field-outlined-hover-outline-color, rgba(0, 0, 0, 0.87)));
       }
     }
 
@@ -109,7 +114,7 @@
     }
 
     &.mat-form-field-disabled .mat-mdc-text-field-wrapper {
-      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, rgba(255, 255, 255, 0.12)));
+      border-color: var(--mdc-outlined-text-field-disabled-outline-color, var(--mat-form-field-outlined-disabled-outline-color, rgba(0, 0, 0, 0.12)));
     }
   }
 
