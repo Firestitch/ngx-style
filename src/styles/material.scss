@@ -95,8 +95,30 @@
       --mdc-switch-selected-hover-track-color: var(--brand-primary-color, #E0E2EC);
       --mdc-switch-selected-focus-track-color: var(--brand-primary-color, #E0E2EC);
       --mdc-switch-unselected-hover-track-color: #E0E2EC;
-      --mat-optgroup-label-text-color: #AEAEAE;  
+      --mat-optgroup-label-text-color: #AEAEAE;
     }
+  }
+
+  // AN ICON ON A BUTTON THAT PAINTS ITS OWN BACKGROUND TAKES THE BUTTON'S INK.
+  //
+  // Material paints every glyph with mat-icon { color: var(--mat-icon-color,
+  // inherit) }. An app that tones its bare icons down -- --mat-icon-color set to
+  // a muted grey at :root -- reaches the icon inside a fab or a filled button
+  // too, and the grey beats the foreground the button chose for its own
+  // container: a grey × on a brand-coloured mini fab. A bare icon sits on the
+  // page and should follow the page; one on a filled container sits on the
+  // button and must follow the button.
+  //
+  // `initial` empties the token here, so Material's own fallback, inherit,
+  // takes the button's foreground. Text, outlined and icon buttons have no
+  // container and are left alone.
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab,
+  .mat-mdc-extended-fab,
+  .mat-mdc-unelevated-button,
+  .mat-mdc-raised-button,
+  .mat-tonal-button {
+    --mat-icon-color: initial;
   }
 
   .mat-mdc-dialog-content:has(.mat-mdc-form-field.mat-form-field-appearance-outline):not(:has(.mat-mdc-tab-group)):before,
