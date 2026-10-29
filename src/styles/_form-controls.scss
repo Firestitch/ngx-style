@@ -68,6 +68,38 @@
 // overlay attached to <body>, outside any app shell class, so a scoped block
 // cannot reach it - the mistake that left dialog buttons unbranded.
 
+// THE INK - the tokens Material 2 re-declares on the control itself, written
+// once here because they are declared twice: on :root with the rest of their
+// family, and again on Material's own selectors (see THE INK, AGAIN, ON THE
+// CONTROL below). Only the half that swaps with the scheme - a label and an
+// empty outline - never the brand.
+
+@mixin -checkbox-ink() {
+  // No label here: Material leaves the checkbox's label tokens on :root.
+  --mat-checkbox-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-checkbox-unselected-hover-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-checkbox-unselected-focus-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-checkbox-unselected-pressed-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+}
+
+@mixin -radio-ink() {
+  --mat-radio-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-radio-unselected-hover-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-radio-unselected-focus-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+  --mat-radio-unselected-pressed-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+
+  --mat-radio-label-text-color: var(--fs-color-text, rgba(0, 0, 0, 0.87));
+  --mat-radio-disabled-label-color: var(--fs-color-text-faint, rgba(0, 0, 0, 0.38));
+}
+
+@mixin -chip-ink() {
+  --mat-chip-label-text-color: var(--fs-color-text, rgba(0, 0, 0, 0.87));
+}
+
+@mixin -pseudo-checkbox-ink() {
+  --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+}
+
 @mixin form-controls() {
   :root {
     // =========================================================================
@@ -89,10 +121,7 @@
     // pick for its dividers. --fs-color-text-muted is the token that means
     // "visible but secondary", which is the job, and it lands near Material's
     // own default (0.54) rather than under it.
-    --mat-checkbox-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-checkbox-unselected-hover-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-checkbox-unselected-focus-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-checkbox-unselected-pressed-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+    @include -checkbox-ink();
 
     // Checked: the brand fills the box and the checkmark sits on it. The
     // checkmark reads the SURFACE colour rather than white, so it stays legible
@@ -119,18 +148,13 @@
     // =========================================================================
     // Same three questions as the checkbox, same answers - the two controls
     // differ in shape and in whether they are exclusive, never in colour.
-    --mat-radio-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-radio-unselected-hover-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-radio-unselected-focus-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
-    --mat-radio-unselected-pressed-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+    @include -radio-ink();
 
     --mat-radio-selected-icon-color: var(--fs-color-primary, #{variables.$primary-color});
     --mat-radio-selected-hover-icon-color: var(--fs-color-primary, #{variables.$primary-color});
     --mat-radio-selected-focus-icon-color: var(--fs-color-primary, #{variables.$primary-color});
     --mat-radio-selected-pressed-icon-color: var(--fs-color-primary, #{variables.$primary-color});
 
-    --mat-radio-label-text-color: var(--fs-color-text, rgba(0, 0, 0, 0.87));
-    --mat-radio-disabled-label-color: var(--fs-color-text-faint, rgba(0, 0, 0, 0.38));
     --mat-radio-disabled-unselected-icon-color: var(--fs-hairline, #f0f0f0);
     --mat-radio-disabled-selected-icon-color: var(--fs-hairline-strong, rgba(0, 0, 0, 0.38));
     --mat-radio-ripple-color: var(--fs-color-hover, rgba(0, 0, 0, 0.04));
@@ -202,7 +226,7 @@
     // (unselected) chip takes the hover wash rather than the page ground - that
     // is what separates it from whatever it sits on without a border.
     --mat-chip-elevated-container-color: var(--fs-color-hover, rgba(0, 0, 0, 0.04));
-    --mat-chip-label-text-color: var(--fs-color-text, rgba(0, 0, 0, 0.87));
+    @include -chip-ink();
     --mat-chip-outline-color: var(--fs-hairline-strong, rgba(0, 0, 0, 0.38));
     --mat-chip-focus-outline-color: var(--fs-color-primary, #{variables.$primary-color});
 
@@ -234,7 +258,7 @@
     // FULL is the variant that draws a box; MINIMAL draws only a checkmark with
     // no container. Both are themed: an app choosing either gets a control that
     // reads, and the two never disagree about what "selected" looks like.
-    --mat-pseudo-checkbox-full-unselected-icon-color: var(--fs-color-text-muted, rgba(0, 0, 0, 0.54));
+    @include -pseudo-checkbox-ink();
     --mat-pseudo-checkbox-full-selected-icon-color: var(--fs-color-primary, #{variables.$primary-color});
     --mat-pseudo-checkbox-full-selected-checkmark-color: var(--fs-surface-background, #FFFFFF);
 
@@ -246,6 +270,75 @@
     // brand rather than sitting on it - the inverse of the full variant above.
     --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(--fs-color-primary, #{variables.$primary-color});
     --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--fs-color-text-faint, rgba(0, 0, 0, 0.38));
+  }
+
+  // ===========================================================================
+  // THE INK, AGAIN, ON THE CONTROL
+  // ===========================================================================
+  // Material 2 does not leave the tokens above on :root. Its theme re-declares
+  // part of each family on the control itself, at the LIGHT theme's values,
+  // and a value declared on the element beats one it inherits from :root. So
+  // on a dark ground, whatever the block above said:
+  //
+  //   radio            label and empty circle near-black   .mat-mdc-radio-button.mat-primary / .mat-accent / .mat-warn
+  //   checkbox         empty box near-black                .mat-mdc-checkbox.mat-primary / .mat-warn
+  //   list option      empty circle or box near-black      .mdc-list-item__start / __end, .mat-mdc-list-option (+ palette)
+  //   chip             label near-black                    .mat-mdc-standard-chip
+  //   pseudo-checkbox  empty box near-black                .mat-primary / .mat-accent / .mat-warn (its panel)
+  //
+  // An app could only get the values it had already set by restating them on
+  // Material's selectors itself. So the same values go on the same selectors
+  // here. With :root in front they match Material's specificity when an app
+  // includes its theme inside :root - a tie this sheet wins by coming after the
+  // theme, the order the :root block above already needs - and beat it outright
+  // when the theme sits at the top level.
+  //
+  // ONLY THE INK. Material's rules carry the brand too (the selected fill, warn
+  // red), and those stay Material's: an app's Material palette is its real
+  // brand, --fs-color-primary only this package's guess at it. Disabled icons,
+  // ripples and state layers stay Material's as well - Material applies its own
+  // opacity on top of those, so this package's already-translucent values would
+  // all but vanish.
+  //
+  // Slide toggle and slider need nothing here: what Material re-declares on
+  // them is palette only.
+
+  // A selection list's radio or checkbox is themed through the list item's
+  // slots rather than the control, so those selectors sit with the control's.
+  :root .mat-mdc-radio-button.mat-primary,
+  :root .mat-mdc-radio-button.mat-accent,
+  :root .mat-mdc-radio-button.mat-warn,
+  :root .mdc-list-item__start,
+  :root .mdc-list-item__end,
+  :root .mat-accent .mdc-list-item__start,
+  :root .mat-accent .mdc-list-item__end,
+  :root .mat-warn .mdc-list-item__start,
+  :root .mat-warn .mdc-list-item__end {
+    @include -radio-ink();
+  }
+
+  :root .mat-mdc-checkbox.mat-primary,
+  :root .mat-mdc-checkbox.mat-warn,
+  :root .mat-mdc-list-option,
+  :root .mat-mdc-list-option.mat-accent,
+  :root .mat-mdc-list-option.mat-warn {
+    @include -checkbox-ink();
+  }
+
+  // The selected chip's label is the palette's on-primary, declared on
+  // .mat-mdc-chip-selected.mat-primary and friends - more specific than this,
+  // so it is left alone.
+  :root .mat-mdc-standard-chip {
+    @include -chip-ink();
+  }
+
+  // Material themes the pseudo-checkbox through whatever ancestor carries the
+  // palette class (a select panel is .mat-primary), not through its own
+  // element, so the override has to sit on the same bare classes.
+  :root .mat-primary,
+  :root .mat-accent,
+  :root .mat-warn {
+    @include -pseudo-checkbox-ink();
   }
 
   // ===========================================================================
