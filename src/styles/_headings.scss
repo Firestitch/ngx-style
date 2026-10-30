@@ -65,6 +65,7 @@
     flex-direction: row;
     align-items: flex-start;
     margin: 5px 0;
+    line-height: normal;
 
     &:not(.subheading-1):not(.subheading-2):not(.subheading-3) {
       margin-top: -5px;
