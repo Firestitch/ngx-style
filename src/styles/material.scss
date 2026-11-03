@@ -74,6 +74,36 @@
 
     --mat-button-text-container-shape: #{$button-shape};
 
+    // NO TOUCH TARGETS, ON ANY CONTROL.
+    //
+    // Material hangs an invisible 48px hit area, centred, on every button, icon
+    // button, fab, checkbox, radio, slide toggle and paginator select, and only
+    // drops it below density -1. At -1 an icon button is 44px, so the target
+    // sticks out 2px on each side, and any scroll container it sits at the edge
+    // of grows a scrollbar for it. Angular 20 renamed the button tokens, so the
+    // `--mat-text-button-*` names above stopped reaching anything and the
+    // targets came back; icon buttons and the selection controls were never
+    // covered at all. These are the Angular 20 names.
+    --mat-button-text-touch-target-display: none;
+    --mat-button-filled-touch-target-display: none;
+    --mat-button-outlined-touch-target-display: none;
+    --mat-button-protected-touch-target-display: none;
+    --mat-button-tonal-touch-target-display: none;
+    --mat-icon-button-touch-target-display: none;
+    --mat-fab-touch-target-display: none;
+    --mat-fab-small-touch-target-display: none;
+    --mat-checkbox-touch-target-display: none;
+    --mat-radio-touch-target-display: none;
+    --mat-slide-toggle-touch-target-display: none;
+    --mat-paginator-touch-target-display: none;
+
+    // Material re-declares the radio's on a list item's leading and trailing
+    // slots (a radio list option), which beats the :root value above.
+    .mdc-list-item__start,
+    .mdc-list-item__end {
+      --mat-radio-touch-target-display: none;
+    }
+
     .mat-mdc-slide-toggle {
       --mat-switch-with-icon-handle-size: 20px;
       --mdc-switch-handle-shape: 9999px;
